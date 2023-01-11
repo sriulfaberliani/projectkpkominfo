@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800"><?php $data ?></h1>
+<h1 class="h3 mb-2 text-gray-800"> Data Jabatan Pegawai Diskominfo Payakumbuh </h1>
 
 
 <!-- DataTales Example -->
