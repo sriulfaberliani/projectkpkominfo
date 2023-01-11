@@ -15,7 +15,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -38,7 +38,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Data Master</h6>
-                        <a class="collapse-item" href="buttons.html">Data Akun</a>
+                        <a class="collapse-item" href="DataAkun">Data Akun</a>
                         <a class="collapse-item" href="DataPegawai">Data Pegawai</a>
                         <a class="collapse-item" href="DataJabatan">Data Jabatan</a>
                         <a class="nav-link collapse-item" href="DataJabatanPegawai">Data Jabatan - Pegawai</a>
