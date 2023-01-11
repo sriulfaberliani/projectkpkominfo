@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class DataJabatanPegawai extends Controller
+class DataJabatanPegawai extends BaseController
 {
     public function index()
     {

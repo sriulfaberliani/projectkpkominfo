@@ -21,14 +21,7 @@
                         <th>Jabatan</th>
                         <th>Action</th>
                     </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Jabatan</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
+                </thead> 
                 <tbody>
                     <tr>
                         <td>Tiger Nixon</td>
@@ -46,11 +39,13 @@
                                 </span>
                                 <span class="text">Delete</span>
                             </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Garrett Winters</td>
                         <td>Accountant</td>
-                        <a href="#" class="btn btn-success btn-icon-split">
+                        <td>
+                            <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
@@ -62,11 +57,13 @@
                                 </span>
                                 <span class="text">Delete</span>
                             </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Ashton Cox</td>
                         <td>Junior Technical Author</td>
-                        <a href="#" class="btn btn-success btn-icon-split">
+                        <td>
+                            <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
@@ -78,11 +75,13 @@
                                 </span>
                                 <span class="text">Delete</span>
                             </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Cedric Kelly</td>
                         <td>Senior Javascript Developer</td>
-                        <a href="#" class="btn btn-success btn-icon-split">
+                        <td>
+                            <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
@@ -94,6 +93,7 @@
                                 </span>
                                 <span class="text">Delete</span>
                             </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
