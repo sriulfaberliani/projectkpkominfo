@@ -3,10 +3,11 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon">
+                <img src="\assets\img\logobulat.png" alt="Image" height="45" width="45"/>
+                    <!-- <i class="fas fa-laugh-wink"></i> -->
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">SISUME</div>
             </a>
 
             <!-- Divider -->
@@ -40,7 +41,7 @@
                         <a class="collapse-item" href="buttons.html">Data Akun</a>
                         <a class="collapse-item" href="cards.html">Data Pegawai</a>
                         <a class="collapse-item" href="cards.html">Data Jabatan</a>
-                        <a class="collapse-item" href="cards.html">Data Jabatan - Pegawai</a>
+                        <a class="nav-link collapse-item" href="DataJabatanPegawai">Data Jabatan - Pegawai</a>
                     </div>
                 </div>
             </li>
