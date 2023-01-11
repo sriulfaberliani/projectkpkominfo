@@ -54,7 +54,7 @@
                                         </div>
                                       
                                        
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="/" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                      
