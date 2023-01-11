@@ -22,14 +22,18 @@
                 <thead>
                     <tr>
                         <th>Nama</th>
-                        <th>Jabatan</th>
+                        <th>NIP</th>
+                        <th>Alamat</th>
+                        <th>Kontak</th>
                         <th>Action</th>
                     </tr>
                 </thead> 
                 <tbody>
                     <tr>
                         <td>Tiger Nixon</td>
-                        <td>System Architect</td>
+                        <td>19877482974738</td>
+                        <td>Padang</td>
+                        <td>08127823682</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
@@ -47,7 +51,9 @@
                     </tr>
                     <tr>
                         <td>Garrett Winters</td>
-                        <td>Accountant</td>
+                        <td>19877482974738</td>
+                        <td>Padang</td>
+                        <td>08127823682</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
@@ -65,7 +71,9 @@
                     </tr>
                     <tr>
                         <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
+                        <td>19877482974738</td>
+                        <td>Padang</td>
+                        <td>08127823682</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
@@ -83,7 +91,9 @@
                     </tr>
                     <tr>
                         <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
+                        <td>19877482974738</td>
+                        <td>Padang</td>
+                        <td>08127823682</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
