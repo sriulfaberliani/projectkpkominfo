@@ -40,7 +40,7 @@
                                 <div class="p-3">
                                     <div class="text-center">
                                     <img src="\assets\img\LogoDiskominfo.png" alt="Image" height="80" width="80"/>
-                                        <h1 class="h4 text-gray-900 mb-4"><br>Selamat Selamat Datang di Sisume!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4"><br>Selamat Datang di Sisume!</h1>
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
