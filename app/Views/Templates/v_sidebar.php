@@ -40,7 +40,7 @@
                         <h6 class="collapse-header">Custom Data Master</h6>
                         <a class="collapse-item" href="DataPegawai">Data Pegawai</a>
                         <a class="collapse-item" href="DataJabatan">Data Jabatan</a>
-                        <a class="nav-link collapse-item" href="DataJabatanPegawai">Data Jabatan - Pegawai</a>
+                        <a class="collapse-item" href="DataJabatanPegawai">Data Jabatan - Pegawai</a>
                     </div>
                 </div>
             </li>
