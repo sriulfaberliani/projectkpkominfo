@@ -20,15 +20,19 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>NIP</th>
                         <th>Nama</th>
                         <th>Jabatan</th>
+                        <th>Password</th>
                         <th>Action</th>
                     </tr>
                 </thead> 
                 <tbody>
                     <tr>
+                        <td>19877482974738</td>
                         <td>Tiger Nixon</td>
                         <td>System Architect</td>
+                        <td>123456</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
@@ -45,8 +49,10 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>19877482974738</td>
                         <td>Garrett Winters</td>
                         <td>Accountant</td>
+                        <td>123456</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
@@ -63,8 +69,10 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>19877482974738</td>
                         <td>Ashton Cox</td>
                         <td>Junior Technical Author</td>
+                        <td>123456</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
@@ -81,8 +89,10 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>19877482974738</td>
                         <td>Cedric Kelly</td>
                         <td>Senior Javascript Developer</td>
+                        <td>123456</td>
                         <td>
                             <a href="#" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
