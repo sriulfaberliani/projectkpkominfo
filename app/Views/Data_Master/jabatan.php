@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Data Jabatan Diskominfo Payakumbuh</h1>
+<h1 class="h3 mb-2 text-gray-800">Data <?= $title ?> Diskominfo Payakumbuh</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -25,78 +25,24 @@
                     </tr>
                 </thead> 
                 <tbody>
-                    <tr>
-                        <td>1190</td>
-                        <td>System Analyst</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1178</td>
-                        <td>Programmer</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1667</td>
-                        <td>Programmer</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1187</td>
-                        <td>System Analyst</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
+                <?php $i=1; ?>
+                                    <?php  foreach($jabatan as $row) :?>
+                                   <tr>
+                                     
+                                       <td><?= $row['id_jabatan']; ?></td>
+                                       <td><?= $row['nama_jabatan']; ?></td>
+                                    
+                                      
+                                       <td>
+                                        <button type="button" data-toggle="modal" data-target="#modalUbah" id="btn-edit" class="btn btn-warning" 
+                                        data-id_jabatan="<?= $row['id_jabatan']; ?>" data-nama_jabatan="<?= $row['nama_jabatan']; ?>"> <i class="fa fa-edit"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#modalHapus" id="btn-hapus" class="btn btn-danger" data-id_jabatan="<?= $row['id_jabatan']; ?>"> 
+                                        <i class="fa fa-trash-alt"></i> </button>
+                                       </td>
+                                      
+                                   </tr>
+                                   <?php $i++; ?>
+                                   <?php  endforeach;?>
                 </tbody>
             </table>
         </div>
@@ -122,12 +68,13 @@
                            <div class="modal-body">
                                <form action="" method="post"> 
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Jabatan" >
+                                 <label for="id_jabatan"></label>
+                                 <input readonly type="text" name="id_jabatan" id="id_jabatan" class="form-control" placeholder="ID Jabatan" >
                                </div>
-                            
-                        
-                               
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="nama_jabatan"></label>
+                                 <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan" >
+                               </div>       
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

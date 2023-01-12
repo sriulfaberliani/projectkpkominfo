@@ -3,7 +3,7 @@
     
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Data Pegawai Diskominfo Payakumbuh</h1>
+<h1 class="h3 mb-2 text-gray-800">Data <?= $title ?> Diskominfo Payakumbuh</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -21,6 +21,7 @@
                 <thead>
                     <tr>
                         <th>ID Pegawai</th>
+                    
                         <th>Nama</th>
                         <th>NIP</th>
                         <th>Alamat</th>
@@ -29,90 +30,27 @@
                     </tr>
                 </thead> 
                 <tbody>
-                    <tr>
-                        <td>1828</td>
-                        <td>Tiger Nixon</td>
-                        <td>19877482974738</td>
-                        <td>Padang</td>
-                        <td>08127823682</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1828</td>
-                        <td>Garrett Winters</td>
-                        <td>19877482974738</td>
-                        <td>Padang</td>
-                        <td>08127823682</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1828</td>   
-                        <td>Ashton Cox</td>
-                        <td>19877482974738</td>
-                        <td>Padang</td>
-                        <td>08127823682</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1828</td>
-                        <td>Cedric Kelly</td>
-                        <td>19877482974738</td>
-                        <td>Padang</td>
-                        <td>08127823682</td>
-                        <td>
-                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                             </button>
-                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
-                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span>
-                             </button>
-                        </td>
-                    </tr>
+                <?php $i=1; ?>
+                                    <?php  foreach($pegawai as $row) :?>
+                                   <tr>
+                                   
+                                       <td><?= $row['id_pegawai']; ?></td>
+                                       <td><?= $row['nama_pegawai']; ?></td>
+                                       <td><?= $row['nip']; ?></td>
+                                       <td><?= $row['alamat']; ?></td>
+                                       <td><?= $row['no_hp']; ?></td>
+                                      
+                                       <td>
+                                        <button type="button" data-toggle="modal" data-target="#modalUbah" id="btn-edit" class="btn btn-warning" 
+                                        data-id_pegawai="<?= $row['id_pegawai']; ?>" data-id_user="<?= $row['id_user']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" 
+                                        data-no_hp="<?= $row['no_hp']; ?>"> <i class="fa fa-edit"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#modalHapus" id="btn-hapus" class="btn btn-danger" data-id_pegawai="<?= $row['id_pegawai']; ?>"> 
+                                        <i class="fa fa-trash-alt"></i> </button>
+                                       </td>
+                                      
+                                   </tr>
+                                   <?php $i++; ?>
+                                   <?php  endforeach;?>
                 </tbody>
             </table>
         </div>
@@ -138,20 +76,24 @@
                            <div class="modal-body">
                                <form action="" method="post"> 
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Pegawai" >
+                                 <label for="id_pegawai"></label>
+                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
+                               </div>
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="id_pegawai"></label>
+                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" >
                                </div>
                                <div class="form-group ab-0">
-                                 <label for="no_registrasi"></label>
-                                 <input type="text" name="no_registrasi" id="no_registrasi" class="form-control" placeholder="Masukkan NIP Pegawai" >
+                                 <label for="nama_pegawai"></label>
+                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan NIP Pegawai" >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="id_jurusan"></label>
                                  <input type="text" name="id_jurusan" id="id_jurusan" class="form-control" placeholder="Masukkan Alamat Pegawai" >
                                </div>
                                <div class="form-group ab-0">
-                                 <label for="nama_anggota"></label>
-                                 <input type="text" name="nama_anggota" id="nama_anggota" class="form-control" placeholder="Masukkan Kontak Pegawai" >
+                                 <label for="nama_pegawai"></label>
+                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Kontak Pegawai" >
                                </div>
                         
                                
@@ -178,26 +120,26 @@
                            </div>
                            <div class="modal-body">
                                <form action="" method="post"> 
-                               <input type="hidden" name="id_anggota" id="id_anggota">
+                               <input type="hidden" name="id_pegawai" id="id_pegawai">
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="ID Pegawai" value="" >
+                                 <label for="id_pegawai"></label>
+                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Pegawai" value="" >
+                                 <label for="id_pegawai"></label>
+                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
+                                 <label for="id_pegawai"></label>
+                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
+                                 <label for="id_pegawai"></label>
+                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
+                                 <label for="id_pegawai"></label>
+                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
                                </div>
                                
                            </div>
@@ -217,7 +159,7 @@
       <form action="" method="post">
         <div class="modal-body">
           Apakah anda yakin ingin menghapus data ini?
-          <input type="hidden" id="id_anggota" name="id_anggota">
+          <input type="hidden" id="id_pegawai" name="id_pegawai">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
