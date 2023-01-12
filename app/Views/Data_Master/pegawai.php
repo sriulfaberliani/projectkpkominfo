@@ -19,6 +19,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>ID Pegawai</th>
                         <th>Nama</th>
                         <th>NIP</th>
                         <th>Alamat</th>
@@ -28,6 +29,7 @@
                 </thead> 
                 <tbody>
                     <tr>
+                        <td>1828</td>
                         <td>Tiger Nixon</td>
                         <td>19877482974738</td>
                         <td>Padang</td>
@@ -48,6 +50,7 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>1828</td>
                         <td>Garrett Winters</td>
                         <td>19877482974738</td>
                         <td>Padang</td>
@@ -68,6 +71,7 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>1828</td>   
                         <td>Ashton Cox</td>
                         <td>19877482974738</td>
                         <td>Padang</td>
@@ -88,6 +92,7 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>1828</td>
                         <td>Cedric Kelly</td>
                         <td>19877482974738</td>
                         <td>Padang</td>
@@ -168,26 +173,30 @@
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
-                                   <a href="/DataJabatan"> </a>
+                                   <a href="/DataPegawai"> </a>
                            </div>
                            <div class="modal-body">
                                <form action="" method="post"> 
                                <input type="hidden" name="id_anggota" id="id_anggota">
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_anggota"></label>
-                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Pegawai" value="" >
+                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="ID Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_anggota"></label>
-                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
+                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_anggota"></label>
-                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
+                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_anggota"></label>
-                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
+                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
+                               </div>
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="id_anggota"></label>
+                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
                                </div>
                                
                            </div>
@@ -200,7 +209,7 @@
                    </div>
                </div>
 
-               <!-- Modal Hapus Data Siswa-->
+               <!-- Modal Hapus Data-->
 <div class="modal fade" id="modalHapus">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

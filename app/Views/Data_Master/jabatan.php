@@ -138,7 +138,7 @@
                    </div>
                </div>
 
-<!-- Modal Ubah Data Siswa -->
+<!-- Modal Ubah Data  -->
 <div class="modal fade" id="modalUbah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
@@ -150,11 +150,15 @@
                                    <a href="/DataJabatan"> </a>
                            </div>
                            <div class="modal-body">
-                               <form action="" method="post"> 
-                               <input type="hidden" name="id_anggota" id="id_anggota">
+                                <form action="" method="get"> 
+                                <input type="hidden" name="id_anggota" id="id_anggota">
+                                <div class="form-group ab-0 ab-0">
+                                    <label for="id_anggota"></label>
+                                    <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="ID Jabatan" value="" >
+                                
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_anggota"></label>
-                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="" >
+                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="" >
                                </div>
                                
                            </div>
