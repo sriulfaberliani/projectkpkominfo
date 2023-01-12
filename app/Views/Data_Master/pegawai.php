@@ -33,18 +33,18 @@
                         <td>Padang</td>
                         <td>08127823682</td>
                         <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
+                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
+                             </button>
+                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Delete</span>
-                            </a>
+                                <span class="text">Hapus</span>
+                             </button>
                         </td>
                     </tr>
                     <tr>
@@ -53,18 +53,18 @@
                         <td>Padang</td>
                         <td>08127823682</td>
                         <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
+                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
+                             </button>
+                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Delete</span>
-                            </a>
+                                <span class="text">Hapus</span>
+                             </button>
                         </td>
                     </tr>
                     <tr>
@@ -73,18 +73,18 @@
                         <td>Padang</td>
                         <td>08127823682</td>
                         <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
+                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
+                             </button>
+                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Delete</span>
-                            </a>
+                                <span class="text">Hapus</span>
+                             </button>
                         </td>
                     </tr>
                     <tr>
@@ -93,18 +93,18 @@
                         <td>Padang</td>
                         <td>08127823682</td>
                         <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
+                        <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
+                             </button>
+                             <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                    <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Delete</span>
-                            </a>
+                                <span class="text">Hapus</span>
+                             </button>
                         </td>
                     </tr>
                 </tbody>
@@ -119,11 +119,12 @@
 </div>
 <!-- End of Main Content -->
 
+<!-- Modal Tambah-->
 <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h5 class="modal-title">Tambah</h5>
+                               <h5 class="modal-title">Tambah Data Pegawai</h5>
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
@@ -132,24 +133,21 @@
                                <form action="" method="post"> 
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Id Anggota" >
+                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Pegawai" >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="no_registrasi"></label>
-                                 <input type="text" name="no_registrasi" id="no_registrasi" class="form-control" placeholder="Masukkan No Registrasi" >
+                                 <input type="text" name="no_registrasi" id="no_registrasi" class="form-control" placeholder="Masukkan NIP Pegawai" >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="id_jurusan"></label>
-                                 <input type="text" name="id_jurusan" id="id_jurusan" class="form-control" placeholder="Masukkan Id Jurusan" >
+                                 <input type="text" name="id_jurusan" id="id_jurusan" class="form-control" placeholder="Masukkan Alamat Pegawai" >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="nama_anggota"></label>
-                                 <input type="text" name="nama_anggota" id="nama_anggota" class="form-control" placeholder="Masukkan Nama Anggota" >
+                                 <input type="text" name="nama_anggota" id="nama_anggota" class="form-control" placeholder="Masukkan Kontak Pegawai" >
                                </div>
-                               <div class="form-group ab-0">
-                                 <label for="no_induk"></label>
-                                 <input type="text" name="no_induk" id="no_induk" class="form-control" placeholder="Masukkan No Induk Anggota" >
-                               </div>
+                        
                                
                            </div>
                            <div class="modal-footer">
@@ -160,3 +158,62 @@
                        </div>
                    </div>
                </div>
+
+<!-- Modal Ubah Data-->
+<div class="modal fade" id="modalUbah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                   <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <h5 class="modal-title">Ubah </h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                   </button>
+                                   <a href="/DataJabatan"> </a>
+                           </div>
+                           <div class="modal-body">
+                               <form action="" method="post"> 
+                               <input type="hidden" name="id_anggota" id="id_anggota">
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="id_anggota"></label>
+                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Pegawai" value="" >
+                               </div>
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="id_anggota"></label>
+                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
+                               </div>
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="id_anggota"></label>
+                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
+                               </div>
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="id_anggota"></label>
+                                 <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
+                               </div>
+                               
+                           </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                               <button type="submit" class="btn btn-primary">Ubah Data</button>
+                           </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Modal Hapus Data Siswa-->
+<div class="modal fade" id="modalHapus">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="" method="post">
+        <div class="modal-body">
+          Apakah anda yakin ingin menghapus data ini?
+          <input type="hidden" id="id_anggota" name="id_anggota">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Yakin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
