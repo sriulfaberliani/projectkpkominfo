@@ -41,11 +41,21 @@
                                        <td><?= $row['no_hp']; ?></td>
                                       
                                        <td>
-                                        <button type="button" data-toggle="modal" data-target="#modalUbah" id="btn-edit" class="btn btn-warning" 
-                                        data-id_pegawai="<?= $row['id_pegawai']; ?>" data-id_user="<?= $row['id_user']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" 
-                                        data-no_hp="<?= $row['no_hp']; ?>"> <i class="fa fa-edit"></i> </button>
-                                        <button type="button" data-toggle="modal" data-target="#modalHapus" id="btn-hapus" class="btn btn-danger" data-id_pegawai="<?= $row['id_pegawai']; ?>"> 
-                                        <i class="fa fa-trash-alt"></i> </button>
+                                       <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+                                    <span class="icon text-white-50">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                                <i data-id_pegawai="<?= $row['id_pegawai']; ?>" data-id_user="<?= $row['id_user']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" 
+                                        data-no_hp="<?= $row['no_hp']; ?>"></i> </button>
+
+
+                                        <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                                    <span class="icon text-white-50">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                                <span class="text">Hapus</span> <i data-id_pegawai="<?= $row['id_pegawai']; ?>"> 
+                                       </button>
                                        </td>
                                       
                                    </tr>
