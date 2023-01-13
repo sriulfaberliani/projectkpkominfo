@@ -37,7 +37,7 @@
 
                         <div class="row">
                         
-                            <div class="col-lg-6 d-none d-lg-block" > <img src="\assets\img\imglogin.png" alt="Image" height="400" width="430"/></div>
+                            <div class="col-lg-6 d-none d-lg-block" > <img src="\assets\img\imglogin.png" alt="Image" height="410" width="440"/></div>
                             <div class="col-lg-6">
                            
                             <?php
