@@ -31,12 +31,19 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        
+                        <?php
+                        echo form_open('Auth/cek_login');
+                        ?>
+
                         <div class="row">
                         
                             <div class="col-lg-6 d-none d-lg-block" > <img src="\assets\img\imglogin.png" alt="Image" height="400" width="430"/></div>
                             <div class="col-lg-6">
                            
+                            <?php
+                            echo form_open('Auth/cek_login');
+                            ?>
+
                                 <div class="p-3">
                                     <div class="text-center">
                                     <img src="\assets\img\LogoDiskominfo.png" alt="Image" height="80" width="80"/>
@@ -44,25 +51,42 @@
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Masukkan Username">
+                                            <input name="username" class="form-control form-control-user"
+                                                id="form2Example17" placeholder="Masukkan Username"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user"
+                                                id="form2Example17" placeholder="Masukan Password"/>
                                         </div>
                                       
                                        
-                                        <a href="/" class="btn btn-primary btn-user btn-block">
+                                        <button class="btn btn-primary btn-user btn-block" type="submit">
                                             Login
-                                        </a>
+                                        </button>
                                      
                                     
                 
-                                    </form>
+                            <?php echo form_close(); ?>
                                 
-                                  
+                            <?php
+                //pesan validasi eror
+                $errors = session()->getFlashdata('errors');
+                if (!empty($errors)) { ?>
+                  <div class="alert alert-danger" role="alert">
+                    <ul>
+                      <?php foreach ($errors as $error) : ?>
+                        <li><?= esc($error) ?></li>
+                      <?php endforeach ?>
+                    </ul>
+                  </div>
+                <?php } ?>
+                <?php
+                if (session()->getFlashdata('pesan')) {
+                  echo '<div class = "alert alert-success" role="alert">';
+                  echo session()-> getFlashdata('pesan');
+                  echo'</div>'; 
+                }
+                ?> 
     
                                 </div>
                             </div>
@@ -75,6 +99,14 @@
         </div>
 
     </div>
+    <script>
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+      });
+    }, 3000)
+  </script>
+</section>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
