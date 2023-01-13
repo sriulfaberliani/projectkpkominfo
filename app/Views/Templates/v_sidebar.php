@@ -15,7 +15,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="<?= base_url(); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"  ></i>
                     <span style="color:white; font-weight:bold; font-size:16px;">Dashboard</span></a>
             </li>
@@ -30,7 +30,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span style="color:white; font-weight:bold; font-size:16px;" >Data Master</span>
@@ -38,8 +38,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Data Master</h6>
-                        <a class="collapse-item" href="DataPegawai">Data Pegawai</a>
-                        <a class="collapse-item" href="DataJabatan">Data Jabatan</a>
+                        <a class="collapse-item" href="<?= base_url('datapegawai'); ?>">Data Pegawai</a>
+                        <a class="collapse-item" href="<?= base_url('datajabatan'); ?>">Data Jabatan</a>
                         <a class="collapse-item" href="DataJabatanPegawai">Data Jabatan - Pegawai</a>
                     </div>
                 </div>

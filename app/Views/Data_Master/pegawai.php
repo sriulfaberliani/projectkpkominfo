@@ -31,7 +31,7 @@
                 </thead> 
                 <tbody>
                 <?php $i=1; ?>
-                                    <?php  foreach($pegawai as $row) :?>
+                                    <?php  foreach($datapegawai as $row) :?>
                                    <tr>
                                    
                                        <td><?= $row['id_pegawai']; ?></td>
@@ -46,7 +46,7 @@
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                                <i data-id_pegawai="<?= $row['id_pegawai']; ?>" data-id_user="<?= $row['id_user']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" 
+                                <i data-id_pegawai="<?= $row['id_pegawai']; ?>"  data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" 
                                         data-no_hp="<?= $row['no_hp']; ?>"></i> </button>
 
 
@@ -84,26 +84,26 @@
                                    </button>
                            </div>
                            <div class="modal-body">
-                               <form action="" method="post"> 
-                               <div class="form-group ab-0 ab-0">
+                               <form action="<?= base_url('datapegawai/tambah'); ?>" method="post"> 
+                               <!-- <div class="form-group ab-0 ab-0">
                                  <label for="id_pegawai"></label>
                                  <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
-                               </div>
+                               </div> -->
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" >
-                               </div>
-                               <div class="form-group ab-0">
                                  <label for="nama_pegawai"></label>
-                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan NIP Pegawai" >
+                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" >
                                </div>
                                <div class="form-group ab-0">
-                                 <label for="id_jurusan"></label>
-                                 <input type="text" name="id_jurusan" id="id_jurusan" class="form-control" placeholder="Masukkan Alamat Pegawai" >
+                                 <label for="nip"></label>
+                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" >
                                </div>
                                <div class="form-group ab-0">
-                                 <label for="nama_pegawai"></label>
-                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Kontak Pegawai" >
+                                 <label for="alamat"></label>
+                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" >
+                               </div>
+                               <div class="form-group ab-0">
+                                 <label for="no_hp"></label>
+                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" >
                                </div>
                         
                                
@@ -126,30 +126,31 @@
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
-                                   <a href="/DataPegawai"> </a>
+                                   <a href="/datapegawai/ubah"> </a>
                            </div>
                            <div class="modal-body">
-                               <form action="" method="post"> 
+                               <form action="<?= base_url('datapegawai/ubah'); ?>" method="post"> 
                                <input type="hidden" name="id_pegawai" id="id_pegawai">
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" value="" >
+                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" value="<?= $row ['id_pegawai'] ?>" >
+                               
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" value="" >
+                                 <label for="nama_pegawai"></label>
+                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai Baru" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
+                                 <label for="nip"></label>
+                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
+                                 <label for="alamat"></label>
+                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
                                </div>
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
+                                 <label for="no_hp"></label>
+                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
                                </div>
                                
                            </div>
@@ -166,7 +167,7 @@
 <div class="modal fade" id="modalHapus">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="" method="post">
+      <form action="/datapegawai/hapus" method="post">
         <div class="modal-body">
           Apakah anda yakin ingin menghapus data ini?
           <input type="hidden" id="id_pegawai" name="id_pegawai">
