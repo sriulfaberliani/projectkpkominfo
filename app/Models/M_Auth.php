@@ -16,11 +16,20 @@ class M_Auth extends Model{
         return $this->db->table('user')->where([
             'username' => $username,
             'password' => $password,
-        ])->get()->getRowArray();
+        ])
+        ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
+        ->get()->getRowArray();
+
+        // return $this->db->table('user')
+        // ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
+        // ->get()->getResultArray();
+
     }
 
-    public function getAllData()
-    {
-        return $this->db->table('user')->get()->getResultArray();
-    }
+    // public function getAllData()
+    // {
+    //     return $this->db->table('user')
+    //     ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
+    //     ->get()->getResultArray();
+    // }
 }

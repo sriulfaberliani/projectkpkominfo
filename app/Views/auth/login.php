@@ -37,13 +37,13 @@
 
                         <div class="row">
                         
-                            <div class="col-lg-6 d-none d-lg-block" > <img src="\assets\img\imglogin.png" alt="Image" height="410" width="440"/></div>
+                            <div class="col-lg-6 d-none d-lg-block" > <img src="\assets\img\imglogin.png" alt="Image" height="450" width="450"/></div>
                             <div class="col-lg-6">
                            
                             <?php
                             echo form_open('Auth/cek_login');
                             ?>
-
+                                  
                                 <div class="p-3">
                                     <div class="text-center">
                                     <img src="\assets\img\LogoDiskominfo.png" alt="Image" height="80" width="80"/>

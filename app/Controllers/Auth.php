@@ -47,7 +47,9 @@ class Auth extends BaseController
                 session()->set('log', true);
                 session()->set('username', $cek['username']);
                 session()->set('id_user', $cek['id_user']);
+                session()->set('id_pegawai', $cek['id_pegawai']);
                 session()->set('id_role', $cek['id_role']);
+                session()->set('nama_pegawai', $cek['nama_pegawai']);
                 session()->set('last_login', $cek['last_login']);
                 //login
                 return redirect()->to(base_url('home'));
@@ -67,10 +69,16 @@ class Auth extends BaseController
     {
         session()->remove('log');
         session()->remove('username');
+        session()->remove('password');
         session()->remove('id_user');
+        session()->remove('id_pegawai');
         session()->remove('id_role');
         session()->remove('last_login');
         return redirect()->to(base_url('Auth/login'));
     }
+
+    
+
+
 }
 
