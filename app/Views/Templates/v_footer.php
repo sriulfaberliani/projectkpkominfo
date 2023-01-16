@@ -32,6 +32,7 @@
 
         <!-- Bootstrap core JavaScript-->
         <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
         <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

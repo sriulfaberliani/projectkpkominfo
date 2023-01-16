@@ -66,6 +66,7 @@
 </div>
 <!-- End of Main Content -->
 
+
 <!-- Modal Tambah-->
 <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                    <div class="modal-dialog" role="document">
@@ -77,32 +78,32 @@
                                    </button>
                            </div>
                            <div class="modal-body">
-                               <form action="" method="post"> 
+                               <form action="<?= base_url('datajabatanpegawai/tambah'); ?>" method="post"> 
                                <!-- <div class="form-group ab-0 ab-0">
                                  <label for="id_jbpg"></label>
                                  <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
                                </div> -->
                                <div class="form-group ab-0 ab0">
-                                 <label for="nip"></label>
-                                 <select name="nip" id="nip" class="form-control">
+                                 <label for="id_pegawai"></label>
+                                 <select name="id_pegawai" id="id_pegawai" class="form-control">
                                     <option value="">Pilih NIP Pegawai</option>
-                                    <?php foreach($jabatanPegawai as $row) : ?>
-                                    <option value="<?= $row['nip']; ?>"><?= $row['nip']; ?></option>
+                                    <?php foreach($pegawai as $row) : ?>
+                                    <option value="<?= $row['id_pegawai']; ?>"><?= $row['nip']; ?></option>
                                     <?php endforeach; ?>
                                     </select>
                                </div>
-                               <div class="form-group ab-0">
+                               <!-- <div class="form-group ab-0">
                                  <label for="nama_pegawai"></label>
-                                 <input readonly type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Nama Pegawai" value = " >
-                                
-                               </div>
+                                 <input readonly required type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" >
+                               </div> -->
                                <div class="form-group ab-0">
-                                 <label for="jabatan"></label>
-                                 <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan Pegawai" >
-                               </div>
-                               <div class="form-group ab-0">
-                                 <label for="password"></label>
-                                 <input type="text" name="password" id="password" class="form-control" placeholder="Password" >
+                                 <label for="id_jabatan"></label>
+                                 <select name="id_jabatan" id="id_jabatan" class="form-control">
+                                    <option value="">Pilih Jabatan</option>
+                                    <?php foreach($jabatan as $row) : ?>
+                                    <option value="<?= $row['id_jabatan']; ?>"><?= $row['nama_jabatan']; ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
                                </div>
                         
                                
@@ -161,10 +162,10 @@
 <div class="modal fade" id="modalHapus">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="" method="post">
+      <form action="/datajabatanpegawai/hapus" method="post">
         <div class="modal-body">
           Apakah anda yakin ingin menghapus data ini?
-          <input type="hidden" id="id_anggota" name="id_anggota">
+          <input type="hidden" id="id_jabatan_pegawai" name="id_jabatan_pegawai">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -175,4 +176,17 @@
   </div>
 </div>
 
+<!-- <script>
+    $('#nip').on('change', (event) =>{
+        getM_JabatanPegawai(event.target.value).then(jabatanPegawai =>{
+            $('#nama_pegawai').val(jabatanPegawai.nama_pegawai);
+        });
+    });
+
+    async function getM_JabatanPegawai(id){
+        let response = await fetch('/api/DataJabatanPegawai/' + id)
+        let data = await response.json();
+
+        return data;
+    } -->
 
