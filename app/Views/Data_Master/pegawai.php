@@ -41,20 +41,24 @@
                                        <td><?= $row['no_hp']; ?></td>
                                       
                                        <td>
-                                       <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+
+                                       <button type="button"  data-toggle="modal" data-target="#modalUbah" 
+                                      id="btn-edit" class="btn btn-success btn-icon-split"
+                                       data-id_pegawai="<?= $row['id_pegawai']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" data-no_hp="<?= $row['no_hp']; ?>" >
+                                       
                                     <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                                <i data-id_pegawai="<?= $row['id_pegawai']; ?>"  data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" 
-                                        data-no_hp="<?= $row['no_hp']; ?>"></i> </button>
+                                 </button>
 
 
-                                        <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_pegawai="<?= $row['id_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                        >
                                     <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> <i data-id_pegawai="<?= $row['id_pegawai']; ?>"> 
+                                <span class="text">Hapus</span> 
                                        </button>
                                        </td>
                                       
@@ -118,11 +122,11 @@
                </div>
 
 <!-- Modal Ubah Data-->
-<div class="modal fade" id="modalUbah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modalUbah">
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h5 class="modal-title">Ubah </h5>
+                               <h5 class="modal-title">Ubah Data</h5>
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
@@ -130,27 +134,28 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datapegawai/ubah'); ?>" method="post"> 
-                               <input type="hidden" name="id_pegawai" id="id_pegawai">
                                <div class="form-group ab-0 ab-0">
+                                ID PEGAWAI
                                  <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" value="<?= $row ['id_pegawai'] ?>" >
-                               
+                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" value="<?= $row['id_pegawai'] ?>" >
                                </div>
+                        
+                               
                                <div class="form-group ab-0 ab-0">
                                  <label for="nama_pegawai"></label>
-                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai Baru" value="" >
+                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai Baru" value="<?= $row['nama_pegawai'] ?>" >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="nip"></label>
-                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" value="" >
+                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" value="<?= $row['nip'] ?>" >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="alamat"></label>
-                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" value="" >
+                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" value="<?= $row['alamat'] ?>" >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="no_hp"></label>
-                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" value="" >
+                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" value="<?= $row['no_hp'] ?>" >
                                </div>
                                
                            </div>

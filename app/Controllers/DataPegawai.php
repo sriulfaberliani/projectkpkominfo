@@ -75,8 +75,8 @@ class DataPegawai extends BaseController
       //Hapus data
       public function hapus()
       {
-          $id_pegawai = $this->request->getPost('id_pegawai');
-          
+        $id_pegawai = $this->request->getPost('id_pegawai');  
+
           $success = $this->model->hapus($id_pegawai);
           if ($success){
               session()->setFlashdata('message', ' dihapus');
