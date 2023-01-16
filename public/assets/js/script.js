@@ -22,3 +22,8 @@ $(document).on('click', '#btn-edit', function () {
 $(document).on('click', '#btn-hapus', function () {
   $('.modal-body #id_jabatan').val($(this).data('id_jabatan'));
 })
+
+// Button Hapus Data jabatanPegawai
+$(document).on('click', '#btn-hapus', function () {
+  $('.modal-body #id_jabatan_pegawai').val($(this).data('id_jabatan_pegawai'));
+})
