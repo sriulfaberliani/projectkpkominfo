@@ -20,16 +20,7 @@ class M_Auth extends Model{
         ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
         ->get()->getRowArray();
 
-        // return $this->db->table('user')
-        // ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
-        // ->get()->getResultArray();
-
     }
 
-    // public function getAllData()
-    // {
-    //     return $this->db->table('user')
-    //     ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
-    //     ->get()->getResultArray();
-    // }
+   
 }

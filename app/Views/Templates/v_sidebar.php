@@ -20,6 +20,7 @@
                     <span style="color:white; font-weight:bold; font-size:16px;">Dashboard</span></a>
             </li>
 
+            <?php if (session()->get('id_role') == '1') { ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -29,6 +30,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+    
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -44,8 +46,9 @@
                     </div>
                 </div>
             </li>
+            <?php } ?>
 
-
+            <?php if (session()->get('id_role') != '1') { ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -70,6 +73,7 @@
                     </div>
                 </div>
             </li>
+            <?php } ?>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
