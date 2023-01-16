@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+
+use CodeIgniter\Controller;
 use App\Models\M_Jabatan;
 
 class DataJabatan extends BaseController
@@ -26,4 +28,55 @@ class DataJabatan extends BaseController
         echo view('Data_Master/jabatan', $data);
         echo view('templates/v_footer');
     }
+
+    public function tambah()
+    {
+        $data = [
+            // 'id_pegawai' => $this->request->getPost('id_pegawai'),
+            'nama_jabatan' => $this->request->getPost('nama_jabatan')
+        ];
+           
+
+        
+
+        //insert data
+        $success = $this->model->tambah($data);
+        if ($success){
+            return redirect()->to(base_url('datajabatan'));
+        }
+
+
+    }
+
+    public function ubah()
+    {
+        $id_jabatan = $this->request->getPost('id_jabatan');
+        
+        $data = [
+            'id_jabatan' => $this->request->getPost('id_jabatan'),
+            'nama_jabatan' => $this->request->getPost('nama_jabatan')
+            
+        ];
+           
+        //update  data
+        $success = $this->model->ubah($data, $id_jabatan);
+        if ($success){
+            session()->setFlashdata('message', ' diubah');
+            return redirect()->to(base_url('datajabatan'));
+        }
+
+
+    }
+
+      //Hapus data
+      public function hapus()
+      {
+        $id_jabatan = $this->request->getPost('id_jabatan');  
+
+          $success = $this->model->hapus($id_jabatan);
+          if ($success){
+              session()->setFlashdata('message', ' dihapus');
+              return redirect()->to(base_url('datajabatan'));
+          }
+      }
 }

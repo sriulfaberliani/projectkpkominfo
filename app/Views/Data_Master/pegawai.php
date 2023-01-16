@@ -45,7 +45,6 @@
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
                                       id="btn-edit" class="btn btn-success btn-icon-split"
                                        data-id_pegawai="<?= $row['id_pegawai']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" data-no_hp="<?= $row['no_hp']; ?>" >
-                                       
                                     <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
@@ -168,7 +167,7 @@
                    </div>
                </div>
 
-               <!-- Modal Hapus Data-->
+<!-- Modal Hapus Data-->
 <div class="modal fade" id="modalHapus">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
