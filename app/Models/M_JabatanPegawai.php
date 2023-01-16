@@ -16,4 +16,14 @@ class M_JabatanPegawai extends Model{
         ->join('jabatan', 'jabatan.id_jabatan = jabatan_pegawai.id_jabatan')
         ->get()->getResultArray();
     }
+
+    public function tambah($data)
+    {
+        return $this->db->table('jabatan_pegawai')->insert($data);
+    }
+
+    public function hapus($id_jabatan_pegawai)
+    {
+        return $this->db->table('jabatan_pegawai')->delete(['id_jabatan_pegawai' => $id_jabatan_pegawai]);
+    }
 }
