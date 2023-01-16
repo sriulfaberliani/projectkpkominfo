@@ -17,7 +17,7 @@ class DataPegawai extends BaseController
     {
 
         if (session()->get('id_role') == '1') {
-            redirect()->to(base_url('DataPegawai'));
+            redirect()->to(base_url('datapegawai'));
         } else {
             return redirect()->to(base_url('home'));
         }

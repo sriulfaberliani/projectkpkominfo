@@ -18,14 +18,14 @@ class DataJabatan extends BaseController
     {
 
         if (session()->get('id_role') == '1') {
-            redirect()->to(base_url('DataJabatan'));
+            redirect()->to(base_url('datajabatan'));
         } else {
             return redirect()->to(base_url('home'));
         }
 
         $data = [
             'title' => 'Jabatan',
-            'jabatan' => $this->model->getAllData()
+            'datajabatan' => $this->model->getAllData()
         ];
 
         echo view('templates/v_header', $data);
