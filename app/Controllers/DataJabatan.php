@@ -15,6 +15,12 @@ class DataJabatan extends BaseController
     public function index()
     {
 
+        if (session()->get('id_role') == '1') {
+            redirect()->to(base_url('DataJabatan'));
+        } else {
+            return redirect()->to(base_url('home'));
+        }
+
         $data = [
             'title' => 'Jabatan',
             'jabatan' => $this->model->getAllData()

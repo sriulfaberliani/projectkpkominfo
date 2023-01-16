@@ -16,6 +16,12 @@ class DataPegawai extends BaseController
     public function index()
     {
 
+        if (session()->get('id_role') == '1') {
+            redirect()->to(base_url('DataPegawai'));
+        } else {
+            return redirect()->to(base_url('home'));
+        }
+
         $data = [
             'title' => 'Pegawai',
             'datapegawai' => $this->model->getAllData()
