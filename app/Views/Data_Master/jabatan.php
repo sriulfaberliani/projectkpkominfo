@@ -34,18 +34,20 @@
                                     
                                       
                                        <td>
-                                       <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+                                       <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah"  id="btn-edit"
+                                       data-id_jabatan="<?= $row['id_jabatan']; ?>" data-nama_jabatan="<?= $row['nama_jabatan']; ?>">
                                     <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                                <i data-id_jabatan="<?= $row['id_jabatan']; ?>" data-nama_jabatan="<?= $row['nama_jabatan']; ?>"></i> </button>
+                                </button>
                              
-                                <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                                <button type="button" class="btn btn-danger btn-icon-split" data-id_jabatan="<?= $row['id_jabatan']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                        >
                                     <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> <i data-id_jabatan="<?= $row['id_jabatan']; ?>"> 
+                                <span class="text">Hapus</span> 
                                        </button>
                                        </td>
                                       
@@ -69,17 +71,17 @@
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h5 class="modal-title">Tambah Data Pegawai</h5>
+                               <h5 class="modal-title">Tambah Data Jabatan</h5>
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
                            </div>
                            <div class="modal-body">
-                               <form action="" method="post"> 
-                               <div class="form-group ab-0 ab-0">
+                               <form action="<?= base_url('datajabatan/tambah'); ?>" method="post"> 
+                               <!-- <div class="form-group ab-0 ab-0">
                                  <label for="id_jabatan"></label>
                                  <input readonly type="text" name="id_jabatan" id="id_jabatan" class="form-control" placeholder="ID Jabatan" >
-                               </div>
+                               </div> -->
                                <div class="form-group ab-0 ab-0">
                                  <label for="nama_jabatan"></label>
                                  <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan" >
@@ -95,26 +97,26 @@
                </div>
 
 <!-- Modal Ubah Data  -->
-<div class="modal fade" id="modalUbah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modalUbah">
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h5 class="modal-title">Ubah </h5>
+                               <h5 class="modal-title">Ubah Data</h5>
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
-                                   <a href="/DataJabatan"> </a>
+                                   <a href="/datajabatan/ubah"> </a>
                            </div>
                            <div class="modal-body">
-                                <form action="" method="get"> 
-                                <input type="hidden" name="id_anggota" id="id_anggota">
+                                <form action="<?= base_url('datajabatan/ubah'); ?>" method="post"> 
+                            ID Jabatan
                                 <div class="form-group ab-0 ab-0">
-                                    <label for="id_anggota"></label>
-                                    <input readonly type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="ID Jabatan" value="" >
+                                    <label for="id_jabatan"></label>
+                                    <input readonly type="text" name="id_jabatan" id="id_jabatan" class="form-control" placeholder="ID Jabatan" value="<?= $row['id_jabatan'] ?>" >
                                 
                                <div class="form-group ab-0 ab-0">
-                                 <label for="id_anggota"></label>
-                                 <input type="text" name="id_anggota" id="id_anggota" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="" >
+                                 <label for="nama_jabatan"></label>
+                                 <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="<?= $row['nama_jabatan'] ?>" >
                                </div>
                                
                            </div>
@@ -128,13 +130,13 @@
                </div>
 
   <!-- Modal Hapus Data-->
-  <div class="modal fade" id="modalHapus">
+<div class="modal fade" id="modalHapus">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="" method="post">
+      <form action="<?= base_url('datajabatan/hapus'); ?>" method="post">
         <div class="modal-body">
           Apakah anda yakin ingin menghapus data ini?
-          <input type="hidden" id="id_anggota" name="id_anggota">
+          <input type="hidden" id="id_jabatan" name="id_jabatan">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

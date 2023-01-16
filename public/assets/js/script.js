@@ -11,3 +11,14 @@ $(document).on('click', '#btn-edit', function () {
 $(document).on('click', '#btn-hapus', function () {
   $('.modal-body #id_pegawai').val($(this).data('id_pegawai'));
 })
+
+// Button Edit Data Jabatan
+$(document).on('click', '#btn-edit', function () {
+  $('.modal-body #id_jabatan').val($(this).data('id_jabatan'));
+  $('.modal-body #nama_jabatan').val($(this).data('nama_jabatan'));
+})
+
+// Button Hapus Data jabatan
+$(document).on('click', '#btn-hapus', function () {
+  $('.modal-body #id_jabatan').val($(this).data('id_jabatan'));
+})
