@@ -20,494 +20,40 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>NIP</th>
                         <th>Nama</th>
+                        <th>NIP</th>
                         <th>Jabatan</th>
-                        <th>Password</th>
                         <th>Action</th>
                     </tr>
                 </thead> 
                 <tbody>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
+                <?php $i=1; ?>
+                                    <?php  foreach($jabatanPegawai as $row) :?>
+                                   <tr>
+                                     
+                                       <td><?= $row['nama_pegawai']; ?></td>
+                                       <td><?= $row['nip']; ?></td>
+                                       <td><?= $row['nama_jabatan']; ?></td>
+
+                                       <td>
+                                       <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#modalUbah">
+                                    <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
                                 <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
+                                <i data-id_jabatan="<?= $row['id_jabatan']; ?>" data-nama_jabatan="<?= $row['nama_jabatan']; ?>"></i> </button>
+                             
+                                <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                                    <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19877482974738</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>123456</td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit"></i>
-                                </span>
-                                <span class="text">Edit</span>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
+                                <span class="text">Hapus</span> <i data-id_jabatan="<?= $row['id_jabatan']; ?>"> 
+                                       </button>
+                                       </td>
+                                      
+                                   </tr>
+                                   <?php $i++; ?>
+                                   <?php  endforeach;?>
                 </tbody>
             </table>
         </div>
@@ -532,17 +78,23 @@
                            </div>
                            <div class="modal-body">
                                <form action="" method="post"> 
-                               <div class="form-group ab-0 ab-0">
+                               <!-- <div class="form-group ab-0 ab-0">
                                  <label for="id_jbpg"></label>
                                  <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
-                               </div>
-                               <div class="form-group ab-0">
+                               </div> -->
+                               <div class="form-group ab-0 ab0">
                                  <label for="nip"></label>
-                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="NIP Pegawai" >
+                                 <select name="nip" id="nip" class="form-control">
+                                    <option value="">Pilih NIP Pegawai</option>
+                                    <?php foreach($jabatanPegawai as $row) : ?>
+                                    <option value="<?= $row['nip']; ?>"><?= $row['nip']; ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
                                </div>
                                <div class="form-group ab-0">
-                                 <label for="nama"></label>
-                                 <input readonly type="text" name="nama" id="nama" class="form-control" placeholder="Nama Pegawai" >
+                                 <label for="nama_pegawai"></label>
+                                 <input readonly type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Nama Pegawai" value = " >
+                                
                                </div>
                                <div class="form-group ab-0">
                                  <label for="jabatan"></label>
