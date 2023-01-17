@@ -33,7 +33,7 @@ class DataJabatanPegawai extends BaseController
         ];
 
         echo view('templates/v_header', $data);
-        echo \view('templates/v_sidebar');
+        echo view('templates/v_sidebar');
         echo view('templates/v_topbar');
         echo view('Data_Master/jabatan-pegawai', $data);
         echo view('templates/v_footer');
@@ -64,4 +64,22 @@ class DataJabatanPegawai extends BaseController
               return redirect()->to(base_url('datajabatanpegawai'));
           }
       }
+
+      public function ubah()
+    {
+        $id_jabatan_pegawai = $this->request->getPost('id_jabatan_pegawai');
+        
+        $data = [
+            'id_jabatan_pegawai' => $this->request->getPost('id_jabatan_pegawai'),
+            'id_pegawai' => $this->request->getPost('id_pegawai'),
+            'id_jabatan' => $this->request->getPost('id_jabatan')
+        ];
+           
+        //update  data
+        $success = $this->model->ubah($data, $id_jabatan_pegawai);
+        if ($success){
+            session()->setFlashdata('message', ' diubah');
+            return redirect()->to(base_url('datajabatanpegawai'));
+        }
+    }
 }
