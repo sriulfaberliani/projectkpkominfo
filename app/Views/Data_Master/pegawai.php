@@ -7,6 +7,15 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
+<div class="card-header py-3">
+        <?php if(session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+<?php endif; ?>
+</div>
     <div class="card-header py-3">
     <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambah">
     <span class="icon text-white-50">
@@ -141,18 +150,22 @@
                         
                                
                                <div class="form-group ab-0 ab-0">
+                                Nama Pegawai
                                  <label for="nama_pegawai"></label>
                                  <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai Baru" value="<?= $row['nama_pegawai'] ?>" >
                                </div>
                                <div class="form-group ab-0 ab-0">
+                                NIP Pegawai
                                  <label for="nip"></label>
                                  <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" value="<?= $row['nip'] ?>" >
                                </div>
                                <div class="form-group ab-0 ab-0">
+                                Alamat Pegawai
                                  <label for="alamat"></label>
                                  <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" value="<?= $row['alamat'] ?>" >
                                </div>
                                <div class="form-group ab-0 ab-0">
+                                Kontak Pegawai
                                  <label for="no_hp"></label>
                                  <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" value="<?= $row['no_hp'] ?>" >
                                </div>

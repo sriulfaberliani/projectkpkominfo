@@ -50,6 +50,7 @@ class DataPegawai extends BaseController
         //insert data
         $success = $this->model->tambah($data);
         if ($success){
+            session()->setFlashdata('message', ' ditambahkan');
             return redirect()->to(base_url('datapegawai'));
         }
 
