@@ -6,7 +6,8 @@ use CodeIgniter\Model;
 
 class M_JabatanPegawai extends Model{
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->db = db_connect();
     }
 
@@ -25,5 +26,10 @@ class M_JabatanPegawai extends Model{
     public function hapus($id_jabatan_pegawai)
     {
         return $this->db->table('jabatan_pegawai')->delete(['id_jabatan_pegawai' => $id_jabatan_pegawai]);
+    }
+
+    public function ubah($data, $id_jabatan_pegawai)
+    {
+        return $this->db->table('jabatan_pegawai')->update($data, ['id_jabatan_pegawai' => $id_jabatan_pegawai]);
     }
 }
