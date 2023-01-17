@@ -43,6 +43,8 @@
                         <a class="collapse-item" href="<?= base_url('datapegawai'); ?>">Data Pegawai</a>
                         <a class="collapse-item" href="<?= base_url('datajabatan'); ?>">Data Jabatan</a>
                         <a class="collapse-item" href="DataJabatanPegawai">Data Jabatan - Pegawai</a>
+                        <a class="collapse-item" href="<?= base_url('datarole'); ?>">Data Role</a>
+                        <a class="collapse-item" href="<?= base_url('datauser'); ?>">Data User</a>
                     </div>
                 </div>
             </li>

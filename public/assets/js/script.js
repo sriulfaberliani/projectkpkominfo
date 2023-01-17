@@ -27,3 +27,19 @@ $(document).on('click', '#btn-hapus', function () {
 $(document).on('click', '#btn-hapus', function () {
   $('.modal-body #id_jabatan_pegawai').val($(this).data('id_jabatan_pegawai'));
 })
+
+// Button Edit Data role
+$(document).on('click', '#btn-edit', function () {
+  $('.modal-body #id_role').val($(this).data('id_role'));
+  $('.modal-body #nama_role').val($(this).data('nama_role'));
+})
+
+// Button Hapus Data role
+$(document).on('click', '#btn-hapus', function () {
+  $('.modal-body #id_role').val($(this).data('id_role'));
+})
+
+// Button Hapus Data user
+$(document).on('click', '#btn-hapus', function () {
+  $('.modal-body #id_user').val($(this).data('id_user'));
+})
