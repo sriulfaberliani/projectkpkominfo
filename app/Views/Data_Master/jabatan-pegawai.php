@@ -43,11 +43,11 @@
                                 <span class="text">Edit</span>
                                 <i data-id_jabatan="<?= $row['id_jabatan']; ?>" data-nama_jabatan="<?= $row['nama_jabatan']; ?>"></i> </button>
                              
-                                <button type="button" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modalHapus">
+                                <button type="button" class="btn btn-danger btn-icon-split" data-id_jabatan_pegawai="<?= $row['id_jabatan_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
                                     <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> <i data-id_jabatan="<?= $row['id_jabatan']; ?>"> 
+                                <span class="text">Hapus</span> <i data-id_jabatan_pegawai="<?= $row['id_jabatan_pegawai']; ?>"> 
                                        </button>
                                        </td>
                                       
@@ -158,7 +158,7 @@
                    </div>
                </div>
 
-               <!-- Modal Hapus Data Siswa-->
+<!-- !-- Modal Hapus Data--> 
 <div class="modal fade" id="modalHapus">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
