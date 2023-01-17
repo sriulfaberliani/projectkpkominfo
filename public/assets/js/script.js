@@ -27,3 +27,15 @@ $(document).on('click', '#btn-hapus', function () {
 $(document).on('click', '#btn-hapus', function () {
   $('.modal-body #id_jabatan_pegawai').val($(this).data('id_jabatan_pegawai'));
 })
+
+// Button Edit Data JabatanPegawai
+$(document).on('click', '#btn-edit', function () {
+  $('.modal-body #id_jabatan_pegawai').val($(this).data('id_jabatan_pegawai'));
+  $('.modal-body #id_pegawai').val($(this).data('id_pegawai'));
+  $('.modal-body #id_jabatan').val($(this).data('id_jabatan'));
+})
+
+// Button Hapus Data user
+$(document).on('click', '#btn-hapus', function () {
+  $('.modal-body #id_user').val($(this).data('id_user'));
+})
