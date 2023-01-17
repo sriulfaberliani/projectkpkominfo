@@ -1,20 +1,32 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Data <?= $title ?> Diskominfo Payakumbuh</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
+
     <div class="card-header py-3">
+        <?php if(session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+<?php endif; ?>
+</div>
+
+<div class="card-header py-3">
     <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambah">
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
                                 </span>
                                 <span class="text">Tambah Data</span>
-               </button>
-    </div>
+               </button> 
+               </div>
+               
+    
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -116,14 +128,16 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajabatan/ubah'); ?>" method="post"> 
+                               
                                <div class="form-group ab-0 ab-0">
-                                ID Jabatan
+                               ID Jabatan
                                  <label for="id_jabatan"></label>
                                  <input readonly type="text" name="id_jabatan" id="id_jabatan" class="form-control" value="<?= $row['id_jabatan'] ?>" >
                                </div>
                         
                                
                                <div class="form-group ab-0 ab-0">
+                               Nama Jabatan
                                  <label for="nama_jabatan"></label>
                                  <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="<?= $row['nama_jabatan'] ?>" >
                                </div>
