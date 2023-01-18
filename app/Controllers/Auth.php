@@ -11,6 +11,8 @@ class Auth extends BaseController
         $this->M_Auth = new M_Auth();
     }
 
+    
+
     public function login()
     {
         $data = array(
@@ -76,6 +78,10 @@ class Auth extends BaseController
         session()->remove('last_login');
         return redirect()->to(base_url('Auth/login'));
     }
+
+    
+
+
 
     
 

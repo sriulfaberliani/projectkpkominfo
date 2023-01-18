@@ -67,6 +67,26 @@ class DataUser extends BaseController
         }
     }
 
+    public function ubah()
+    {
+        $id_user = $this->request->getPost('id_user');
+        
+        $data = [
+            'id_user' => $this->request->getPost('id_user'),
+            'id_pegawai' => $this->request->getPost('id_pegawai'),
+            'id_role' => $this->request->getPost('id_role'),
+            'username' => $this->request->getPost('username'),
+            'password' => $this->request->getPost('password')
+        ];
+           
+        //update  data
+        $success = $this->model->ubah($data, $id_user);
+        if ($success){
+            session()->setFlashdata('message', ' diubah');
+            return redirect()->to(base_url('datauser'));
+        }
+    }
+
 
   
 }

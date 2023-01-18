@@ -41,6 +41,15 @@
 
                                        <td>
 
+                                       <button type="button"  data-toggle="modal" data-target="#modalUbah" 
+                                       id="btn-edit" class="btn btn-success btn-icon-split"
+                                       data-id_user="<?= $row['id_user']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-level="<?= $row['level']; ?>" data-username="<?= $row['username']; ?>" data-password="<?= $row['password']; ?>" >
+                                    <span class="icon text-white-50">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                                 </button>
+
                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_user="<?= $row['id_user']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
                                     <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
@@ -86,9 +95,9 @@
                                  <label for="id_pegawai"></label>
                                  <select name="id_pegawai" id="id_pegawai" class="form-control" required>
                                     <option value="">Pilih NIP Pegawai</option>
-                                    <?php foreach($datapegawai as $row) : ?>
-                                    <option value="<?= $row['id_pegawai']; ?>"><?= $row['nip']; ?></option>
-                                    <?php endforeach; ?>
+                                    <?php foreach($datapegawai as $key => $value) : ?>
+                                    <option value="<?= $value['id_pegawai']; ?>"><?= $value['nama_pegawai']; ?></option>
+                                  <?php endforeach; ?>
                                     </select>
                                </div>
                                <!-- <div class="form-group ab-0">
@@ -99,19 +108,23 @@
                                  <label for="id_role"></label>
                                  <select name="id_role" id="id_role" class="form-control" required>
                                     <option value="">Pilih Role</option>
-                                    <?php foreach($datarole as $row) : ?>
-                                    <option value="<?= $row['id_role']; ?>"><?= $row['level']; ?></option>
-                                    <?php endforeach; ?>
+                                    <?php foreach($datarole as $key => $value) : ?>
+                                    <option value="<?= $value['id_role']; ?>"><?= $value['level']; ?></option>
+                                  <?php endforeach; ?>
                                     </select>
                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="username"></label>
+                                 
                                  <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan Username" required>
-                               </div>
+                                
+                                </div>
                                <div class="form-group ab-0 ab-0">
                                  <label for="password"></label>
+                                 
                                  <input type="text" name="password" id="password" class="form-control" placeholder="Masukkan Password" required >
-                               </div>
+                                 
+                                </div>
                         
                                
                            </div>
@@ -141,3 +154,67 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- Modal Ubah-->
+<div class="modal fade" id="modalUbah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                   <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <h5 class="modal-title">Ubah data</h5>
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                   </button>
+                                   <a href="/datauser/ubah<?= $row['id_user']; ?>"> </a>
+                           </div>
+                           <div class="modal-body">
+                               <form action="<?= base_url('datauser/ubah'); ?>" method="post"> 
+                               <!-- <div class="form-group ab-0 ab-0">
+                                 <label for="id_jbpg"></label>
+                                 <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
+                               </div> -->
+                               <label for="id_user"></label>
+                               <input type="hidden" name="id_user" id="id_user">
+                               <div class="form-group ab-0 ab-0">
+                                 <label for="id_user"></label>
+                                 <input readonly type="text" name="id_user" id="id_user" class="form-control" placeholder="Masukkan Id user" value="<?= $row ['id_user'] ?>" >
+                               </div>
+
+                                 <input  type="hidden" name="id_pegawai" id="id_pegawai" class="form-control"  >
+                                
+                              
+                               <div class="form-group ab-0">
+                               <label>Nama</label>
+                                 <label for="nama_pegawai"></label>
+                                 <input readonly type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" >
+                               </div>
+                               <div class="form-group ab-0">
+                               <label>Role</label>
+                                 <label for="level"></label>
+                                 <select name="id_Role" class="form-control" required>
+                                    <option value="" hidden>Pilih Role</option>
+                                    <?php foreach($datarole as $key => $value) : ?>
+                                    <option value="<?= $value['id_role']; ?>"><?= $value['level']; ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
+                               </div>
+                               <div class="form-group ab-0 ab-0">
+                                Username
+                                 <label for="username"></label>
+                                 <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan Username"  >
+                               </div>
+                               <div class="form-group ab-0 ab-0">
+                                Password
+                                 <label for="password"></label>
+                                 <input type="text" name="password" id="password" class="form-control" placeholder="Masukkan Password" >
+                               </div>
+                           </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                               <button type="submit" name="ubah" class="btn btn-primary">Ubah Data</button>
+                           </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>

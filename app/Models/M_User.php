@@ -26,5 +26,10 @@ class M_User extends Model{
     {
         return $this->db->table('user')->delete(['id_user' => $id_user]);
     }
+
+    public function ubah($data, $id_user)
+    {
+        return $this->db->table('user')->update($data, ['id_user' => $id_user]);
+    }
    
 }

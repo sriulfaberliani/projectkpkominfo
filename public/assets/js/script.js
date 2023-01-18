@@ -39,3 +39,14 @@ $(document).on('click', '#btn-edit', function () {
 $(document).on('click', '#btn-hapus', function () {
   $('.modal-body #id_user').val($(this).data('id_user'));
 })
+
+// Button Edit Data User
+$(document).on('click', '#btn-edit', function () {
+  $('.modal-body #id_user').val($(this).data('id_user'));
+  $('.modal-body #id_pegawai').val($(this).data('id_pegawai'));
+  $('.modal-body #id_role').val($(this).data('id_role'));
+  $('.modal-body #level').val($(this).data('level'));
+  $('.modal-body #username').val($(this).data('username'));
+  $('.modal-body #password').val($(this).data('password'));
+
+})
