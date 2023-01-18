@@ -1,5 +1,3 @@
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -10,6 +8,17 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
+
+<div class="card-header py-3">
+        <?php if(session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+<?php endif; ?>
+</div>
+
     <div class="card-header py-3">
     <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambah">
     <span class="icon text-white-50">
