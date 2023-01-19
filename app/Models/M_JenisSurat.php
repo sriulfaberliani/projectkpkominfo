@@ -20,13 +20,13 @@ class M_JenisSurat extends Model{
         return $this->db->table('jenissurat')->insert($data);
     }
 
-    public function ubah($data, $id_jenisSurat)
+    public function ubah($data, $id_jenis_surat)
     {
-        return $this->db->table('jenissurat')->update($data, ['id_jenisSurat' => $id_jenisSurat]);
+        return $this->db->table('jenissurat')->update($data, ['id_jenis_surat' => $id_jenis_surat]);
     }
 
-    public function hapus($id_jenisSurat)
+    public function hapus($id_jenis_surat)
     {
-        return $this->db->table('jenissurat')->delete(['id_jenisSurat' => $id_jenisSurat]);
+        return $this->db->table('jenissurat')->delete(['id_jenis_surat' => $id_jenis_surat]);
     }
 }
