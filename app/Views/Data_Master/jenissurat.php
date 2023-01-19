@@ -43,15 +43,15 @@
                                     <?php  foreach($datajenissurat as $row) :?>
                                    <tr>
                                    
-                                       <td><?= $row['id_jenisSurat']; ?></td>
-                                       <td><?= $row['nama_jenisSurat']; ?></td>
+                                       <td><?= $row['id_jenis_surat']; ?></td>
+                                       <td><?= $row['nama_jenis_surat']; ?></td>
                                       
                                       
                                        <td>
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
                                       id="btn-edit" class="btn btn-success btn-icon-split"
-                                       data-id_jenisSurat="<?= $row['id_jenisSurat']; ?>" data-nama_jenisSurat="<?= $row['nama_jenisSurat']; ?>" >
+                                       data-id_jenis_surat="<?= $row['id_jenis_surat']; ?>" data-nama_jenis_surat="<?= $row['nama_jenis_surat']; ?>" >
                                     <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
@@ -59,7 +59,7 @@
                                  </button>
 
 
-                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_jenisSurat="<?= $row['id_jenisSurat']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_jenis_surat="<?= $row['id_jenis_surat']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
                                         >
                                     <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
@@ -101,8 +101,8 @@
                                </div> -->
                                <div class="form-group ab-0 ab-0">
                                 <label>Jenis Surat</label>
-                                 <label for="nama_jenisSurat"></label>
-                                 <input type="text" name="nama_jenisSurat" id="nama_jenisSurat" class="form-control" placeholder="Masukkan Jenis Surat" >
+                                 <label for="nama_jenis_surat"></label>
+                                 <input type="text" name="nama_jenis_surat" id="nama_jenis_surat" class="form-control" placeholder="Masukkan Jenis Surat" >
                                </div>
                   
                            </div>
@@ -131,13 +131,13 @@
                                
                                <div class="form-group ab-0 ab-0">
                                ID Jenis Surat
-                                 <label for="id_jenisSurat"></label>
-                                 <input readonly type="text" name="id_jenisSurat" id="id_jenisSurat" class="form-control" value="<?= $row['id_jenisSurat'] ?>" >
+                                 <label for="id_jenis_surat"></label>
+                                 <input readonly type="text" name="id_jenis_surat" id="id_jenis_surat" class="form-control" value="<?= $row['id_jenis_surat'] ?>" >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                Jenis Surat
-                                 <label for="nama_jenisSurat"></label>
-                                 <input type="text" name="nama_jenisSurat" id="nama_jenisSurat" class="form-control" placeholder="Masukkan Jenis Surat Baru" value="<?= $row['nama_jenisSurat'] ?>" >
+                                 <label for="nama_jenis_surat"></label>
+                                 <input type="text" name="nama_jenis_surat" id="nama_jenis_surat" class="form-control" placeholder="Masukkan Jenis Surat Baru" value="<?= $row['nama_jenis_surat'] ?>" >
                                </div>
                             
                                
@@ -158,7 +158,7 @@
       <form action="/datajenissurat/hapus" method="post">
         <div class="modal-body">
           Apakah anda yakin ingin menghapus data ini?
-          <input type="hidden" id="id_jenisSurat" name="id_jenisSurat">
+          <input type="hidden" id="id_jenis_surat" name="id_jenis_surat">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

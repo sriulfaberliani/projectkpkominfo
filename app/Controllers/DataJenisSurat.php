@@ -39,7 +39,7 @@ class DataJenisSurat extends BaseController
     {
         $data = [
             // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'nama_jenisSurat' => $this->request->getPost('nama_jenisSurat')
+            'nama_jenis_surat' => $this->request->getPost('nama_jenis_surat')
         ];
            
         //insert data
@@ -56,13 +56,13 @@ class DataJenisSurat extends BaseController
     {
         
         $data = [
-            'id_jenisSurat' => $this->request->getPost('id_jenisSurat'),
-            'nama_jenisSurat' => $this->request->getPost('nama_jenisSurat')
+            'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
+            'nama_jenis_surat' => $this->request->getPost('nama_jenis_surat')
             
         ];
            
         //update  data
-        $success = $this->model->ubah($data, $id_jenisSurat);
+        $success = $this->model->ubah($data, $id_jenis_surat);
         if ($success){
             session()->setFlashdata('message', ' diubah');
             return redirect()->to(base_url('datajenissurat'));
@@ -74,9 +74,9 @@ class DataJenisSurat extends BaseController
       //Hapus data
       public function hapus()
       {
-        $id_jenisSurat = $this->request->getPost('id_jenisSurat');  
+        $id_jenis_surat = $this->request->getPost('id_jenis_surat');  
 
-          $success = $this->model->hapus($id_jenisSurat);
+          $success = $this->model->hapus($id_jenis_surat);
           if ($success){
               session()->setFlashdata('message', ' dihapus');
               return redirect()->to(base_url('datajenissurat'));
