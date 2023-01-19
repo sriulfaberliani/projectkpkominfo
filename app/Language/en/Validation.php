@@ -4,5 +4,10 @@
 return [
 'required' => '{field} harus diisi',
 'is_unique' => '{field} sudah ada',
-'valid_date' => '{field} tidak valid'
+'valid_date' => '{field} tidak valid',
+'min_length[]' => '{field} minimal {param} karakter',
+'trim' => '{field} tidak boleh ada spasi di depan atau belakang',
+'matches[newPassword1]' => '{field} tidak sama dengan password baru',
+'matches[newPassword2]' => '{field} tidak sama dengan konfirmasi password baru',
+
 ];

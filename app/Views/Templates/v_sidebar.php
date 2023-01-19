@@ -46,6 +46,7 @@
                         <a class="collapse-item" href="<?= base_url('datarole'); ?>">Data Role</a>
                         <a class="collapse-item" href="<?= base_url('datauser'); ?>">Data User</a>
                         <a class="collapse-item" href="<?= base_url('datajenissurat'); ?>">Data Jenis Surat</a>
+        
                     </div>
                 </div>
             </li>

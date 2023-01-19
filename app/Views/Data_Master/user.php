@@ -43,7 +43,7 @@
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
                                        id="btn-edit" class="btn btn-success btn-icon-split"
-                                       data-id_user="<?= $row['id_user']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-level="<?= $row['level']; ?>" data-username="<?= $row['username']; ?>" data-password="<?= $row['password']; ?>" >
+                                       data-id_user="<?= $row['id_user']; ?>" data-id_pegawai="<?= $row['id_pegawai']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-id_role="<?= $row['id_role']; ?>" data-level="<?= $row['level']; ?>" data-username="<?= $row['username']; ?>" data-password="<?= $row['password']; ?>" >
                                     <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
@@ -174,7 +174,7 @@
                                  <label for="id_jbpg"></label>
                                  <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
                                </div> -->
-                               <label for="id_user"></label>
+                               <!-- <label for="id_user"></label> -->
                                <input type="hidden" name="id_user" id="id_user">
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_user"></label>
@@ -191,8 +191,8 @@
                                </div>
                                <div class="form-group ab-0">
                                <label>Role</label>
-                                 <label for="level"></label>
-                                 <select name="id_Role" class="form-control" required>
+                                 <label for="id_role"></label>
+                                 <select name="id_role" class="form-control" required>
                                     <option value="" hidden>Pilih Role</option>
                                     <?php foreach($datarole as $key => $value) : ?>
                                     <option value="<?= $value['id_role']; ?>"><?= $value['level']; ?></option>
