@@ -11,6 +11,8 @@ class Auth extends BaseController
         $this->M_Auth = new M_Auth();
     }
 
+
+
     
 
     public function login()
@@ -78,6 +80,57 @@ class Auth extends BaseController
         session()->remove('last_login');
         return redirect()->to(base_url('Auth/login'));
     }    
+
+    public function change_password()
+    {
+        $data = [
+            'title' => 'Change Password',
+        ];
+        $id = session()->get('id_user');
+        $data['userdata'] = $this->M_Auth->getLoggedInUserData(session()->get('id_user'));
+        
+        if($this->request->getMethod() == 'post'){
+            $rules = [
+                'opwd' =>'required',
+                'npwd' => 'required|min_length[6]|max_length[16]',
+                'cnpwd' =>'required|matches[npwd]',
+            ];
+            if($this->validate($rules))
+            {
+                $opwd = $this->request->getVar('opwd');
+                $npwd = $this->request->getVar('npwd');
+               if(password_verify($opwd,$data['userdata']->password)) {
+                   
+                   $npwd = $this->request->getVar('npwd');
+                  
+                   if($this->M_Auth->change_password($npwd,session()->get('id_user')))
+                   {
+                       session()->setTempdata('success','Password Updated successfully',3);
+                       return redirect()->to(current_url());
+                   }
+                   else
+                   {
+                       session()->setTempdata('error','Sorry! Unable to update the password, try again',3);
+                       return redirect()->to(current_url());
+                   }
+               }else
+               {
+                   session()->setTempdata('error', 'Old Password does not matched with db password', 3);
+                   return redirect()->to(current_url());
+               }
+                
+                
+            }
+            else{
+                $data['validation'] = $this->validator;
+            }
+        }
+        echo view('templates/v_header', $data);
+        echo view('templates/v_sidebar');
+        echo view('templates/v_topbar');
+        return view('auth/change_password',$data);
+        echo view('templates/v_footer');
+    }
 
 
 }

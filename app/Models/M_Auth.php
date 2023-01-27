@@ -11,6 +11,33 @@ class M_Auth extends Model{
         $this->db = db_connect();
     }
 
+    public function getLoggedInUserData($id)
+    {
+        $builder = $this->db->table('user');
+        $builder->where('id_user',$id);
+        $result = $builder->get();
+        if(count($result->getResultArray())==1)
+        {
+            return $result->getRow();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function change_password($npwd,$id){
+        $builder = $this->db->table('user');
+        $builder->where('id_user',$id);
+        $builder->update(['password'=>$npwd]);
+        if($this->db->affectedRows()>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public function login($username, $password)
     {
         return $this->db->table('user')->where([
