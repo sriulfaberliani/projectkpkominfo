@@ -42,9 +42,6 @@ class DataRole extends BaseController
             'level' => $this->request->getPost('level')
         ];
            
-
-        
-
         //insert data
         $success = $this->model->tambah($data);
         if ($success){

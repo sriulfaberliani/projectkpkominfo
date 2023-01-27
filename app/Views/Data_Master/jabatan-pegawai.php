@@ -166,11 +166,7 @@
                                    <a href="/datajabatanpegawai/ubah<?= $row['id_jabatan_pegawai']; ?>"> </a>
                            </div>
                            <div class="modal-body">
-                               <form action="<?= base_url('datajabatanpegawai/ubah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_jbpg"></label>
-                                 <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
-                               </div> -->
+                               <form action="<?= base_url('datajabatanpegawai/ubah'); ?>" method="post">
                                <input type="hidden" name="id_jabatan_pegawai" id="id_jabatan_pegawai">
                                  <input  type="hidden" name="id_pegawai" id="id_pegawai" class="form-control" value="<?= $row['id_pegawai'] ?>" >
                                 <div class="form-group ab-0">

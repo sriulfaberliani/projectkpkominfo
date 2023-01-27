@@ -60,3 +60,19 @@ $(document).on("click", "#btn-edit", function () {
   $(".modal-body #username").val($(this).data("username"));
   $(".modal-body #password").val($(this).data("password"));
 });
+
+// Button Edit Data User
+$(document).on("click", "#btn-edit", function () {
+  $(".modal-body #id_suratmasuk").val($(this).data("id_suratmasuk"));
+  $(".modal-body #id_user").val($(this).data("id_user"));
+  $(".modal-body #id_jenis_surat").val($(this).data("id_jenis_surat"));
+  $(".modal-body #no_suratmasuk").val($(this).data("no_suratmasuk"));
+  $(".modal-body #tgl_suratmasuk").val($(this).data("tgl_suratmasuk"));
+  $(".modal-body #agenda_suratmasuk").val($(this).data("agenda_suratmasuk"));
+  $(".modal-body #file_surat").val($(this).data("file_surat"));
+});
+
+// Button Hapus Data surat masuk
+$(document).on("click", "#btn-hapus", function () {
+  $(".modal-body #id_suratmasuk").val($(this).data("id_suratmasuk"));
+});

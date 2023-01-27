@@ -102,7 +102,7 @@
                                <div class="form-group ab-0 ab-0">
                                 <label>Jenis Surat</label>
                                  <label for="nama_jenis_surat"></label>
-                                 <input type="text" name="nama_jenis_surat" id="nama_jenis_surat" class="form-control" placeholder="Masukkan Jenis Surat" >
+                                 <input type="text" name="nama_jenis_surat" id="nama_jenis_surat" class="form-control" placeholder="Masukkan Jenis Surat" required >
                                </div>
                   
                            </div>
@@ -124,7 +124,6 @@
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
-                                   <a href="/datajenissurat/ubah"> </a>
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajenissurat/ubah'); ?>" method="post"> 
@@ -132,13 +131,14 @@
                                <div class="form-group ab-0 ab-0">
                                ID Jenis Surat
                                  <label for="id_jenis_surat"></label>
-                                 <input readonly type="text" name="id_jenis_surat" id="id_jenis_surat" class="form-control" value="<?= $row['id_jenis_surat'] ?>" >
+                                 <input readonly type="text" name="id_jenis_surat" id="id_jenis_surat" class="form-control"  >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                Jenis Surat
                                  <label for="nama_jenis_surat"></label>
-                                 <input type="text" name="nama_jenis_surat" id="nama_jenis_surat" class="form-control" placeholder="Masukkan Jenis Surat Baru" value="<?= $row['nama_jenis_surat'] ?>" >
+                                 <input  required type="text" name="nama_jenis_surat" id="nama_jenis_surat" class="form-control" placeholder="Masukkan Nama Jabatan Baru" >
                                </div>
+                               
                             
                                
                            </div>
