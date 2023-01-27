@@ -77,13 +77,7 @@ class Auth extends BaseController
         session()->remove('id_role');
         session()->remove('last_login');
         return redirect()->to(base_url('Auth/login'));
-    }
-
-    
-
-
-
-    
+    }    
 
 
 }

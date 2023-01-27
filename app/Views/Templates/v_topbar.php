@@ -55,7 +55,7 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="<?= base_url(); ?>" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
@@ -67,7 +67,7 @@
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url(); ?>">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-primary">
                                             <i class="fas fa-file-alt text-white"></i>
@@ -78,7 +78,7 @@
                                         <span class="font-weight-bold">A new monthly report is ready to download!</span>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url(); ?>">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-success">
                                             <i class="fas fa-donate text-white"></i>
@@ -89,7 +89,7 @@
                                         $290.29 has been deposited into your account!
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url(); ?>">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-warning">
                                             <i class="fas fa-exclamation-triangle text-white"></i>
@@ -100,7 +100,7 @@
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="<?= base_url(); ?>">Show All Alerts</a>
                             </div>
                         </li>
 
@@ -174,7 +174,7 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="<?= base_url(); ?>" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('nama_pegawai')?></span>
                                 <img class="img-profile rounded-circle"
@@ -184,8 +184,8 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 
-                                <a class="dropdown-item" href="<?= base_url('GantiPassword'); ?>">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <a class="dropdown-item" href="<?= base_url('profile'); ?>">
+                                    <i class="fas fa-fw fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Ganti Password
                                 </a>
                                
