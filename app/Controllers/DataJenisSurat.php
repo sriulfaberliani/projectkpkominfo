@@ -54,6 +54,7 @@ class DataJenisSurat extends BaseController
 
     public function ubah()
     {
+        $id_jenis_surat = $this->request->getPost('id_jenis_surat');
         
         $data = [
             'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
