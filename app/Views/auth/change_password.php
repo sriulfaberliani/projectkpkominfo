@@ -1,7 +1,7 @@
 <div class='container'>
     <div class='row'>
         <div class='col-md-12'>
-            <h3><?= $title?> </h3>
+        <h1 class="h3 mb-2 text-gray-800">Change Password</h1>
             <?php if(isset($validation)):?>
             <div class='alert alert-danger'><?= $validation->listErrors(); ?></div>
             <?php endif;?>

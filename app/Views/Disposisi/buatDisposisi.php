@@ -33,7 +33,9 @@
     <div class="col-sm-10">
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
+    <div class="col-sm-10">
     <button class="btn btn-primary" type="submit">Kirim</button>
+    </div>
   </div>
 
 
