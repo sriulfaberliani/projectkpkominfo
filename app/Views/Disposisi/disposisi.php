@@ -15,6 +15,7 @@
     <li><button class="dropdown-item" type="button">Tolak</button></li>
   </ul>
 </div>
+</div>
 
 //form disposisi
 <div class="mb-3">
@@ -40,3 +41,5 @@
 
    
 </div>
+
+  

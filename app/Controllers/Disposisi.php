@@ -26,8 +26,21 @@ class Disposisi extends BaseController
         echo view('templates/v_header', $data);
         echo \view('templates/v_sidebar');
         echo view('templates/v_topbar');
-        echo view('Disposisi/statusDisposisi', $data);
+        echo view('Disposisi/index', $data);
         echo view('templates/v_footer');
+    }
+
+    public function statusDisposisi(){
+
+      $data = [
+        'title' => 'Status Disposisi',
+        
+      ];
+            echo view('templates/v_header', $data);
+            echo view('templates/v_sidebar');
+            echo view('templates/v_topbar');
+            echo view('Disposisi/statusDisposisi');
+            echo view('templates/v_footer');
     }
     
     public function buatDisposisi(){

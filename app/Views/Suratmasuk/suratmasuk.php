@@ -79,12 +79,9 @@
 
                                         <?php } ?>
                                         
-                                       <button type="button" class="btn btn-primary btn-icon-split" data-id_user="<?= $row['id_user']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
-                                    <span class="icon text-white-50">
+                                        <a class="btn btn-primary btn-icon-split" href="disposisi/statusDisposisi" role="button"><span class="icon text-white-50">
                                     <i class="fas fa-share"></i>
-                                </span>
-                                <span class="text">Disposisi</span> <i data-id_user="<?= $row['id_user']; ?>"> 
-                                       </button>
+                                </span>  <span class="text">Disposisi</span></a>
 
                                        <button type="button" class="btn btn-warning btn-icon-split" data-id_user="<?= $row['id_user']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
                                     <span class="icon text-white-50">
