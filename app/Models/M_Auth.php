@@ -11,6 +11,17 @@ class M_Auth extends Model{
         $this->db = db_connect();
     }
 
+    public function login($username, $password)
+    {
+        return $this->db->table('user')->where([
+            'username' => $username,
+            'password' => $password,
+        ])
+        ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
+        ->get()->getRowArray();
+
+    }
+
     public function getLoggedInUserData($id)
     {
         $builder = $this->db->table('user');
@@ -37,17 +48,5 @@ class M_Auth extends Model{
             return false;
         }
     }
-
-    public function login($username, $password)
-    {
-        return $this->db->table('user')->where([
-            'username' => $username,
-            'password' => $password,
-        ])
-        ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
-        ->get()->getRowArray();
-
-    }
-
    
 }

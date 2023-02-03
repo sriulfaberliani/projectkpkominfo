@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\M_Auth;
+use App\Models\M_User;
 
 class Auth extends BaseController
 {
@@ -9,11 +10,9 @@ class Auth extends BaseController
     {
         helper('form');
         $this->M_Auth = new M_Auth();
+        $this->model = new M_User();
+        $this->session = session();
     }
-
-
-
-    
 
     public function login()
     {
@@ -21,52 +20,63 @@ class Auth extends BaseController
             'title' => 'Login',
         );
 
-        echo view('auth/login', $data);
+        echo view('auth/login',$data);
     }
+
+    public $login;
+    public $session;
 
     public function cek_login()
     {
-        if ($this->validate([
-            'username' => [
-                'label' => 'Username',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak Boleh Kosong!'
-                ]
-            ],
-            'password' => [
-                'label' => 'Password',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak Boleh Kosong!'
-                ]
-            ]
-        ])) {
-            //jika valid
-            $username = $this->request->getPost('username');
-            $password = $this->request->getPost('password');
-            $cek = $this->M_Auth->login($username, $password);
-            if ($cek) {
-                //jika data cocok
-                session()->set('log', true);
-                session()->set('username', $cek['username']);
-                session()->set('id_user', $cek['id_user']);
-                session()->set('id_pegawai', $cek['id_pegawai']);
-                session()->set('id_role', $cek['id_role']);
-                session()->set('nama_pegawai', $cek['nama_pegawai']);
-                session()->set('last_login', $cek['last_login']);
-                //login
-                return redirect()->to(base_url('home'));
-            } else {
-                //jika data tidak cocok
-                session()->setFlashdata('pesan', 'Login Gagal!! Username dan password tidak cocok!');
-                return redirect()->to(base_url('Auth/login'));
+        $data =[];
+        if ($this->request->getMethod() == 'post') 
+        {
+            $rules = [
+                'username' => [
+                    'label' => 'Username',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong!'
+                    ]
+                ],
+                'password' => [
+                    'label' => 'Password',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak Boleh Kosong!'
+                    ]
+                ],
+            ];
+
+            if ($this->validate($rules))
+            {
+                $username = $this->request->getPost('username');
+                $password = $this->request->getPost('password');
+
+                $userdata = $this->M_Auth->login($username, $password);
+                if($userdata)
+                {
+                    session()->set('log', $userdata['id_user']);
+                    session()->set('username', $userdata['username']);
+                    session()->set('id_user', $userdata['id_user']);
+                    session()->set('id_pegawai', $userdata['id_pegawai']);
+                    session()->set('id_role', $userdata['id_role']);
+                    session()->set('nama_pegawai', $userdata['nama_pegawai']);
+                    session()->set('last_login', $userdata['last_login']);
+                    return redirect()->to(base_url('home'));
+                }
+                else 
+                {
+                    session()->setFlashdata('pesan', 'Login Gagal!! Username dan password tidak cocok!');
+                    return redirect()->to(base_url('Auth/login'));
+                }
             }
-        } else {
-            //jika tidak valid
-            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-            return redirect()->to(base_url('Auth/login'));
+            else
+            {
+                $data['validation'] = $this->validator;
+            }
         }
+        return view('auth/login',$data);
     }
 
     public function logout()
@@ -78,6 +88,7 @@ class Auth extends BaseController
         session()->remove('id_pegawai');
         session()->remove('id_role');
         session()->remove('last_login');
+        session()->destroy();
         return redirect()->to(base_url('Auth/login'));
     }    
 
@@ -86,38 +97,43 @@ class Auth extends BaseController
         $data = [
             'title' => 'Change Password',
         ];
-        $id = session()->get('id_user');
-        $data['userdata'] = $this->M_Auth->getLoggedInUserData(session()->get('id_user'));
+        $data['userdata'] = $this->M_Auth->getLoggedInUserData(session()->get('log'));
         
         if($this->request->getMethod() == 'post'){
             $rules = [
                 'opwd' =>'required',
                 'npwd' => 'required|min_length[6]|max_length[16]',
                 'cnpwd' =>'required|matches[npwd]',
+                
             ];
             if($this->validate($rules))
             {
-                $opwd = $this->request->getVar('opwd');
-                $npwd = $this->request->getVar('npwd');
-               if(password_verify($opwd,$data['userdata']->password)) {
+                $opwd = $this->request->getPost('opwd');
+
+                $cek = $this->M_Auth->login(session()->get('username'), $opwd);
+                
+                if($cek){
+                    $npwd = $this->request->getPost('npwd');
                    
-                   $npwd = $this->request->getVar('npwd');
-                  
-                   if($this->M_Auth->change_password($npwd,session()->get('id_user')))
-                   {
-                       session()->setTempdata('success','Password Updated successfully',3);
-                       return redirect()->to(current_url());
-                   }
-                   else
-                   {
-                       session()->setTempdata('error','Sorry! Unable to update the password, try again',3);
-                       return redirect()->to(current_url());
-                   }
-               }else
-               {
-                   session()->setTempdata('error', 'Old Password does not matched with db password', 3);
-                   return redirect()->to(current_url());
-               }
+                    if($this->M_Auth->change_password($npwd,session()->get('id_user')))
+                    {
+                        session()->setTempdata('success','Password berhasil diganti',3);
+                        return redirect()->to(current_url());
+                    }
+                    else
+                    {
+                        session()->setTempdata('error','Tidak dapat mengganti Password, Coba Lagi!',3);
+                        return redirect()->to(current_url());
+                    }
+                }
+                else{
+                    session()->setTempdata('error', 'Password lama tidak sesuai', 3);
+                    return redirect()->to(current_url());
+                }
+               
+
+               
+            
                 
                 
             }
@@ -131,7 +147,5 @@ class Auth extends BaseController
         return view('auth/change_password',$data);
         echo view('templates/v_footer');
     }
-
-
 }
 
