@@ -102,7 +102,7 @@
                                </div> -->
                                <div class="form-group ab-0 ab-0">
                                  <label for="nama_jabatan"></label>
-                                 <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan" >
+                                 <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan"  required>
                                </div>
                   
                            </div>
@@ -139,7 +139,7 @@
                                <div class="form-group ab-0 ab-0">
                                Nama Jabatan
                                  <label for="nama_jabatan"></label>
-                                 <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="<?= $row['nama_jabatan'] ?>" >
+                                 <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="<?= $row['nama_jabatan'] ?>" required >
                                </div>
                             
                                

@@ -9,5 +9,6 @@ return [
 'trim' => '{field} tidak boleh ada spasi di depan atau belakang',
 'matches[newPassword1]' => '{field} tidak sama dengan password baru',
 'matches[newPassword2]' => '{field} tidak sama dengan konfirmasi password baru',
+'alpha' => '{field} hanya boleh berisi huruf',
 
 ];

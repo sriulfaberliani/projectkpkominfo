@@ -103,19 +103,19 @@
                                </div> -->
                                <div class="form-group ab-0 ab-0">
                                  <label for="nama_pegawai"></label>
-                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" >
+                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" required>
                                </div>
                                <div class="form-group ab-0">
                                  <label for="nip"></label>
-                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" >
+                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" required >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="alamat"></label>
-                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" >
+                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" required>
                                </div>
                                <div class="form-group ab-0">
                                  <label for="no_hp"></label>
-                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" >
+                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" required>
                                </div>
                         
                                
@@ -145,29 +145,29 @@
                                <div class="form-group ab-0 ab-0">
                                 ID PEGAWAI
                                  <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" value="<?= $row['id_pegawai'] ?>" >
+                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" value="<?= $row['id_pegawai'] ?>" required>
                                </div>
                         
                                
                                <div class="form-group ab-0 ab-0">
                                 Nama Pegawai
                                  <label for="nama_pegawai"></label>
-                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai Baru" value="<?= $row['nama_pegawai'] ?>" >
+                                 <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai Baru" value="<?= $row['nama_pegawai'] ?>" required >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                 NIP Pegawai
                                  <label for="nip"></label>
-                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" value="<?= $row['nip'] ?>" >
+                                 <input type="text" name="nip" id="nip" class="form-control" placeholder="Masukkan NIP Pegawai" value="<?= $row['nip'] ?>" required >
                                </div>
                                <div class="form-group ab-0 ab-0">
                                 Alamat Pegawai
                                  <label for="alamat"></label>
-                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" value="<?= $row['alamat'] ?>" >
+                                 <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" value="<?= $row['alamat'] ?>" required>
                                </div>
                                <div class="form-group ab-0 ab-0">
                                 Kontak Pegawai
                                  <label for="no_hp"></label>
-                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" value="<?= $row['no_hp'] ?>" >
+                                 <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Masukkan Kontak Pegawai" value="<?= $row['no_hp'] ?>" required>
                                </div>
                                
                            </div>

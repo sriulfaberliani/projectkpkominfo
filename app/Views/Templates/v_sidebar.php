@@ -79,31 +79,8 @@
             </li>
             <?php } ?>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+    
 
-<!-- Heading -->
-<div class="sidebar-heading">
-    Disposisi
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
-
-<li class="nav-item">
-    <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTwo"
-        aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span style="color:white; font-weight:bold; font-size:16px;" >Disposisi Surat</span>
-    </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Disposisi Surat</h6>
-            <a class="collapse-item" href="<?= base_url('disposisi'); ?>">Disposisi Surat Masuk</a>
-            
-
-        </div>
-    </div>
-</li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
