@@ -16,7 +16,7 @@
         </button>
 <?php endif; ?>
 <?php
-        if (session()->get('id_role') == '10') { ?>
+        if (session()->get('id_role') == '6') { ?>
 </div>
     <div class="card-header py-3">
     <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambah">
@@ -60,7 +60,7 @@
                                     <td>
                                         
                                         <?php
-                                                if (session()->get('id_role') == '10') { ?>
+                                                if (session()->get('id_role') == '6') { ?>
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
                                        id="btn-edit" class="btn btn-success btn-icon-split"
                                        data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" data-nama_jenis_surat="<?= $row['nama_jenis_surat']; ?>" data-no_suratmasuk="<?= $row['no_suratmasuk']; ?>" data-tgl_suratmasuk="<?= $row['tgl_suratmasuk']; ?>" data-agenda_suratmasuk="<?= $row['agenda_suratmasuk']; ?>"  data-file_surat="<?= $row['file_surat'];?>">

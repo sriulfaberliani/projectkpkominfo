@@ -79,6 +79,33 @@
             </li>
             <?php } ?>
 
+            <?php if (session()->get('id_role') != '1') { ?>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading"> 
+                Surat
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesDispo" aria-expanded="true"
+                    aria-controls="collapsePagesDispo">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span style="color:white; font-weight:bold; font-size:16px;">Disposisi Surat</span>
+                </a>
+                <div id="collapsePagesDispo" class="collapse " aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Disposisi Surat</h6>
+                        <a class="collapse-item" href="<?= base_url('disposisi'); ?>">Surat Masuk</a>
+                        <a class="collapse-item" href="register.html">Surat Keluar</a>
+                    </div>
+                </div>
+            </li>
+            <?php } ?>
+
     
 
 

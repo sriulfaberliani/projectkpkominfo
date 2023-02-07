@@ -7,7 +7,7 @@ use App\Models\M_Suratmasuk;
 use App\Models\M_User;
 use App\Models\M_JenisSurat;
 use DateTime;
-use DateTimeZone;
+use DateTimeZone; 
 
 
 class SuratMasuk extends BaseController
@@ -44,6 +44,20 @@ class SuratMasuk extends BaseController
         echo view('Suratmasuk/suratmasuk', $data);
         echo view('templates/v_footer');
     }
+
+    public function statusDisposisi($id_suratmasuk){
+        $detail = $this->model->detailSurat($id_suratmasuk);
+        $data = [
+          'title' => 'Status Disposisi',
+          
+        ];
+        $data['detail'] = $detail;
+              echo view('templates/v_header', $data);
+              echo view('templates/v_sidebar');
+              echo view('templates/v_topbar');
+              echo view('Disposisi/statusDisposisi', $data);
+              echo view('templates/v_footer');
+      }
 
     // public function viewpdf($file_surat){
     //     $file = '/public/filesurat' . $file_surat;

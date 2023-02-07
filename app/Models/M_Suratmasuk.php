@@ -17,6 +17,13 @@ class M_Suratmasuk extends Model{
         ->get()->getResultArray();
     }
 
+    public function detailSurat($id_suratmasuk = NULL){
+        $query = $this->db->table('suratmasuk') -> where (array('id_suratmasuk' => $id_suratmasuk))->get()->getRowArray();
+        return $query;
+        
+    }
+
+
     public function tambah($data)
     {
         return $this->db->table('suratmasuk')->insert($data);
