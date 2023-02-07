@@ -5,7 +5,6 @@
             <?php if(isset($validation)):?>
             <div class='alert alert-danger'><?= $validation->listErrors(); ?></div>
             <?php endif;?>
-            
             <?php if(session()->getTempdata('success')): ?>
                 <div class='alert alert-success'><?= session()->getTempdata('success') ;?></div>
             <?php endif; ?>
@@ -16,15 +15,15 @@
             
             <?= form_open();?>
             <div class='form-group'>
-                <label>Enter Old Password</label>
+                <label>Masukkan Password Lama</label>
                 <input type='password' name='opwd' class='form-control'>
             </div>
             <div class='form-group'>
-                <label>New Password</label>
+                <label>Password Baru</label>
                 <input type='password' name='npwd' class='form-control'>
             </div>
             <div class='form-group'>
-                <label>COnfirm New Password</label>
+                <label>Konfirmasi Password Baru</label>
                 <input type='password' name='cnpwd' class='form-control'>
             </div>
             <div class='form-group'>

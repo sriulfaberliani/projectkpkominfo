@@ -68,21 +68,18 @@
                 
                             <?php echo form_close(); ?>
                                 
-                            <?php
-                //pesan validasi eror
-                $errors = session()->getFlashdata('errors');
-                if (!empty($errors)) { ?>
-                  <div class="alert alert-danger" role="alert">
-                    <ul>
-                      <?php foreach ($errors as $error) : ?>
-                        <li><?= esc($error) ?></li>
-                      <?php endforeach ?>
-                    </ul>
-                  </div>
-                <?php } ?>
+                            
+                <?php
+                //eror
+                if(isset($validation)):?>
+                <div class= "alert alert-danger">
+                <?= $validation->listErrors()?>
+                </div>
+                <?php endif;?>
+
                 <?php
                 if (session()->getFlashdata('pesan')) {
-                  echo '<div class = "alert alert-success" role="alert">';
+                  echo '<div class = "alert alert-danger" role="alert">';
                   echo session()-> getFlashdata('pesan');
                   echo'</div>'; 
                 }
