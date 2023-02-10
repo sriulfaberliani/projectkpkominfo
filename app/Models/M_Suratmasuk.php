@@ -23,7 +23,6 @@ class M_Suratmasuk extends Model{
         
     }
 
-
     public function tambah($data)
     {
         return $this->db->table('suratmasuk')->insert($data);

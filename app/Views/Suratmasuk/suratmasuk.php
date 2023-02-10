@@ -63,7 +63,12 @@
                                                 if (session()->get('id_role') == '6') { ?>
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
                                        id="btn-edit" class="btn btn-success btn-icon-split"
-                                       data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" data-nama_jenis_surat="<?= $row['nama_jenis_surat']; ?>" data-no_suratmasuk="<?= $row['no_suratmasuk']; ?>" data-tgl_suratmasuk="<?= $row['tgl_suratmasuk']; ?>" data-agenda_suratmasuk="<?= $row['agenda_suratmasuk']; ?>"  data-file_surat="<?= $row['file_surat'];?>">
+                                       data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" 
+                                       data-nama_jenis_surat="<?= $row['nama_jenis_surat']; ?>" 
+                                       data-no_suratmasuk="<?= $row['no_suratmasuk']; ?>" 
+                                       data-tgl_suratmasuk="<?= $row['tgl_suratmasuk']; ?>" 
+                                       data-agenda_suratmasuk="<?= $row['agenda_suratmasuk']; ?>"  
+                                       data-file_surat="<?= $row['file_surat'];?>">
                                     <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
@@ -112,7 +117,7 @@
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h5 class="modal-title">Tambah Data Pegawai</h5>
+                               <h5 class="modal-title">Tambah Surat Masuk</h5>
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>

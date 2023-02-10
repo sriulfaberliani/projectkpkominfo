@@ -76,3 +76,8 @@ $(document).on("click", "#btn-edit", function () {
 $(document).on("click", "#btn-hapus", function () {
   $(".modal-body #id_suratmasuk").val($(this).data("id_suratmasuk"));
 });
+
+// Button Hapus Data surat keluar
+$(document).on("click", "#btn-hapus", function () {
+  $(".modal-body #id_suratkeluar").val($(this).data("id_suratkeluar"));
+});
