@@ -56,33 +56,40 @@ class Disposisi extends BaseController
             echo view('templates/v_topbar');
             echo view('Disposisi/statusDisposisi', $data);
             echo view('templates/v_footer');
+
+            
     }
      
-    public function buatDisposisi(){
+    public function buatDisposisi($id_suratmasuk){
      
+      $detail = $this->suratmasuk->detailSurat($id_suratmasuk);
       $data = [
         'title' => 'Disposisi',
         
       ];
+      $data['detail'] = $detail;
             echo view('templates/v_header', $data);
             echo view('templates/v_sidebar');
             echo view('templates/v_topbar');
-            echo view('Disposisi/buatDisposisi');
+            echo view('Disposisi/buatDisposisi', $data);
             echo view('templates/v_footer');
     }
 
-    public function tolakDisposisi(){
+    public function tolakDisposisi($id_suratmasuk){
      
+      $detail = $this->suratmasuk->detailSurat($id_suratmasuk);
       $data = [
-        'title' => 'Tolak Disposisi',
+        'title' => 'Disposisi'
         
       ];
+      $data['detail'] = $detail;
             echo view('templates/v_header', $data);
             echo view('templates/v_sidebar');
             echo view('templates/v_topbar');
-            echo view('Disposisi/tolakDisposisi');
+            echo view('Disposisi/tolakDisposisi', $data);
             echo view('templates/v_footer');
     }
+    
 
 }
 

@@ -109,7 +109,7 @@
       <img src="\assets\img\img2.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="\assets\img\img3.jpg" class="d-block w-100" alt="...">
+      <img src="\assets\img\img5.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

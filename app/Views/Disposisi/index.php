@@ -26,9 +26,8 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        
-                        <th>Jenis Surat</th>
                         <th>Nomor Surat</th>
+                        <th>Perihal</th>
                         <th>Tanggal Masuk</th>
 
                         <th>Action</th>
@@ -40,14 +39,14 @@
                                    <tr>
                                      
                                       
-                                       <td><?= $row['nama_jenis_surat']; ?></td>
-                                       <td><?= $row['no_suratmasuk']; ?></td>
-                                       <td><?= $row['tgl_suratmasuk']; ?></td>
+                                    <td><?= $row['no_suratmasuk']; ?></td>   
+                                    <td><?= $row['perihal_sm']; ?></td>
+                                    <td><?= $row['tgl_suratmasuk']; ?></td>
                                       
 
                                     
                                     <td>
-                                        <a class="btn btn-primary btn-icon-split" href= "<?= base_url('suratmasuk/statusDisposisi/'.$row['id_suratmasuk']); ?>" role="button"><span class="icon text-white-50">
+                                        <a class="btn btn-primary btn-icon-split" href= "<?= base_url('disposisi/statusDisposisi/'.$row['id_suratmasuk']); ?>" role="button"><span class="icon text-white-50">
                                             <i class="fas fa-info-circle"></i>   </span> <span class="text">Detail</span></a>
                                  
 
@@ -56,8 +55,8 @@
     Pilih Status
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="disposisi/buatDisposisi">Setujui</d>
-    <a class="dropdown-item" href="disposisi/tolakDisposisi">Tolak</a>
+    <a class="dropdown-item"  href="<?= base_url('disposisi/buatDisposisi/'.$row['id_suratmasuk']); ?>">Setujui</d>
+    <a class="dropdown-item" href="<?= base_url('disposisi/tolakDisposisi/'.$row['id_suratmasuk']); ?>">Tolak</a>
   </div>
                                     </div>
 

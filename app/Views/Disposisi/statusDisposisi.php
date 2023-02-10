@@ -23,6 +23,9 @@
           <th> No Surat</th>
           <td><?php echo $detail['no_suratmasuk'] ?> </td>   
         <tr>
+        <th> Perihal</th>
+          <td><?php echo $detail['perihal_sm'] ?> </td>   
+        <tr>
           <th> Ringkasan</th>
           <td><?php echo $detail['agenda_suratmasuk'] ?> </td>  
         <tr>

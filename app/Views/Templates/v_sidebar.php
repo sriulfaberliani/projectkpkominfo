@@ -52,7 +52,7 @@
             </li>
             <?php } ?>
 
-            <?php if (session()->get('id_role') != '1') { ?>
+            <?php if (session()->get('id_role') == '6') { ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -79,7 +79,7 @@
             </li>
             <?php } ?>
 
-            <?php if (session()->get('id_role') != '1') { ?>
+            <?php if (session()->get('id_role') != '6' && session()->get('id_role') != '1') { ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -100,7 +100,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Disposisi Surat</h6>
                         <a class="collapse-item" href="<?= base_url('disposisi'); ?>">Surat Masuk</a>
-                        <a class="collapse-item" href="register.html">Surat Keluar</a>
+                        <a class="collapse-item" href="<?= base_url('suratkeluar'); ?>">Surat Keluar</a>
                     </div>
                 </div>
             </li>
