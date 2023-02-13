@@ -7,6 +7,8 @@ use App\Models\M_Suratmasuk;
 use App\Models\M_User;
 use App\Models\M_JenisSurat;
 use App\Models\M_Disposisi;
+use App\Models\M_Sifat;
+use App\Models\M_Status;
 use DateTime;
 use DateTimeZone; 
 
@@ -20,21 +22,24 @@ class Disposisi extends BaseController
       $this->suratmasuk = new M_Suratmasuk();
       $this-> user = new M_User();
       $this->jenissurat = new M_JenisSurat();
+      $this->sifat = new M_Sifat();
+      $this->status = new M_Status();
       helper('form');
         
     }
 
-    public function index()
+    public function index($id = null)
     {
 
-        
+      $suratmasuk = new M_Suratmasuk();
       $data = [
         'title' => 'Disposisi',
         'disposisi' => $this->model->getAllData(),
         'suratmasuk' => $this->suratmasuk->getAllData(),
         'datauser' => $this->user->getAllData(),
-        'datajenissurat' => $this->jenissurat->getAllData()
-
+        'datajenissurat' => $this->jenissurat->getAllData(),
+        'datasifat' => $this->sifat->getAllData(),
+        'datastatus' => $this->status->getAllData(),
       ];
 
         echo view('templates/v_header', $data);
@@ -42,114 +47,48 @@ class Disposisi extends BaseController
         echo view('templates/v_topbar');
         echo view('Disposisi/index', $data);
         echo view('templates/v_footer');
+
     }
 
-    public function statusDisposisi($id_suratmasuk){
-      $detail = $this->suratmasuk->detailSurat($id_suratmasuk);
-
-      $data = [
-        'title' => 'Status Disposisi',
-        'sifat_dispo' => $this->model->getSifatDispoData(),
-        'disposisi_sm' => $this->model->getAllData(),
-        
-        
-      ];
-      $data['status'] = $this->model->getStatusData();
-      
-      $data['detail'] = $detail;
-            echo view('templates/v_header', $data);
-            echo view('templates/v_sidebar');
-            echo view('templates/v_topbar');
-            echo view('Disposisi/statusDisposisi', $data);
-            echo view('templates/v_footer');
-
-            
+    public function teruskan()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        ];
+        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
+        $id_suratmasuk = $this->request->getPost('id_suratmasuk');  
+        $data = [
+            'id_disposisi_sm' => $this->request->getPost('id_disposisi_sm'),
+            'id_suratmasuk' => $this->request->getPost('id_suratmasuk'),
+            'id_pegawai' => session()->get('id_pegawai'),
+            'id_status' => $this->request->getPost('id_status'),
+            'id_sifat' => $this->request->getPost('id_sifat'),
+            'tanggal_disposisi_sm' => $tanggal,
+            'catatan_sm' => $this->request->getPost('catatan_sm'),
+            'tujuan_dispo_sm' => $this->request->getPost('tujuan_dispo_sm'),
+            ];
+           
+        //insert data
+        $success = $this->model->tambah($data, $id_suratmasuk);
+        if ($success){
+            session()->setFlashdata('message', ' ditambahkan');
+            return redirect()->to(base_url('suratmasuk'));
+        }
     }
-     
-    public function buatDisposisi($id_suratmasuk){
-     
-      $detail = $this->suratmasuk->detailSurat($id_suratmasuk);
-      $data = [
-        'title' => 'Disposisi',
-        
-      ];
-      $data['detail'] = $detail;
-            echo view('templates/v_header', $data);
-            echo view('templates/v_sidebar');
-            echo view('templates/v_topbar');
-            echo view('Disposisi/buatDisposisi', $data);
-            echo view('templates/v_footer');
-    }
-
-    public function tolakDisposisi($id_suratmasuk){
-     
-      $detail = $this->suratmasuk->detailSurat($id_suratmasuk);
-      $data = [
-        'title' => 'Disposisi'
-        
-      ];
-      $data['detail'] = $detail;
-            echo view('templates/v_header', $data);
-            echo view('templates/v_sidebar');
-            echo view('templates/v_topbar');
-            echo view('Disposisi/tolakDisposisi', $data);
-            echo view('templates/v_footer');
-    } 
     
-    public function tambah(){
-      $data = [
-        // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-        'id_status' => $this->request->getPost('id_status'),
-        'id_sifat' => $this->request->getPost('id_sifat'),
-        'catatan_sm' => $this->request->getPost('catatan_sm')
-    ];
-       
-    //insert data
-    $success = $this->model->tambah($data);
-    if ($success){
-        return redirect()->to(base_url('disposisi'));
-    }
-    }
-
-
+     
 }
-
-
-
-
-
-//timeline template
-// <table class = "table">
-//       <tr>
-//         <th>No Surat</th>
-//         <td><?php echo $detail['no_suratmasuk'] ?></td>
-
-
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-12"><p class="h3 mb-2 text-gray-800">Timeline Disposisi</p>
-            <div class="card">
-            
-                <div class="card-body">
-                    
-                    <div id="content">
-                        <ul class="timeline">
-                            <li class="event" >
-                                <h5>Sekretaris Diskominfo payakumbuh menyetujui disposisi</h5>
-                                <p>yth kepala dinas Diskominfo payakumbuh mohon untuk menyetujui izin kerja praktek.</p>
-                            </li>
-                            <li class="event" >
-                                <h5>Kabag Umum Diskominfo payakumbuh menyetujui disposisi</h5>
-                                <p>Diteruskan Kepada Sekretaris Dinas, Mohon diteruskan kepada Kepala Dinas Diskominfo Kota Payakumbuh</p>
-                            </li>
-                           
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
  
 

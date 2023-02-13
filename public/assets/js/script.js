@@ -103,6 +103,11 @@ $(document).on("click", "#btn-dispo", function () {
   $(".modal-body #id_suratkeluar").val($(this).data("id_suratkeluar"));
   });
 
+// Button Teruskan Surat Keluar
+$(document).on("click", "#btn-dispo", function () {
+  $(".modal-body #id_suratmasuk").val($(this).data("id_suratmasuk"));
+  });
+
 // Button btn-dispo
 
 
