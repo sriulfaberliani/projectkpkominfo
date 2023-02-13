@@ -51,6 +51,29 @@ class DisposisiSk extends BaseController
 
     }
 
+    public function statusDisposisi_sk($id_suratkeluar){
+        $detail = $this->suratkeluar->detailSurat_sk($id_suratkeluar);
+  
+        $data = [
+          'title' => 'Status Disposisi',
+          'datauser' => $this->user->getAllData(),
+          'datasifat' => $this->sifat->getAllData(),
+          'disposisi_sk' => $this->model->getAllData(),
+          
+          
+        ];
+        $data['datastatus'] = $this->status->getAllData();
+        
+        $data['detail'] = $detail;
+              echo view('templates/v_header', $data);
+              echo view('templates/v_sidebar');
+              echo view('templates/v_topbar');
+              echo view('Disposisi_sk/statusDisposisi_sk', $data);
+              echo view('templates/v_footer');
+  
+              
+      }
+
     public function teruskan()
     {
         date_default_timezone_set('Asia/Jakarta');
