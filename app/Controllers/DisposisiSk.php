@@ -107,8 +107,8 @@ class DisposisiSk extends BaseController
         //insert data
         $success = $this->model->tambah($data, $id_suratkeluar);
         if ($success){
-            session()->setFlashdata('message', ' ditambahkan');
-            return redirect()->to(base_url('suratkeluar'));
+            session()->setFlashdata('message', ' didisposisi');
+            return redirect()->back()->with('foo', 'message');
         }
     }
     

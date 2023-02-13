@@ -5,6 +5,15 @@
 <h1 class="h3 mb-2 text-gray-800">Disposisi</h1>
 
 <div class="card shadow mb-4">
+<div class="card-header py-3">
+<?php if(session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+<?php endif; ?>
+</div>
 
     <div class="card-body">
     <p class="h5">Detail Surat Keluar</p>  
@@ -30,7 +39,7 @@
         <tr>
           
 
-        <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi">
+        <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratkeluar="<?= $detail['id_suratkeluar']; ?>" id="btn-dispo">
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
                                 </span>
@@ -68,7 +77,7 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('DisposisiSk/teruskan'); ?>" method="post" enctype="multipart/form-data"> 
-                                 <input hidden type="text" name="id_suratkeluar" id="id_suratkeluar" class="form-control"   >
+                                 <input type="text" name="id_suratkeluar" id="id_suratkeluar" class="form-control"   >
                               <div class="form-group ab-0">
                               <label for="id_status"></label>
                                     Status Surat
@@ -94,7 +103,7 @@
                                  Catatan Disposisi
                                  <textarea rows="3" name="catatan_sk" id="catatan_sk" class="form-control" placeholder="Masukan Catatan Disposisi"  ></textarea>
                                </div>
-                              <div class="form-group ab-0">
+                              <div class="form-group ab-0">  
                                  <label for="tujuan_dispo_sk"></label>
                                  Tujuan
                                  <select name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" >
@@ -113,3 +122,7 @@
                        </div>
                    </div>
                </div>
+
+<!-- End of Main Content -->
+
+
