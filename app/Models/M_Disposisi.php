@@ -19,6 +19,14 @@ class M_Disposisi extends Model{
         ->get()->getResultArray(); 
     }
 
+    public function getStatusData(){
+        return $this->db->table('status')->where('id_status !=', 0)->get()->getResultArray();
+    }
+
+    public function getSifatDispoData(){
+        return $this->db->table('sifat_dispo')->get()->getResultArray();
+    }
+
     public function tambah($data)
     {
         return $this->db->table('disposisi_sm')->insert($data);

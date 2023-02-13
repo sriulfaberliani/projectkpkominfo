@@ -38,7 +38,7 @@ class Disposisi extends BaseController
       ];
 
         echo view('templates/v_header', $data);
-        echo \view('templates/v_sidebar');
+        echo view('templates/v_sidebar');
         echo view('templates/v_topbar');
         echo view('Disposisi/index', $data);
         echo view('templates/v_footer');
@@ -46,10 +46,16 @@ class Disposisi extends BaseController
 
     public function statusDisposisi($id_suratmasuk){
       $detail = $this->suratmasuk->detailSurat($id_suratmasuk);
+
       $data = [
         'title' => 'Status Disposisi',
+        'sifat_dispo' => $this->model->getSifatDispoData(),
+        'disposisi_sm' => $this->model->getAllData(),
+        
         
       ];
+      $data['status'] = $this->model->getStatusData();
+      
       $data['detail'] = $detail;
             echo view('templates/v_header', $data);
             echo view('templates/v_sidebar');
@@ -88,13 +94,31 @@ class Disposisi extends BaseController
             echo view('templates/v_topbar');
             echo view('Disposisi/tolakDisposisi', $data);
             echo view('templates/v_footer');
-    }
+    } 
     
+    public function tambah(){
+      $data = [
+        // 'id_pegawai' => $this->request->getPost('id_pegawai'),
+        'id_status' => $this->request->getPost('id_status'),
+        'id_sifat' => $this->request->getPost('id_sifat'),
+        'catatan_sm' => $this->request->getPost('catatan_sm')
+    ];
+       
+    //insert data
+    $success = $this->model->tambah($data);
+    if ($success){
+        return redirect()->to(base_url('disposisi'));
+    }
+    }
+
 
 }
 
 
 
+
+
+//timeline template
 // <table class = "table">
 //       <tr>
 //         <th>No Surat</th>
