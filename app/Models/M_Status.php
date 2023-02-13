@@ -11,7 +11,7 @@ class M_Status extends Model{
     }
 
     public function getAllData(){
-        return $this->db->table('status')->get()->getResultArray();
+        return $this->db->table('status')->where('id_status !=', 0)->get()->getResultArray();
         
     }
 

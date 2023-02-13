@@ -17,6 +17,12 @@ class M_Suratkeluar extends Model{
         ->get()->getResultArray();
     }
 
+    public function detailSurat_sk($id_suratkeluar = NULL){
+        $query = $this->db->table('suratkeluar') -> where (array('id_suratkeluar' => $id_suratkeluar))->get()->getRowArray();
+        return $query;
+        
+    }
+
     public function detaildata($id_suratkeluar)
     {
         return $this->db->table('suratkeluar')
