@@ -6,6 +6,8 @@ use CodeIgniter\Controller;
 use App\Models\M_Suratmasuk;
 use App\Models\M_User;
 use App\Models\M_JenisSurat;
+use App\Models\M_Sifat;
+use App\Models\M_Status;
 use DateTime;
 use DateTimeZone; 
 
@@ -18,6 +20,8 @@ class SuratMasuk extends BaseController
         $this->model = new M_Suratmasuk();
         $this-> user = new M_User();
         $this->jenissurat = new M_JenisSurat();
+        $this->sifat = new M_Sifat();
+        $this->status = new M_Status();
         helper('form');
         
     }
@@ -35,7 +39,9 @@ class SuratMasuk extends BaseController
             'title' => 'Surat Masuk',
             'suratmasuk' => $this->model->getAllData(),
             'datauser' => $this->user->getAllData(),
-            'datajenissurat' => $this->jenissurat->getAllData()
+            'datajenissurat' => $this->jenissurat->getAllData(),
+            'datasifat' => $this->sifat->getAllData(),
+            'datastatus' => $this->status->getAllData(),
         ];
 
         echo view('templates/v_header', $data);

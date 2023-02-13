@@ -38,6 +38,9 @@ class M_Suratmasuk extends Model{
         return $this->db->table('suratmasuk')->update($data, ['id_suratmasuk' => $id_suratmasuk]);
     }
    
-
+    public function getSuratmasuk($id)
+    {
+        return $this->where(['id_suratmasuk' => $id])->first();
+    }
    
 }
