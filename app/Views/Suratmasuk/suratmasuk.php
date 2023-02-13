@@ -37,6 +37,7 @@
                         <th>Jenis Surat</th>
                         <th>Nomor Surat</th>
                         <th>Tanggal Masuk</th>
+                        <th>Perihal</th>
                         <th>Ringkasan</th>
                         <th>File Surat</th>
                         <th>Action</th>
@@ -51,6 +52,7 @@
                                        <td><?= $row['nama_jenis_surat']; ?></td>
                                        <td><?= $row['no_suratmasuk']; ?></td>
                                        <td><?= $row['tgl_suratmasuk']; ?></td>
+                                       <td><?= $row['perihal_sm']; ?></td>
                                        <td><?= $row['agenda_suratmasuk']; ?></td>
                                        <td>
                                         <a href="<?= base_url('public/filesurat/'. $row['file_surat'])?>" target="_blank"><i class="fa fa-file-pdf fa-2x label-danger"></i></a>
@@ -145,6 +147,11 @@
                                  <label for="no_suratmasuk"></label>
                                  Nomor Surat
                                  <input type="text" name="no_suratmasuk" id="no_suratmasuk" class="form-control" placeholder="Masukkan Nomor Surat" required >
+                               </div>
+                               <div class="form-group ab-0">
+                                 <label for="perihal_sm"></label>
+                                 Perihal
+                                 <input type="text" name="perihal_sm" id="perihal_sm" class="form-control" placeholder="Masukkan Perihal" required >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="agenda_suratmasuk"></label>

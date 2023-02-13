@@ -79,17 +79,30 @@ class SuratMasuk extends BaseController
     {
         $file_surat = $this->request->getFile('file_surat');
         $nama_file = $file_surat->getName();
-        $tz = 'Asia/Jakarta';
-        $dt = new DateTime("now", new DateTimeZone($tz));
-            // $timestamp = $dt->format('Y-m-d G:i:s');
-        $timestamp = $dt->format('Y:m:d');
+        date_default_timezone_set('Asia/Jakarta');
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        ];
+        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
         $data = [
             // 'id_pegawai' => $this->request->getPost('id_pegawai'),
             'id_suratmasuk' => $this->request->getPost('id_suratmasuk'),
             'id_user' => session()->get('id_user'),
             'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
             'no_suratmasuk' => $this->request->getPost('no_suratmasuk'),
-            'tgl_suratmasuk' => $timestamp,
+            'tgl_suratmasuk' => $tanggal,
+            'perihal_sm' => $this->request->getPost('perihal_sm'),
             'agenda_suratmasuk' => $this->request->getPost('agenda_suratmasuk'),
             'file_surat' => $file_surat->getName(),
         ];

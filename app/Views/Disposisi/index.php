@@ -33,7 +33,7 @@
                 </thead> 
                 <tbody>
                 <?php $i=1; ?>
-                                    <?php  foreach($disposisi as $row) :?>
+                                    <?php  foreach($disposisi_sm as $row) :?>
                                    <tr>
                                      
                                     <td scope="row"><?= $i; ?></td>  
@@ -44,7 +44,7 @@
 
                                     
                                     <td>
-                                        <a class="btn btn-primary btn-icon-split" href= "" role="button"><span class="icon text-white-50">
+                                        <a class="btn btn-primary btn-icon-split" href= "<?= base_url('Disposisi/statusDisposisi/'.$row['id_suratmasuk']); ?>" role="button"><span class="icon text-white-50">
                                             <i class="fas fa-info-circle"></i>   </span> <span class="text">Detail</span></a>
                                  
 

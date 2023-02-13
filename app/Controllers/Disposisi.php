@@ -41,14 +41,38 @@ class Disposisi extends BaseController
         'datasifat' => $this->sifat->getAllData(),
         'datastatus' => $this->status->getAllData(),
       ];
-
-        echo view('templates/v_header', $data);
+      $data['disposisi_sm'] = $this->model->get_disposisi_by_id_user(session()->get('id_user'));
+      echo view('templates/v_header', $data);
         echo view('templates/v_sidebar');
         echo view('templates/v_topbar');
         echo view('Disposisi/index', $data);
         echo view('templates/v_footer');
 
     }
+
+    public function statusDisposisi($id_suratmasuk){
+      $detail = $this->suratmasuk->detailSurat($id_suratmasuk);
+
+      $data = [
+        'title' => 'Status Disposisi',
+        'datauser' => $this->user->getAllData(),
+        'datasifat' => $this->sifat->getAllData(),
+        'disposisi' => $this->model->getAllData(),
+        
+        
+      ];
+      $data['datastatus'] = $this->status->getAllData();
+      
+      $data['detail'] = $detail;
+            echo view('templates/v_header', $data);
+            echo view('templates/v_sidebar');
+            echo view('templates/v_topbar');
+            echo view('Disposisi/statusDisposisi', $data);
+            echo view('templates/v_footer');
+
+            
+    }
+
 
     public function teruskan()
     {
@@ -84,7 +108,7 @@ class Disposisi extends BaseController
         $success = $this->model->tambah($data, $id_suratmasuk);
         if ($success){
             session()->setFlashdata('message', ' ditambahkan');
-            return redirect()->to(base_url('suratmasuk'));
+            return redirect()->back();
         }
     }
     

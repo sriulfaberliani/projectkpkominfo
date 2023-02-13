@@ -31,7 +31,7 @@
              </td>  
         <tr>
 
-        <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambah">
+        <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratmasuk="<?= $detail['id_suratmasuk']; ?>" id="btn-dispo">
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
                                 </span>
@@ -53,55 +53,66 @@
 <!-- /.container-fluid -->
 
 
+
+
 </div>
 <!-- End of Main Content -->
 
-
-<!-- Modal Tambah-->
-<div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<!-- Modal Tambah Disposisi-->
+<div class="modal fade" id="modalTambahDisposisi" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h5 class="modal-title">Tambah Disposisi</h5>
+                               <h5 class="modal-title">Disposisi</h5>
                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                        <span aria-hidden="true">&times;</span>
                                    </button>
                            </div>
                            <div class="modal-body">
-                               <form action="<?= base_url('disposisi/tambah'); ?>" method="post" enctype="multipart/form-data"> 
-                               <div class="form-group ab-0 ab0">
-                                 <label for="id_status"></label>
-                                    Jenis Surat
-                                 <select name="id_status" id="id_status" class="form-control" required>
+                               <form action="<?= base_url('Disposisi/teruskan'); ?>" method="post" enctype="multipart/form-data"> 
+                                 <input  type="text" name="id_suratmasuk" id="id_suratmasuk" class="form-control"   >
+                              <div class="form-group ab-0">
+                              <label for="id_status"></label>
+                                    Status Surat
+                                 <select name="id_status" id="id_status" class="form-control" >
                                     <option value="">Pilih Status</option>
-                                    <?php foreach($status as $key => $value) : ?>
+                                    <?php foreach($datastatus as $key => $value) : ?>
                                     <option value="<?= $value['id_status']; ?>"><?= $value['status']; ?></option>
                                   <?php endforeach; ?>
                                     </select>
                                </div>
-                               <div class="form-group ab-0 ab0">
+                              <div class="form-group ab-0">
                                  <label for="id_sifat"></label>
-                                    Jenis Surat
-                                 <select name="id_sifat" id="id_sifat" class="form-control" required>
+                                 Sifat Surat
+                                 <select name="id_sifat" id="id_sifat" class="form-control" >
                                     <option value="">Pilih Sifat</option>
-                                    <?php foreach($sifat_dispo as $key => $value) : ?>
+                                    <?php foreach($datasifat as $key => $value) : ?>
                                     <option value="<?= $value['id_sifat']; ?>"><?= $value['nama_sifat']; ?></option>
                                   <?php endforeach; ?>
                                     </select>
                                </div>
-                               <div class="form-group ab-0">
+                              <div class="form-group ab-0">
                                  <label for="catatan_sm"></label>
                                  Catatan Disposisi
-                                 <textarea name="catatan_sm" id="catatan_sm" rows="10" class="form-control" placeholder="Masukkan Catatan Disposisi" required></textarea>
-                               </div>  
+                                 <textarea rows="3" name="catatan_sm" id="catatan_sm" class="form-control" placeholder="Masukan Catatan Disposisi"  ></textarea>
+                               </div>
+                              <div class="form-group ab-0">
+                                 <label for="tujuan_dispo_sm"></label>
+                                 Tujuan
+                                 <select name="tujuan_dispo_sm" id="tujuan_dispo_sm" class="form-control" >
+                                    <option value="">Tujuan Disposisi</option>
+                                    <?php foreach($datauser as $key => $value) : ?>
+                                    <option value="<?= $value['id_user']; ?>"><?= $value['nama_pegawai']; ?></option>
+                                  <?php endforeach; ?>
+                                    </select>
+                               </div>
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                               <button type="submit" class="btn btn-primary">Tambah Data</button>
+                               <button type="submit" class="btn btn-primary" id="submitButtonDispo" >Tambah Data</button>
                            </div>
                            </form>
                        </div>
                    </div>
                </div>
-
 
