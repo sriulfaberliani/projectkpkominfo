@@ -61,7 +61,7 @@ $(document).on("click", "#btn-edit", function () {
   $(".modal-body #password").val($(this).data("password"));
 });
 
-// Button Edit Data User
+// Button Edit Data Surat masuk
 $(document).on("click", "#btn-edit", function () {
   $(".modal-body #id_suratmasuk").val($(this).data("id_suratmasuk"));
   $(".modal-body #id_user").val($(this).data("id_user"));
@@ -81,3 +81,30 @@ $(document).on("click", "#btn-hapus", function () {
 $(document).on("click", "#btn-hapus", function () {
   $(".modal-body #id_suratkeluar").val($(this).data("id_suratkeluar"));
 });
+
+// Button Edit Data Surat keluar
+$(document).on("click", "#btn-edit", function () {
+  $(".modal-body #id_suratkeluar").val($(this).data("id_suratkeluar"));
+  $(".modal-body #id_user").val($(this).data("id_user"));
+  $(".modal-body #id_jenis_surat").val($(this).data("id_jenis_surat"));
+  $(".modal-body #no_suratkeluar").val($(this).data("no_suratkeluar"));
+  $(".modal-body #tgl_pembuatansk").val($(this).data("tgl_pembuatansk"));
+  $(".modal-body #lampiran").val($(this).data("lampiran"));
+  $(".modal-body #perihal").val($(this).data("perihal"));
+  $(".modal-body #tujuan_sk").val($(this).data("tujuan_sk"));
+  $(".modal-body #isi_sk").val($(this).data("isi_sk"));
+  $(".modal-body #jabatan_pembuatsurat").val($(this).data("jabatan_pembuatsurat"));
+  $(".modal-body #nama_pembuatsurat").val($(this).data("nama_pembuatsurat"));
+  $(".modal-body #nip_pembuatsurat").val($(this).data("nip_pembuatsurat"));
+});
+
+// Button Teruskan Surat Keluar
+$(document).on("click", "#btn-dispo", function () {
+  $(".modal-body #id_suratkeluar").val($(this).data("id_suratkeluar"));
+  });
+
+// Button btn-dispo
+
+
+
+
