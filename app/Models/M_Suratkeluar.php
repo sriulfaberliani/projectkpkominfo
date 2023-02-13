@@ -33,5 +33,15 @@ class M_Suratkeluar extends Model{
     {
         return $this->db->table('suratkeluar')->delete(['id_suratkeluar' => $id_suratkeluar]);
     }
+
+    public function ubah($data, $id_suratkeluar)
+    {
+        return $this->db->table('suratkeluar')->update($data, ['id_suratkeluar' => $id_suratkeluar]);
+    }
+
+    public function getSuratkeluar($id)
+    {
+        return $this->where(['id_suratkeluar' => $id])->first();
+    }
    
 }

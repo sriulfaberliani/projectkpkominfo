@@ -1,8 +1,15 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-<div class="card shadow mb-4">
-<div class="card-header py-3">
+
+
+</div>
+    <div class="col-md">
+	<button class="btn btn-primary btn-icon-split" onclick="window.print()" ><span class="icon text-white-50">
+                                    <i class="fas fa-download"></i>
+                                </span>  <span class="text">Print</span></button>
+	</div>
+ 
     
 <!DOCTYPE html>
 <html>
@@ -20,6 +27,7 @@
 		table tr .text {
 			text-align: center;
 			font-size: 13px;
+			text-transform: uppercase; 
 		}
 		table tr td {
 			font-size: 13px;
@@ -28,17 +36,21 @@
 			text-indent: 25px;
 			margin:0;
 		}
+		.ratakirikanan { 
+			text-align: justify; 
+		}
+		
 
 	</style>
 </head>
 <body>
+	<br><br>
 	<center>
 		<table>
 			<tr>
 				<td><img src="/assets/img/kotapyk.png" width="130" height="90"></td>
 				<td>
 				<center>
-					
 					<font size="4"><b>PEMERINTAH KOTA PAYAKUMBUH</b></font><br>
 					<font size="4"><b>DINAS KOMUNIKASI DAN INFORMATIKA</b></font><br>
 					<font size="2">Lantai 3 Gedung Kantor Walikota Payakumbuh Jl. Veteran No. 70 Kota Payakumbuh</font><br>
@@ -88,7 +100,7 @@
 		</table>
 		<table width="625">
 			<tr class="text2" >
-		       <td>
+		       <td class="ratakirikanan">
 			       <font size="2"> <?php echo $detail['isi_sk']?></font>
 		       </td>
 		    </tr>
@@ -99,7 +111,7 @@
 			<tr class="text2" >
 		       <td>
 			       <font size="2"> Demikianlah disampaikan, atas perhatiannya diucapkan terima kasih.</font>
-		       </td>
+				</td>
 		    </tr>
 		</table>
 		<br>
@@ -109,13 +121,16 @@
 		<table width="625">
 			<tr>
 				<td width="430"><br><br><br><br></td>
-				<td class="text" align="center">
+				<center>
+				<td class="text" >
 					<?php echo $detail['jabatan_pembuatsurat']?><br><br><br><br>
-					<b><u><?php echo $detail['nama_pembuatsurat']?></u></b>
-					<?php echo $detail['nip_pembuatsurat']?>
+					<b><u><?php echo $detail['nama_pembuatsurat']?></u></b><br>
+					NIP.<?php echo $detail['nip_pembuatsurat']?>
 				</td>
 			</tr>
 	     </table>
 	</center>
+	<br><br><br><br>
 </body>
 </html>
+

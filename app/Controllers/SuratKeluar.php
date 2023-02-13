@@ -6,6 +6,8 @@ use CodeIgniter\Controller;
 use App\Models\M_Suratkeluar;
 use App\Models\M_User;
 use App\Models\M_JenisSurat;
+use App\Models\M_Sifat;
+use App\Models\M_Status;
 use DateTime;
 use DateTimeZone;
 
@@ -18,6 +20,8 @@ class SuratKeluar extends BaseController
         $this->model = new M_Suratkeluar();
         $this-> user = new M_User();
         $this->jenissurat = new M_JenisSurat();
+        $this->sifat = new M_Sifat();
+        $this->status = new M_Status();
         helper('form');
         
     }
@@ -35,7 +39,9 @@ class SuratKeluar extends BaseController
             'title' => 'Surat Keluar',
             'suratkeluar' => $this->model->getAllData(),
             'datauser' => $this->user->getAllData(),
-            'datajenissurat' => $this->jenissurat->getAllData()
+            'datajenissurat' => $this->jenissurat->getAllData(),
+            'datasifat' => $this->sifat->getAllData(),
+            'datastatus' => $this->status->getAllData(),
         ];
 
         echo view('templates/v_header', $data);
@@ -81,7 +87,7 @@ class SuratKeluar extends BaseController
         ];
         $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
         $data = [
-            'id_suratkeluar' => $this->request->getPost('id_surakeluar'),
+            'id_suratkeluar' => $this->request->getPost('id_suratkeluar'),
             'id_user' => session()->get('id_user'),
             'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
             'no_suratkeluar' => $this->request->getPost('no_suratkeluar'),
@@ -113,4 +119,49 @@ class SuratKeluar extends BaseController
             return redirect()->to(base_url('suratkeluar'));
         }
     }
+
+    public function ubah()
+    {
+        $id_suratkeluar = $this->request->getPost('id_suratkeluar');
+        date_default_timezone_set('Asia/Jakarta');
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        ];
+        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
+        
+        $data = [
+            'id_suratkeluar' => $this->request->getPost('id_suratkeluar'),
+            'id_user' => session()->get('id_user'),
+            'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
+            'no_suratkeluar' => $this->request->getPost('no_suratkeluar'),
+            'tgl_pembuatansk' => $tanggal,
+            'lampiran' => $this->request->getPost('lampiran'),
+            'perihal' => $this->request->getPost('perihal'),
+            'tujuan_sk' => $this->request->getPost('tujuan_sk'),
+            'isi_sk'=> $this->request->getPost('isi_sk'),
+            'jabatan_pembuatsurat'=> $this->request->getPost('jabatan_pembuatsurat'),
+            'nama_pembuatsurat'=> $this->request->getPost('nama_pembuatsurat'),
+            'nip_pembuatsurat'=> $this->request->getPost('nip_pembuatsurat'),
+        ];
+           
+        //update  data
+        $success = $this->model->ubah($data, $id_suratkeluar);
+        if ($success){
+            session()->setFlashdata('message', ' diubah');
+            return redirect()->to(base_url('suratkeluar'));
+        }
+    }
+
+    
 }
