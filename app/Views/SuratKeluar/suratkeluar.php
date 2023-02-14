@@ -16,7 +16,7 @@
         </button>
 <?php endif; ?>
 <?php
-        if (session()->get('id_role') == '6' || session()->get('id_role') == '3') { ?>
+        if (session()->get('id_role') == '4' || session()->get('id_role') == '3') { ?>
 </div>
     <div class="card-header py-3">
     <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambah">
@@ -74,27 +74,24 @@
                                     <span class="icon text-white-50">
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
                                  </button>
 
                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_suratkeluar="<?= $row['id_suratkeluar']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
                                     <span class="icon text-white-50">
                                     <i class="fas fa-trash"></i>
-                                </span>
-                                <span class="text">Hapus</span> <i data-id_suratkeluar="<?= $row['id_suratkeluar']; ?>"> 
-                                       </button><br>
+                                </span> <i data-id_suratkeluar="<?= $row['id_suratkeluar']; ?>"> 
+                                       </button>
 
                                         <?php } ?>
                                         
                                 <a class="btn btn-warning btn-icon-split" href="<?= base_url('suratkeluar/detail/'.$row['id_suratkeluar']); ?>" role="button"><span class="icon text-white-50">
                                     <i class="fas fa-info-circle"></i>
-                                </span>  <span class="text">Detail Surat</span></a>
+                                </span></a>
 
                                 <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratkeluar="<?= $row['id_suratkeluar']; ?>" id="btn-dispo">
                                 <span class="icon text-white-50">
                                       <i class="fas fa-share"></i>
                                  </span>
-                                       <span class="text">Teruskan</span>
                                  </button>
                                 </div>
                                    
@@ -165,18 +162,24 @@
                                </div>
                                <div class="form-group ab-0">
                                  <label for="nama_pembuatsurat"></label>
-                                 Nama Pembuat Surat
-                                 <input type="text" name="nama_pembuatsurat" id="nama_pembuatsurat" class="form-control" placeholder="Masukkan Nomor Surat" required >
+                                 Pembuat Surat
+                                 <select name="nama_pembuatsurat" id="nama_pembuatsurat" class="form-control" >
+                                    <option value="">Pembuat Surat</option>
+                                    <?php foreach($userjabatan as $key => $value) : ?>
+                                    <option value="<?= $value['nama_pegawai']; ?>">
+                                    <?= $value['nama_jabatan']." - ". $value['nama_pegawai']; ?></option>
+                                  <?php endforeach; ?>
+                                    </select>
                                </div>
                                <div class="form-group ab-0">
                                  <label for="nip_pembuatsurat"></label>
                                  NIP
-                                 <input type="text" name="nip_pembuatsurat" id="nip_pembuatsurat" class="form-control" placeholder="Masukkan Nomor Surat" required >
+                                 <input type="text" name="nip_pembuatsurat" id="nip_pembuatsurat" class="form-control" readonly>
                                </div>
                                <div class="form-group ab-0">
                                  <label for="jabatan_pembuatsurat"></label>
                                  Jabatan
-                                 <input type="text" name="jabatan_pembuatsurat" id="jabatan_pembuatsurat" class="form-control" placeholder="Masukkan Nomor Surat" required >
+                                 <input type="text" name="jabatan_pembuatsurat" id="jabatan_pembuatsurat" class="form-control" readonly >
                                </div>
                            </div>
                            <div class="modal-footer">
@@ -222,7 +225,7 @@
                                <div class="form-group ab-0 ab0">
                                  <label for="id_jenis_surat"></label>
                                     Jenis Surat
-                                 <select name="id_jenis_surat" id="id_jenis_surat" class="form-control" >
+                                 <select name="id_jenis_surat" id="id_jenis_surat_edit" class="form-control" required>
                                     <option value="">Pilih Jenis Surat</option>
                                     <?php foreach($datajenissurat as $key => $value) : ?>
                                     <option value="<?= $value['id_jenis_surat']; ?>"><?= $value['nama_jenis_surat']; ?></option>
@@ -232,42 +235,48 @@
                                <div class="form-group ab-0">
                                  <label for="no_suratkeluar"></label>
                                  Nomor Surat
-                                 <input type="text" name="no_suratkeluar" id="no_suratkeluar" class="form-control" placeholder="Masukkan Nomor Surat"  >
+                                 <input type="text" name="no_suratkeluar" id="no_suratkeluar" class="form-control" placeholder="Masukkan Nomor Surat" required >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="lampiran"></label>
                                  Lampiran
-                                 <input type="text" name="lampiran" id="lampiran" class="form-control" placeholder="Masukkan Nomor Surat"  >
+                                 <input type="text" name="lampiran" id="lampiran" class="form-control" placeholder="Masukkan Nomor Surat" required >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="perihal"></label>
                                  Perihal
-                                 <input type="text" name="perihal" id="perihal" class="form-control" placeholder="Masukkan Nomor Surat"  >
+                                 <input type="text" name="perihal" id="perihal" class="form-control" placeholder="Masukkan Nomor Surat" required >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="tujuan_sk"></label>
                                  Tujuan
-                                 <input type="text" name="tujuan_sk" id="tujuan_sk" class="form-control" placeholder="Masukkan Nomor Surat"  >
+                                 <input type="text" name="tujuan_sk" id="tujuan_sk" class="form-control" placeholder="Masukkan Nomor Surat" required >
                                </div>
                                <div class="form-group ab-0">
                                  <label for="isi_sk"></label>
                                  Isi Surat
-                                 <textarea name="isi_sk" id="isi_sk" rows="10" class="form-control" placeholder="Masukkan Ringkasan" ></textarea>
+                                 <textarea name="isi_sk" id="isi_sk" rows="10" class="form-control" placeholder="Masukkan Ringkasan" required></textarea>
                                </div>
                                <div class="form-group ab-0">
                                  <label for="nama_pembuatsurat"></label>
-                                 Nama Pembuat Surat
-                                 <input type="text" name="nama_pembuatsurat" id="nama_pembuatsurat" class="form-control" placeholder="Masukkan Nomor Surat"  >
+                                 Pembuat Surat
+                                 <select name="nama_pembuatsurat" id="nama_pembuatsurat_edit" class="form-control" >
+                                    <option value="">Pembuat Surat</option>
+                                    <?php foreach($userjabatan as $key => $value) : ?>
+                                    <option value="<?= $value['nama_pegawai']; ?>">
+                                    <?= $value['nama_jabatan']." - ". $value['nama_pegawai']; ?></option>
+                                  <?php endforeach; ?>
+                                    </select>
                                </div>
                                <div class="form-group ab-0">
                                  <label for="nip_pembuatsurat"></label>
                                  NIP
-                                 <input type="text" name="nip_pembuatsurat" id="nip_pembuatsurat" class="form-control" placeholder="Masukkan Nomor Surat"  >
+                                 <input type="text" name="nip_pembuatsurat" id="nip_pembuatsurat_edit" class="form-control" readonly>
                                </div>
                                <div class="form-group ab-0">
                                  <label for="jabatan_pembuatsurat"></label>
                                  Jabatan
-                                 <input type="text" name="jabatan_pembuatsurat" id="jabatan_pembuatsurat" class="form-control" placeholder="Masukkan Nomor Surat"  >
+                                 <input type="text" name="jabatan_pembuatsurat" id="jabatan_pembuatsurat_edit" class="form-control" readonly >
                                </div>
                            </div>
                            <div class="modal-footer">
@@ -322,8 +331,9 @@
                                  Tujuan
                                  <select name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" >
                                     <option value="">Tujuan Disposisi</option>
-                                    <?php foreach($datauser as $key => $value) : ?>
-                                    <option value="<?= $value['id_user']; ?>"><?= $value['nama_pegawai']; ?></option>
+                                    <?php foreach($userjabatan as $key => $value) : ?>
+                                    <option value="<?= $value['id_user']; ?>">
+                                    <?= $value['nama_jabatan']." - ". $value['nama_pegawai']; ?></option>
                                   <?php endforeach; ?>
                                     </select>
                                </div>
@@ -337,6 +347,52 @@
                    </div>
                </div>
 
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#nama_pembuatsurat_edit').change(function(){
+        // Ambil data userjabatan dari PHP
+    var userjabatan = <?php echo json_encode($userjabatan); ?>;
+    
 
+    // Cari index item yang dipilih
+    var selectedIndex = this.selectedIndex - 1;
+    if (selectedIndex < 0) {
+      return;
+    }
+
+    // Update NIP dan Jabatan sesuai dengan data yang terkait
+    var nip1 = userjabatan[selectedIndex]["nip"];
+    // console.log(nip1);
+    var jabatan1 = userjabatan[selectedIndex]["nama_jabatan"];
+    // console.log(jabatan1);
+    $("#nip_pembuatsurat_edit").val(nip1);
+    $("#jabatan_pembuatsurat_edit").val(jabatan1);
+		});		
+	});
+</script>
+<script>
+  
+  document.getElementById("nama_pembuatsurat").addEventListener("change", function() {
+    console.log('dsjdsjf');
+    // Ambil data userjabatan dari PHP
+    var userjabatan = <?php echo json_encode($userjabatan); ?>;
+
+    // Cari index item yang dipilih
+    var selectedIndex = this.selectedIndex - 1;
+    if (selectedIndex < 0) {
+      return;
+    }
+
+    // Update NIP dan Jabatan sesuai dengan data yang terkait
+    document.getElementById("nip_pembuatsurat").value = userjabatan[selectedIndex]["nip"];
+    document.getElementById("jabatan_pembuatsurat").value = userjabatan[selectedIndex]["nama_jabatan"];
+  });
+</script>
+
+<script>
+
+  
+</script>
 
 

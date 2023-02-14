@@ -26,6 +26,47 @@ class M_Disposisi_sk extends Model{
         ->get()->getResultArray(); 
     }
     
+    public function get_disposisi_by_id_user($id_user)
+    {
+        return $this->db->table('disposisi_sk')
+        ->join('suratkeluar', 'suratkeluar.id_suratkeluar = disposisi_sk.id_suratkeluar')
+        ->join('jenissurat', 'jenissurat.id_jenis_surat = suratkeluar.id_jenis_surat')
+        ->join('user', 'user.id_user = suratkeluar.id_user')
+        ->join('status', 'status.id_status = disposisi_sk.id_status')
+        ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sk.id_sifat')
+            ->where('tujuan_dispo_sk', $id_user)
+            ->get()->getResultArray();
+    }
+
+    public function get_disposisi_sk_by_id_sk($id_suratkeluar)
+    {
+        return $this->db->table('disposisi_sk')
+        ->join('suratkeluar', 'suratkeluar.id_suratkeluar = disposisi_sk.id_suratkeluar')
+        ->join('pegawai', 'pegawai.id_pegawai = disposisi_sk.id_pegawai')
+        ->join('jenissurat', 'jenissurat.id_jenis_surat = suratkeluar.id_jenis_surat')
+        ->join('user', 'user.id_user = suratkeluar.id_user')
+        ->join('status', 'status.id_status = disposisi_sk.id_status')
+        ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sk.id_sifat')
+            ->where(array('suratkeluar.id_suratkeluar' => $id_suratkeluar))
+            ->get()->getResultArray();
+    }
+
+
+
+    public function get_disposisi_agenda()
+    {
+        return $this->db->table('disposisi_sk')
+        ->join('suratkeluar', 'suratkeluar.id_suratkeluar = disposisi_sk.id_suratkeluar')
+        ->join('jenissurat', 'jenissurat.id_jenis_surat = suratkeluar.id_jenis_surat')
+        ->join('user', 'user.id_user = suratkeluar.id_user')
+        ->join('status', 'status.id_status = disposisi_sk.id_status')
+        ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sk.id_sifat')
+            ->where('tujuan_dispo_sk','2' )
+            ->where('status.id_status','1' )
+            ->get()->getResultArray();
+    }
+
+
    
 
 }

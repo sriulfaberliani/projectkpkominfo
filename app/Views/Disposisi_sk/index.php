@@ -33,7 +33,7 @@
                 </thead> 
                 <tbody>
                 <?php $i=1; ?>
-                                    <?php  foreach($disposisi_sk as $row) :?>
+                                    <?php  foreach($disposisi_sk_by_user as $row) :?>
                                    <tr>
                                      
                                     <td scope="row"><?= $i; ?></td>  

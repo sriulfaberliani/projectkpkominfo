@@ -37,12 +37,13 @@ class DisposisiSk extends BaseController
         'disposisi_sk' => $this->model->getAllData(),
         'suratkeluar' => $this->suratkeluar->getAllData(),
         'datauser' => $this->user->getAllData(),
+        'userjabatan' => $this->user->getUserJabatan(),
         'datajenissurat' => $this->jenissurat->getAllData(),
         'datasifat' => $this->sifat->getAllData(),
         'datastatus' => $this->status->getAllData(),
 
       ];
-
+      $data['disposisi_sk_by_user'] = $this->model->get_disposisi_by_id_user(session()->get('id_user'));
         echo view('templates/v_header', $data);
         echo view('templates/v_sidebar');
         echo view('templates/v_topbar');
@@ -59,12 +60,13 @@ class DisposisiSk extends BaseController
           'datauser' => $this->user->getAllData(),
           'datasifat' => $this->sifat->getAllData(),
           'disposisi_sk' => $this->model->getAllData(),
-          
-          
+          'userjabatan' => $this->user->getUserJabatan(),
         ];
         $data['datastatus'] = $this->status->getAllData();
         
         $data['detail'] = $detail;
+        $data['disposisi_sk_by_id_sk'] = $this->model->get_disposisi_sk_by_id_sk($id_suratkeluar);
+      
               echo view('templates/v_header', $data);
               echo view('templates/v_sidebar');
               echo view('templates/v_topbar');
@@ -91,7 +93,7 @@ class DisposisiSk extends BaseController
             '11' => 'November',
             '12' => 'Desember',
         ];
-        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
+        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y'). ' ' . date('H:i:s');;
         $id_suratkeluar = $this->request->getPost('id_suratkeluar');  
         $data = [
             'id_disposisi_sk' => $this->request->getPost('id_disposisi_sk'),
@@ -111,6 +113,31 @@ class DisposisiSk extends BaseController
             return redirect()->back()->with('foo', 'message');
         }
     }
+
+    public function index_agenda($id = null)
+    {
+
+      $suratkeluar = new M_Suratkeluar();
+      $data = [
+        'title' => 'Disposisi',
+        'disposisi_sk' => $this->model->getAllData(),
+        'suratkeluar' => $this->suratkeluar->getAllData(),
+        'datauser' => $this->user->getAllData(),
+        'datajenissurat' => $this->jenissurat->getAllData(),
+        'datasifat' => $this->sifat->getAllData(),
+        'datastatus' => $this->status->getAllData(),
+        'userjabatan' => $this->user->getUserJabatan(),
+
+      ];
+      $data['suratkeluar_agenda'] = $this->model->get_disposisi_agenda();
+        echo view('templates/v_header', $data);
+        echo view('templates/v_sidebar');
+        echo view('templates/v_topbar');
+        echo view('SuratKeluar/agendask', $data);
+        echo view('templates/v_footer');
+
+    }
+
     
      
 }
