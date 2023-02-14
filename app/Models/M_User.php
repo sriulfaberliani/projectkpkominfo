@@ -31,5 +31,14 @@ class M_User extends Model{
     {
         return $this->db->table('user')->update($data, ['id_user' => $id_user]);
     }
+
+    public function getUserJabatan()
+    {
+        return $this->db->table('user')
+        ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
+        ->join('jabatan_pegawai', 'jabatan_pegawai.id_pegawai = user.id_pegawai')
+        ->join('jabatan', 'jabatan.id_jabatan = jabatan_pegawai.id_jabatan')
+        ->get()->getResultArray();
+    }
    
 }

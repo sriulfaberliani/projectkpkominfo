@@ -5,6 +5,15 @@
 <h1 class="h3 mb-2 text-gray-800">Disposisi</h1>
 
 <div class="card shadow mb-4">
+<div class="card-header py-3">
+<?php if(session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+<?php endif; ?>
+</div>
 
     <div class="card-body">
     <p class="h5">Detail Surat Keluar</p>  
@@ -30,23 +39,23 @@
         <tr>
           
 
-        <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi">
+        <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratkeluar="<?= $detail['id_suratkeluar']; ?>" id="btn-dispo">
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
                                 </span>
-                                <span class="text">Catatan Disposisi</span>
+                                <span class="text">Disposisi</span>
                </button>
               </th>
           <td>    </td>  
         <tr>
-       
-
-
+      </table>
 
      </div>
                
                
    </div>
+
+   
 
 </div>
 <!-- /.container-fluid -->
@@ -54,6 +63,62 @@
 
 </div>
 <!-- End of Main Content -->
+ 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12"><p class="h3 mb-2 text-gray-800">Timeline Disposisi</p>
+        <div class="card shadow mb-4">
+            <div class="card">
+
+                <div class="card-body">
+                <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal Disposisi</th>
+                        <th>Pengirim</th>
+                        <th>Catatan Disposisi</th>
+                        <th>Status Disposisi</th>
+                        
+                    </tr>
+                </thead> 
+                <tbody>
+                <?php $i=1; ?>
+                                    <?php  foreach($disposisi_sk_by_id_sk as $row) :?>
+                                   <tr>
+                                     
+                                    <td scope="row"><?= $i; ?></td>  
+                                    <td><?= $row['tgl_disposisi_sk']; ?></td>   
+                                    <td><?= $row['nama_pegawai']; ?></td>
+                                    <td><?= $row['catatan_sk']; ?></td>
+                                    <td><?= $row['status']; ?></td>
+                                      
+
+                                    
+                          
+                                      
+                                   </tr>
+                                   <?php $i++; ?>
+                                   <?php  endforeach;?>
+                                    
+                                      
+                                  
+                </tbody>
+            </table>
+        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 
 <!-- Modal Tambah Disposisi-->
@@ -68,7 +133,7 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('DisposisiSk/teruskan'); ?>" method="post" enctype="multipart/form-data"> 
-                                 <input hidden type="text" name="id_suratkeluar" id="id_suratkeluar" class="form-control"   >
+                                 <input type="text" name="id_suratkeluar" id="id_suratkeluar" class="form-control"   >
                               <div class="form-group ab-0">
                               <label for="id_status"></label>
                                     Status Surat
@@ -94,13 +159,14 @@
                                  Catatan Disposisi
                                  <textarea rows="3" name="catatan_sk" id="catatan_sk" class="form-control" placeholder="Masukan Catatan Disposisi"  ></textarea>
                                </div>
-                              <div class="form-group ab-0">
+                               <div class="form-group ab-0">
                                  <label for="tujuan_dispo_sk"></label>
                                  Tujuan
                                  <select name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" >
                                     <option value="">Tujuan Disposisi</option>
-                                    <?php foreach($datauser as $key => $value) : ?>
-                                    <option value="<?= $value['id_user']; ?>"><?= $value['nama_pegawai']; ?></option>
+                                    <?php foreach($userjabatan as $key => $value) : ?>
+                                    <option value="<?= $value['id_user']; ?>">
+                                    <?= $value['nama_jabatan']." - ". $value['nama_pegawai']; ?></option>
                                   <?php endforeach; ?>
                                     </select>
                                </div>
@@ -113,3 +179,7 @@
                        </div>
                    </div>
                </div>
+
+<!-- End of Main Content -->
+
+

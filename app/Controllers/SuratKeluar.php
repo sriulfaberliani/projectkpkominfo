@@ -39,6 +39,7 @@ class SuratKeluar extends BaseController
             'title' => 'Surat Keluar',
             'suratkeluar' => $this->model->getAllData(),
             'datauser' => $this->user->getAllData(),
+            'userjabatan' => $this->user->getUserJabatan(),
             'datajenissurat' => $this->jenissurat->getAllData(),
             'datasifat' => $this->sifat->getAllData(),
             'datastatus' => $this->status->getAllData(),
@@ -162,6 +163,8 @@ class SuratKeluar extends BaseController
             return redirect()->to(base_url('suratkeluar'));
         }
     }
+
+    
 
     
 }
