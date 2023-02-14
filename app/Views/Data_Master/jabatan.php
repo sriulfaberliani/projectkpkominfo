@@ -128,6 +128,7 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajabatan/ubah'); ?>" method="post"> 
+                               <input hidden type="text" name="id_jabatan" id="id_jabatan" class="form-control"   >
                                
                                <!-- <div class="form-group ab-0 ab-0">
                                ID Jabatan

@@ -7,7 +7,7 @@ $(document).on("click", "#btn-edit", function () {
   $(".modal-body #no_hp").val($(this).data("no_hp"));
 });
 
-// Button Hapus Data pegawai
+// Button Hapus Data role
 $(document).on("click", "#btn-hapus", function () {
   $(".modal-body #id_pegawai").val($(this).data("id_pegawai"));
 });

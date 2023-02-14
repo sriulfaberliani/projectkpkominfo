@@ -133,6 +133,7 @@
                                  <label for="id_jenis_surat"></label>
                                  <input readonly type="text" name="id_jenis_surat" id="id_jenis_surat" class="form-control"  >
                                </div> -->
+                               <input type="hidden" name="id_jenis_surat" id="id_jenis_surat">
                                <div class="form-group ab-0 ab-0">
                                Jenis Surat
                                  <label for="nama_jenis_surat"></label>

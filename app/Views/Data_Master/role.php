@@ -134,6 +134,7 @@
                                  <label for="id_role"></label>
                                  <input readonly type="text" name="id_role" id="id_role" class="form-control" value="<?= $row['id_role'] ?>" >
                                </div> -->
+                               <input hidden type="text" name="id_role" id="id_role" class="form-control"   >
                         
                                
                                <div class="form-group ab-0 ab-0">

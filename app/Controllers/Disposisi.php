@@ -40,6 +40,7 @@ class Disposisi extends BaseController
         'datajenissurat' => $this->jenissurat->getAllData(),
         'datasifat' => $this->sifat->getAllData(),
         'datastatus' => $this->status->getAllData(),
+   
       ];
       $data['disposisi_sm'] = $this->model->get_disposisi_by_id_user(session()->get('id_user'));
       echo view('templates/v_header', $data);
@@ -58,6 +59,7 @@ class Disposisi extends BaseController
         'datauser' => $this->user->getAllData(),
         'datasifat' => $this->sifat->getAllData(),
         'disposisi' => $this->model->getAllData(),
+        'userjabatan' => $this->user->getUserJabatan()
         
         
       ];
@@ -109,7 +111,7 @@ class Disposisi extends BaseController
         $success = $this->model->tambah($data, $id_suratmasuk);
         if ($success){
             session()->setFlashdata('message', ' ditambahkan');
-            return redirect()->back();
+            return redirect()->back()->with('foo', 'message');
         }
     }
     

@@ -169,7 +169,7 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajabatanpegawai/ubah'); ?>" method="post">
-                               <input type="hidden" name="id_jabatan_pegawai" id="id_jabatan_pegawai">
+                               <input type="text" name="id_jabatan_pegawai" id="id_jabatan_pegawai">
                                  <input  type="hidden" name="id_pegawai" id="id_pegawai" class="form-control" value="<?= $row['id_pegawai'] ?>" >
                                 <div class="form-group ab-0">
                                  <label>NIP</label>

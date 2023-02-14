@@ -128,9 +128,8 @@
                                <form action="<?= base_url('datastatus/ubah'); ?>" method="post"> 
                                
                                <div class="form-group ab-0 ab-0">
-                               ID Status
-                                 <label for="id_status"></label>
-                                 <input readonly type="text" name="id_status" id="id_status" class="form-control" value="<?= $row['id_status'] ?>" >
+                             
+                                 <input readonly type="hidden" name="id_status" id="id_status" class="form-control" value="<?= $row['id_status'] ?>" >
                                </div>
                         
                                
