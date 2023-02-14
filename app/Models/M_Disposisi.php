@@ -38,6 +38,19 @@ class M_Disposisi extends Model{
             ->where('tujuan_dispo_sm', $id_user)
             ->get()->getResultArray();
     }
+
+    public function get_disposisi_by_id_suratmasuk($id_suratmasuk)
+    {
+        return $this->db->table('disposisi_sm')
+        ->join('suratmasuk', 'suratmasuk.id_suratmasuk = disposisi_sm.id_suratmasuk')
+        ->join('pegawai', 'pegawai.id_pegawai = disposisi_sm.id_pegawai')
+        ->join('jenissurat', 'jenissurat.id_jenis_surat = suratmasuk.id_jenis_surat')
+        ->join('user', 'user.id_user = suratmasuk.id_user')
+        ->join('status', 'status.id_status = disposisi_sm.id_status')
+        ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sm.id_sifat')
+            ->where('suratmasuk.id_suratmasuk', $id_suratmasuk)
+            ->get()->getResultArray();
+    }
     
    
 

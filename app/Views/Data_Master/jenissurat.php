@@ -32,7 +32,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID Jenis Surat</th>
+                        <th>No</th>
                         <th>Jenis Surat</th>
                         <th>Action</th>
                         
@@ -43,28 +43,28 @@
                                     <?php  foreach($datajenissurat as $row) :?>
                                    <tr>
                                    
-                                       <td><?= $row['id_jenis_surat']; ?></td>
+                                   <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['nama_jenis_surat']; ?></td>
                                       
                                       
                                        <td>
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
-                                      id="btn-edit" class="btn btn-success btn-icon-split"
+                                      id="btn-edit" class="btn btn-success"
                                        data-id_jenis_surat="<?= $row['id_jenis_surat']; ?>" data-nama_jenis_surat="<?= $row['nama_jenis_surat']; ?>" >
-                                    <span class="icon text-white-50">
+                                   
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
+                               
                                  </button>
 
 
-                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_jenis_surat="<?= $row['id_jenis_surat']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                        <button type="button" class="btn btn-danger" data-id_jenis_surat="<?= $row['id_jenis_surat']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
                                         >
-                                    <span class="icon text-white-50">
+                                   
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> 
+                                
                                        </button>
                                        </td>
                                       
@@ -128,11 +128,11 @@
                            <div class="modal-body">
                                <form action="<?= base_url('datajenissurat/ubah'); ?>" method="post"> 
                                
-                               <div class="form-group ab-0 ab-0">
+                               <!-- <div class="form-group ab-0 ab-0">
                                ID Jenis Surat
                                  <label for="id_jenis_surat"></label>
                                  <input readonly type="text" name="id_jenis_surat" id="id_jenis_surat" class="form-control"  >
-                               </div>
+                               </div> -->
                                <div class="form-group ab-0 ab-0">
                                Jenis Surat
                                  <label for="nama_jenis_surat"></label>

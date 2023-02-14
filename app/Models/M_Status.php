@@ -15,5 +15,20 @@ class M_Status extends Model{
         
     }
 
+    public function tambah($data)
+    {
+        return $this->db->table('status')->insert($data);
+    }
+
+    public function ubah($data, $id_status)
+    {
+        return $this->db->table('status')->update($data, ['id_status' => $id_status]);
+    }
+
+    public function hapus($id_status)
+    {
+        return $this->db->table('status')->delete(['id_status' => $id_status]);
+    }
+
    
 }

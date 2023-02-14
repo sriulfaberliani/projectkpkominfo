@@ -32,7 +32,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID Jabatan</th>
+                        <th>No</th>
                     
                         <th>Nama Jabatan</th>
                         <th>Action</th>
@@ -44,28 +44,28 @@
                                     <?php  foreach($datajabatan as $row) :?>
                                    <tr>
                                    
-                                       <td><?= $row['id_jabatan']; ?></td>
+                                   <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['nama_jabatan']; ?></td>
                                       
                                       
                                        <td>
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
-                                      id="btn-edit" class="btn btn-success btn-icon-split"
+                                      id="btn-edit" class="btn btn-success"
                                        data-id_jabatan="<?= $row['id_jabatan']; ?>" data-nama_jabatan="<?= $row['nama_jabatan']; ?>" >
-                                    <span class="icon text-white-50">
+                                    
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
+                              
                                  </button>
 
 
-                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_jabatan="<?= $row['id_jabatan']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                        <button type="button" class="btn btn-danger" data-id_jabatan="<?= $row['id_jabatan']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
                                         >
-                                    <span class="icon text-white-50">
+                                    
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> 
+                                
                                        </button>
                                        </td>
                                       
@@ -129,11 +129,11 @@
                            <div class="modal-body">
                                <form action="<?= base_url('datajabatan/ubah'); ?>" method="post"> 
                                
-                               <div class="form-group ab-0 ab-0">
+                               <!-- <div class="form-group ab-0 ab-0">
                                ID Jabatan
                                  <label for="id_jabatan"></label>
                                  <input readonly type="text" name="id_jabatan" id="id_jabatan" class="form-control" value="<?= $row['id_jabatan'] ?>" >
-                               </div>
+                               </div> -->
                         
                                
                                <div class="form-group ab-0 ab-0">

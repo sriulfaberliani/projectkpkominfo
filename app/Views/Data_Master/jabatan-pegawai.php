@@ -32,6 +32,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                    <th>No</th>
                         <th>Nama</th>
                         <th>NIP</th>
                         <th>Jabatan</th>
@@ -42,6 +43,7 @@
                 <?php $i=1; ?>
                                     <?php  foreach($jabatanPegawai as $row) :?>
                                    <tr>
+                                   <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['nama_pegawai']; ?></td>
                                        <td><?= $row['nip']; ?></td>
                                        <td><?= $row['nama_jabatan']; ?></td>
@@ -49,20 +51,20 @@
                                        <td>
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
-                                       id="btn-edit" class="btn btn-success btn-icon-split"
+                                       id="btn-edit" class="btn btn-success"
                                        data-id_jabatan_pegawai="<?= $row['id_jabatan_pegawai']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-id_pegawai="<?= $row['id_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-nama_jabatan="<?= $row['nama_jabatan']; ?>" >
-                                    <span class="icon text-white-50">
+                                   
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
+                                
                                  </button>
 
 
-                                <button type="button" class="btn btn-danger btn-icon-split" data-id_jabatan_pegawai="<?= $row['id_jabatan_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
-                                    <span class="icon text-white-50">
+                                <button type="button" class="btn btn-danger " data-id_jabatan_pegawai="<?= $row['id_jabatan_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
+                             
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> <i data-id_jabatan_pegawai="<?= $row['id_jabatan_pegawai']; ?>"> 
+                                <i data-id_jabatan_pegawai="<?= $row['id_jabatan_pegawai']; ?>"> 
                                        </button>
                                        </td>
                                       

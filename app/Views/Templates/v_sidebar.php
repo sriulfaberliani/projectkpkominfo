@@ -45,7 +45,8 @@
                         <a class="collapse-item" href="<?= base_url('datarole'); ?>">Data Role</a>
                         <a class="collapse-item" href="<?= base_url('datauser'); ?>">Data User</a>
                         <a class="collapse-item" href="<?= base_url('datajenissurat'); ?>">Data Jenis Surat</a>
-        
+                        <a class="collapse-item" href="<?= base_url('datasifat'); ?>">Data Sifat Disposisi</a>
+                        <a class="collapse-item" href="<?= base_url('datastatus'); ?>">Data Status Disposisi</a>
                     </div>
                 </div>
             </li>
@@ -70,9 +71,9 @@
                 <div id="collapsePages" class="collapse " aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Transaksi Surat</h6>
+                        <h6 class="collapse-header">Agenda Surat</h6>
                         <a class="collapse-item" href="<?= base_url('suratmasuk'); ?>">Surat Masuk</a>
-                        <a class="collapse-item" href="register.html">Surat Keluar</a>
+                        <a class="collapse-item" href="<?= base_url('DisposisiSk/index_agenda'); ?>">Surat Keluar</a>
                     </div>
                 </div>
             </li>

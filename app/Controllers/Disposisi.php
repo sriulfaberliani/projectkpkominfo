@@ -64,6 +64,7 @@ class Disposisi extends BaseController
       $data['datastatus'] = $this->status->getAllData();
       
       $data['detail'] = $detail;
+      $data['disposisi_by_id_suratmasuk'] = $this->model->get_disposisi_by_id_suratmasuk($id_suratmasuk);
             echo view('templates/v_header', $data);
             echo view('templates/v_sidebar');
             echo view('templates/v_topbar');
@@ -91,7 +92,7 @@ class Disposisi extends BaseController
             '11' => 'November',
             '12' => 'Desember',
         ];
-        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
+        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y'). ' ' .date('H:i:s');
         $id_suratmasuk = $this->request->getPost('id_suratmasuk');  
         $data = [
             'id_disposisi_sm' => $this->request->getPost('id_disposisi_sm'),

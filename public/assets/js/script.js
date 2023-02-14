@@ -110,6 +110,38 @@ $(document).on("click", "#btn-dispo", function () {
 
 // Button btn-dispo
 
+// Button Edit Data Sifat
+$(document).on("click", "#btn-edit", function () {
+  $(".modal-body #id_sifat").val($(this).data("id_sifat"));
+  $(".modal-body #nama_sifat").val($(this).data("nama_sifat"));
+});
+
+// Button Hapus Data sifat
+$(document).on("click", "#btn-hapus", function () {
+  $(".modal-body #id_sifat").val($(this).data("id_sifat"));
+});
+
+// Button Edit Data role
+$(document).on("click", "#btn-edit", function () {
+  $(".modal-body #id_role").val($(this).data("id_role"));
+  $(".modal-body #level").val($(this).data("level"));
+});
+
+// Button Hapus Data role
+$(document).on("click", "#btn-hapus", function () {
+  $(".modal-body #id_role").val($(this).data("id_role"));
+});
+
+// Button Edit Data status
+$(document).on("click", "#btn-edit", function () {
+  $(".modal-body #id_status").val($(this).data("id_status"));
+  $(".modal-body #status").val($(this).data("status"));
+});
+
+// Button Hapus Data status
+$(document).on("click", "#btn-hapus", function () {
+  $(".modal-body #id_status").val($(this).data("id_status"));
+});
 
 
 

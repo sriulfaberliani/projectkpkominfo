@@ -29,7 +29,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID Pegawai</th>
+                        <th>No</th>
                     
                         <th>Nama</th>
                         <th>NIP</th>
@@ -43,7 +43,7 @@
                                     <?php  foreach($datapegawai as $row) :?>
                                    <tr>
                                    
-                                       <td><?= $row['id_pegawai']; ?></td>
+                                   <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['nama_pegawai']; ?></td>
                                        <td><?= $row['nip']; ?></td>
                                        <td><?= $row['alamat']; ?></td>
@@ -52,21 +52,21 @@
                                        <td>
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
-                                      id="btn-edit" class="btn btn-success btn-icon-split"
+                                      id="btn-edit" class="btn btn-success "
                                        data-id_pegawai="<?= $row['id_pegawai']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-nip="<?= $row['nip']; ?>" data-alamat="<?= $row['alamat']; ?>" data-no_hp="<?= $row['no_hp']; ?>" >
-                                    <span class="icon text-white-50">
+                                    
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
+                                
                                  </button>
 
 
-                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_pegawai="<?= $row['id_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                        <button type="button" class="btn btn-danger " data-id_pegawai="<?= $row['id_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
                                         >
-                                    <span class="icon text-white-50">
+                                    
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> 
+                               
                                        </button>
                                        </td>
                                       
@@ -142,11 +142,11 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datapegawai/ubah'); ?>" method="post"> 
-                               <div class="form-group ab-0 ab-0">
+                               <!-- <div class="form-group ab-0 ab-0">
                                 ID PEGAWAI
                                  <label for="id_pegawai"></label>
                                  <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" value="<?= $row['id_pegawai'] ?>" required>
-                               </div>
+                               </div> -->
                         
                                
                                <div class="form-group ab-0 ab-0">

@@ -8,7 +8,6 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 <h4 class="text">
-                <?= $title; ?>
                                 </h5>
 
                     <!-- Sidebar Toggle (Topbar) -->

@@ -20,7 +20,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID User</th>
+                        <th>No</th>
                         <th>Nama Pegawai</th>
                         <th>Level</th>
                         <th>Username</th>
@@ -33,7 +33,7 @@
                                     <?php  foreach($datauser as $row) :?>
                                    <tr>
                                      
-                                       <td><?= $row['id_user']; ?></td>
+                                      <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['nama_pegawai']; ?></td>
                                        <td><?= $row['level']; ?></td>
                                        <td><?= $row['username']; ?></td>
@@ -42,19 +42,19 @@
                                        <td>
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
-                                       id="btn-edit" class="btn btn-success btn-icon-split"
+                                       id="btn-edit" class="btn btn-success "
                                        data-id_user="<?= $row['id_user']; ?>" data-id_pegawai="<?= $row['id_pegawai']; ?>" data-nama_pegawai="<?= $row['nama_pegawai']; ?>" data-id_role="<?= $row['id_role']; ?>" data-level="<?= $row['level']; ?>" data-username="<?= $row['username']; ?>" data-password="<?= $row['password']; ?>" >
-                                    <span class="icon text-white-50">
+                                    
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
+                                
                                  </button>
 
-                                       <button type="button" class="btn btn-danger btn-icon-split" data-id_user="<?= $row['id_user']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
-                                    <span class="icon text-white-50">
+                                       <button type="button" class="btn btn-danger " data-id_user="<?= $row['id_user']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
+                                    
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> <i data-id_user="<?= $row['id_user']; ?>"> 
+                                 <i data-id_user="<?= $row['id_user']; ?>"> 
                                        </button>
                                        
                                        </td>
@@ -175,11 +175,11 @@
                                  <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
                                </div> -->
                                <!-- <label for="id_user"></label> -->
-                               <input type="hidden" name="id_user" id="id_user">
+                               <!-- <input type="hidden" name="id_user" id="id_user">
                                <div class="form-group ab-0 ab-0">
                                  <label for="id_user"></label>
                                  <input readonly type="text" name="id_user" id="id_user" class="form-control" placeholder="Masukkan Id user" value="<?= $row ['id_user'] ?>" >
-                               </div>
+                               </div> -->
 
                                  <input  type="hidden" name="id_pegawai" id="id_pegawai" class="form-control"  >
                                 

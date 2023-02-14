@@ -119,6 +119,7 @@ class SuratMasuk extends BaseController
 
     public function ubah()
     {
+        
         $id_suratmasuk = $this->request->getPost('id_suratmasuk');
         $file_surat = $this->request->getFile('file_surat');
         $nama_file = $file_surat->getName();

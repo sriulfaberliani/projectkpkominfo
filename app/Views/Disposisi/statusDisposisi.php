@@ -6,6 +6,16 @@
 
 <div class="card shadow mb-4">
 
+<div class="card-header py-3">
+<?php if(session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+<?php endif; ?>
+</div>
+
     <div class="card-body">
     <p class="h5">Detail Surat Masuk</p>  
      <div class="card-body">
@@ -35,28 +45,70 @@
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
                                 </span>
-                                <span class="text">Catatan Disposisi</span>
+                                <span class="text">Disposisi</span>
                </button>
               </th>
           <td>    </td>  
         <tr>
-       
-
-
-
+</table>
      </div>
-               
-               
+     
    </div>
-
 </div>
 <!-- /.container-fluid -->
 
-
-
+</div>
 
 </div>
 <!-- End of Main Content -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12"><p class="h3 mb-2 text-gray-800">Timeline Disposisi</p>
+        <div class="card shadow mb-4">
+            <div class="card">
+
+                <div class="card-body">
+                <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal Disposisi</th>
+                        <th>Pengirim</th>
+                        <th>Catatan Disposisi</th>
+                        <th>Status Disposisi</th>
+                        
+                    </tr>
+                </thead> 
+                <tbody>
+                <?php $i=1; ?>
+                                    <?php  foreach($disposisi_by_id_suratmasuk as $row) :?>
+                                   <tr>
+                                     
+                                    <td scope="row"><?= $i; ?></td>  
+                                    <td><?= $row['tanggal_disposisi_sm']; ?></td>   
+                                    <td><?= $row['nama_pegawai']; ?></td>
+                                    <td><?= $row['catatan_sm']; ?></td>
+                                    <td><?= $row['status']; ?></td>
+                                      
+
+                                      
+                                   </tr>
+                                   <?php $i++; ?>
+                                   <?php  endforeach;?>
+                                    
+                                      
+                                  
+                </tbody>
+            </table>
+        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal Tambah Disposisi-->
 <div class="modal fade" id="modalTambahDisposisi" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

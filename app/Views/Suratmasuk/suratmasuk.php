@@ -33,7 +33,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID Surat Masuk</th>
+                        <th>No</th>
                         <th>Jenis Surat</th>
                         <th>Nomor Surat</th>
                         <th>Tanggal Masuk</th>
@@ -48,7 +48,7 @@
                                     <?php  foreach($suratmasuk as $row) :?>
                                    <tr>
                                      
-                                       <td><?= $row['id_suratmasuk']; ?></td>
+                                       <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['nama_jenis_surat']; ?></td>
                                        <td><?= $row['no_suratmasuk']; ?></td>
                                        <td><?= $row['tgl_suratmasuk']; ?></td>
@@ -63,43 +63,31 @@
                                         
                                         <?php
                                                 if (session()->get('id_role') == '6') { ?>
+                                          <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" id="btn-dispo">
+                               
+                               <i class="fas fa-share"></i>
+                          </span>
+                               
+                          </button>
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
-                                       id="btn-edit" class="btn btn-success btn-icon-split"
+                                       id="btn-edit" class="btn btn-success"
                                        data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" 
                                        data-nama_jenis_surat="<?= $row['nama_jenis_surat']; ?>" 
                                        data-no_suratmasuk="<?= $row['no_suratmasuk']; ?>" 
                                        data-tgl_suratmasuk="<?= $row['tgl_suratmasuk']; ?>" 
                                        data-agenda_suratmasuk="<?= $row['agenda_suratmasuk']; ?>"  
                                        data-file_surat="<?= $row['file_surat'];?>">
-                                    <span class="icon text-white-50">
+                                  
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
                                  </button>
-
-                                       <button type="button" class="btn btn-danger btn-icon-split" data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
-                                    <span class="icon text-white-50">
+                                       <button type="button" class="btn btn-danger" data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> <i data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>"> 
+                                <i data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>"> 
                                        </button>
 
-                                        <?php } ?>
-                                        
-                                        <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" id="btn-dispo">
-                                <span class="icon text-white-50">
-                                      <i class="fas fa-share"></i>
-                                 </span>
-                                       <span class="text">Teruskan</span>
-                                 </button>
-
-                                       <button type="button" class="btn btn-warning btn-icon-split" data-id_user="<?= $row['id_user']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus">
-                                    <span class="icon text-white-50">
-                                    <i class="fas fa-print"></i>
-                                </span>
-                                <span class="text">Print</span> <i data-id_user="<?= $row['id_user']; ?>"> 
-                                       </button>
-                                       
+                                        <?php } ?>                
                                        </td>
                                       
                                    </tr>
@@ -223,6 +211,11 @@
                                  <input type="text" name="no_suratmasuk" id="no_suratmasuk" class="form-control" placeholder="Masukkan Nomor Surat" required >
                                </div>
                                <div class="form-group ab-0">
+                                 <label for="tgl_suratmasuk"></label>
+                                 Tanggal Surat Masuk
+                                 <input readonly type="text" name="tgl_suratmasuk" id="tgl_suratmasuk" class="form-control" placeholder="Tanggal" required >
+                               </div>
+                               <div class="form-group ab-0">
                                  <label for="agenda_suratmasuk"></label>
                                  Ringkasan Surat
                                  <textarea name="agenda_suratmasuk" id="agenda_suratmasuk" rows="10" class="form-control" placeholder="Masukkan Ringkasan" required></textarea>
@@ -230,7 +223,8 @@
                                <div class="form-group ab-0">
                                  <label for="file_surat"></label>
                                     Ganti File Surat
-                                 <input type="file" name="file_surat" id="file_surat" class="form-control" placeholder="Masukkan File Surat" required>
+                                    <a href="<?= base_url('public/filesurat/'. $row['file_surat'])?>" target="_blank">Lihat File Surat</a> 
+                                 <input type="file" name="file_surat" id="file_surat" class="form-control" placeholder="Masukkan File Surat"> required>
                                  <small class="text-danger">*File Surat Harus Berformat PDF</small>
                                </div>
                         

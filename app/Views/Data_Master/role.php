@@ -32,7 +32,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID Role</th>
+                        <th>No</th>
                     
                         <th>Level Role</th>
                         <th>Action</th>
@@ -44,28 +44,28 @@
                                     <?php  foreach($datarole as $row) :?>
                                    <tr>
                                    
-                                       <td><?= $row['id_role']; ?></td>
+                                   <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['level']; ?></td>
                                       
                                       
                                        <td>
 
                                        <button type="button"  data-toggle="modal" data-target="#modalUbah" 
-                                      id="btn-edit" class="btn btn-success btn-icon-split"
+                                      id="btn-edit" class="btn btn-success "
                                        data-id_role="<?= $row['id_role']; ?>" data-level="<?= $row['level']; ?>" >
-                                    <span class="icon text-white-50">
+                                    
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span class="text">Edit</span>
+                                
                                  </button>
 
 
-                                        <button type="button" class="btn btn-danger btn-icon-split" data-id_role="<?= $row['id_role']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                        <button type="button" class="btn btn-danger " data-id_role="<?= $row['id_role']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
                                         >
-                                    <span class="icon text-white-50">
+                                  
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span class="text">Hapus</span> 
+                             
                                        </button>
                                        </td>
                                       
@@ -129,11 +129,11 @@
                            <div class="modal-body">
                                <form action="<?= base_url('datarole/ubah'); ?>" method="post"> 
                                
-                               <div class="form-group ab-0 ab-0">
+                               <!-- <div class="form-group ab-0 ab-0">
                                ID Role
                                  <label for="id_role"></label>
                                  <input readonly type="text" name="id_role" id="id_role" class="form-control" value="<?= $row['id_role'] ?>" >
-                               </div>
+                               </div> -->
                         
                                
                                <div class="form-group ab-0 ab-0">

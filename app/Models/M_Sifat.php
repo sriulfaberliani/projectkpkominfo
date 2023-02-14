@@ -15,5 +15,20 @@ class M_Sifat extends Model{
         
     }
 
+    public function tambah($data)
+    {
+        return $this->db->table('sifat_dispo')->insert($data);
+    }
+
+    public function ubah($data, $id_sifat)
+    {
+        return $this->db->table('sifat_dispo')->update($data, ['id_sifat' => $id_sifat]);
+    }
+
+    public function hapus($id_sifat)
+    {
+        return $this->db->table('sifat_dispo')->delete(['id_sifat' => $id_sifat]);
+    }
+
    
 }
