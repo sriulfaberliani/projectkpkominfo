@@ -66,6 +66,10 @@ class M_Disposisi_sk extends Model{
             ->get()->getResultArray();
     }
 
+    public function getJumlahDisposisiSk(){
+        return $this->db->table('disposisi_sk')->countAll();
+    }
+
 
    
 

@@ -8,7 +8,22 @@
 <div class="card shadow mb-4">
 
     <div class="card-header py-3">
-        <?php if(session()->getFlashdata('message')) : ?>
+    <?php 
+        $errors = session()->getFlashdata('errors');
+        if(!empty($errors)){ ?>
+        <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="alert-heading">Terjadi Kesalahan!</h5>
+            <ul>
+                <?php foreach ($errors as $key => $value) { ?>
+                <li><?= esc($value) ?></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php } 
+        if(session()->getFlashdata('message')) : ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -94,11 +109,8 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datastatus/tambah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
-                               </div> -->
                                <div class="form-group ab-0 ab-0">
+                                Status Disposisi
                                  <label for="status"></label>
                                  <input type="text" name="status" id="status" class="form-control" placeholder="Masukkan Status Disposisi" >
                                </div>
@@ -126,15 +138,8 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datastatus/ubah'); ?>" method="post"> 
-                               
-                               <div class="form-group ab-0 ab-0">
-                               ID Status
-                                 <label for="id_status"></label>
-                                 <input readonly type="text" name="id_status" id="id_status" class="form-control" value="<?= $row['id_status'] ?>" >
-                               </div>
-                        
-                               
-                               <div class="form-group ab-0 ab-0">
+                                 <input hidden type="text" name="id_status" id="id_status" class="form-control" value="<?= $row['id_status'] ?>" >
+                                 <div class="form-group ab-0 ab-0">
                                Status Disposisi
                                  <label for="status"></label>
                                  <input type="text" name="status" id="status" class="form-control" placeholder="Masukkan Nama Status Baru" value="<?= $row['status'] ?>" >

@@ -17,7 +17,7 @@ class DataSifat extends BaseController
     public function index()
     {
 
-        if (session()->get('id_role') == '1') {
+        if (session()->get('id_role') == '1' || session()->get('id_role') == '4') {
             redirect()->to(base_url('datasifat'));
         } else {
             return redirect()->to(base_url('home'));
@@ -37,39 +37,53 @@ class DataSifat extends BaseController
 
     public function tambah()
     {
-        $data = [
-            // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'nama_sifat' => $this->request->getPost('nama_sifat')
-        ];
-           
-        //insert data
-        $success = $this->model->tambah($data);
-        if ($success){
+        if($this->validate([
+            'nama_sifat' => [
+                'label' => 'Sifat',
+                'rules' => 'required|is_unique[sifat_dispo.nama_sifat]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ])) {
+            $data = [
+                'nama_sifat' => $this->request->getPost('nama_sifat')
+            ];
+            $this->model->tambah($data);
             session()->setFlashdata('message', ' ditambahkan');
             return redirect()->to(base_url('datasifat'));
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('datasifat'));
         }
-
-
+        
     }
 
     public function ubah()
     {
         $id_sifat = $this->request->getPost('id_sifat');
-        
-        $data = [
-            'id_sifat' => $this->request->getPost('id_sifat'),
-            'nama_sifat' => $this->request->getPost('nama_sifat')
-            
-        ];
-           
-        //update  data
-        $success = $this->model->ubah($data, $id_sifat);
-        if ($success){
+        if($this->validate([
+            'nama_sifat' => [
+                'label' => 'Sifat Disposisi',
+                'rules' => 'required|is_unique[sifat_dispo.nama_sifat,id_sifat,'.$id_sifat.']',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ])) {
+            $data = [
+                'nama_sifat' => $this->request->getPost('nama_sifat')
+            ];
+            $this->model->ubah($data, $id_sifat);
             session()->setFlashdata('message', ' diubah');
             return redirect()->to(base_url('datasifat'));
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('datasifat'));
         }
-
-
+        
     }
 
       //Hapus data

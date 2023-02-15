@@ -17,7 +17,7 @@ class DataStatus extends BaseController
     public function index()
     {
 
-        if (session()->get('id_role') == '1') {
+        if (session()->get('id_role') == '1' || session()->get('id_role') == '4') {
             redirect()->to(base_url('datastatus'));
         } else {
             return redirect()->to(base_url('home'));
@@ -37,39 +37,53 @@ class DataStatus extends BaseController
 
     public function tambah()
     {
-        $data = [
-            // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'status' => $this->request->getPost('status')
-        ];
-           
-        //insert data
-        $success = $this->model->tambah($data);
-        if ($success){
+        if($this->validate([
+            'status' => [
+                'label' => 'Status',
+                'rules' => 'required|is_unique[status.status]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ])) {
+            $data = [
+                'status' => $this->request->getPost('status')
+            ];
+            $this->model->tambah($data);
             session()->setFlashdata('message', ' ditambahkan');
             return redirect()->to(base_url('datastatus'));
+        } else {
+                session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+                return redirect()->to(base_url('datastatus'));
         }
-
-
+       
     }
 
     public function ubah()
     {
         $id_status = $this->request->getPost('id_status');
-        
-        $data = [
-            'id_status' => $this->request->getPost('id_status'),
-            'status' => $this->request->getPost('status')
-            
-        ];
-           
-        //update  data
-        $success = $this->model->ubah($data, $id_status);
-        if ($success){
+        if($this->validate([
+            'status' => [
+                'label' => 'Status',
+                'rules' => 'required|is_unique[status.status,id_status,{id_status}]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+        ])) {
+            $data = [
+                'status' => $this->request->getPost('status')
+            ];
+            $this->model->ubah($data, $id_status);
             session()->setFlashdata('message', ' diubah');
             return redirect()->to(base_url('datastatus'));
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('datastatus'));
         }
-
-
+       
     }
 
       //Hapus data
