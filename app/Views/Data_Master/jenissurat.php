@@ -138,7 +138,12 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajenissurat/ubah'); ?>" method="post"> 
+                               
+                               <div class="form-group ab-0 ab-0">
+                               ID Jenis Surat
+                                 <label for="id_jenis_surat"></label>
                                  <input hidden type="text" name="id_jenis_surat" id="id_jenis_surat" class="form-control"  >
+                               </div>
                                <div class="form-group ab-0 ab-0">
                                Jenis Surat
                                  <label for="nama_jenis_surat"></label>

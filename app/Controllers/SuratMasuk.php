@@ -42,6 +42,7 @@ class SuratMasuk extends BaseController
             'datajenissurat' => $this->jenissurat->getAllData(),
             'datasifat' => $this->sifat->getAllData(),
             'datastatus' => $this->status->getAllData(),
+            'userjabatan' => $this->user->getUserJabatan(),
         ];
 
         echo view('templates/v_header', $data);

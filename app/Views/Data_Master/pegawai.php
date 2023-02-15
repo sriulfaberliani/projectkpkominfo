@@ -61,12 +61,12 @@
                                  </button>
 
 
-                                        <button type="button" class="btn btn-danger " data-id_pegawai="<?= $row['id_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
+                                 <button type="button" class="btn btn-danger " data-id_pegawai="<?= $row['id_pegawai']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
                                         >
-                                    
+                                  
                                     <i class="fas fa-trash"></i>
                                 </span>
-                               
+                             
                                        </button>
                                        </td>
                                       
@@ -142,6 +142,7 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datapegawai/ubah'); ?>" method="post"> 
+                               <input hidden type="text" name="id_pegawai" id="id_pegawai" class="form-control"   >
                                <!-- <div class="form-group ab-0 ab-0">
                                 ID PEGAWAI
                                  <label for="id_pegawai"></label>
@@ -197,3 +198,4 @@
     </div>
   </div>
 </div>
+

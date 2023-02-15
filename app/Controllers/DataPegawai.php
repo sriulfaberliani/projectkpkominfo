@@ -79,15 +79,15 @@ class DataPegawai extends BaseController
 
     }
 
-      //Hapus data
-      public function hapus()
-      {
-        $id_pegawai = $this->request->getPost('id_pegawai');  
+     //Hapus data
+     public function hapus()
+     {
+       $id_pegawai = $this->request->getPost('id_pegawai');  
 
-          $success = $this->model->hapus($id_pegawai);
-          if ($success){
-              session()->setFlashdata('message', ' dihapus');
-              return redirect()->to(base_url('datapegawai'));
-          }
-      }
+         $success = $this->model->hapus($id_pegawai);
+         if ($success){
+             session()->setFlashdata('message', ' dihapus');
+             return redirect()->to(base_url('datapegawai'));
+         }
+     }
 }

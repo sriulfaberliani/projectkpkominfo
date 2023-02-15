@@ -138,8 +138,15 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datasifat/ubah'); ?>" method="post"> 
+                               
+                               <div class="form-group ab-0 ab-0">
+                               ID Sifat
+                                 <label for="id_sifat"></label>
                                  <input hidden type="text" name="id_sifat" id="id_sifat" class="form-control" value="<?= $row['id_sifat'] ?>" >
-                                 <div class="form-group ab-0 ab-0">
+                               </div>
+                        
+                               
+                               <div class="form-group ab-0 ab-0">
                                Sifat Disposisi
                                  <label for="nama_sifat"></label>
                                  <input type="text" name="nama_sifat" id="nama_sifat" class="form-control" placeholder="Masukkan Nama Sifat Baru" value="<?= $row['nama_sifat'] ?>" >
@@ -163,7 +170,7 @@
       <form action="/datasifat/hapus" method="post">
         <div class="modal-body">
           Apakah anda yakin ingin menghapus data ini?
-          <input type="hidden" id="id_sifat" name="id_sifat">
+          <input type="text" id="id_sifat" name="id_sifat">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

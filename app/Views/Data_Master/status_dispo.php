@@ -138,8 +138,15 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datastatus/ubah'); ?>" method="post"> 
+                               
+                               <div class="form-group ab-0 ab-0">
+                               ID Status
+                                 <label for="id_status"></label>
                                  <input hidden type="text" name="id_status" id="id_status" class="form-control" value="<?= $row['id_status'] ?>" >
-                                 <div class="form-group ab-0 ab-0">
+                               </div>
+                        
+                               
+                               <div class="form-group ab-0 ab-0">
                                Status Disposisi
                                  <label for="status"></label>
                                  <input type="text" name="status" id="status" class="form-control" placeholder="Masukkan Nama Status Baru" value="<?= $row['status'] ?>" >

@@ -180,6 +180,8 @@
                                  <label for="id_user"></label>
                                  <input readonly type="text" name="id_user" id="id_user" class="form-control" placeholder="Masukkan Id user" value="<?= $row ['id_user'] ?>" >
                                </div> -->
+                               <input hidden type="text" name="id_user" id="id_user" class="form-control"   >
+                        
 
                                  <input  type="hidden" name="id_pegawai" id="id_pegawai" class="form-control"  >
                                 

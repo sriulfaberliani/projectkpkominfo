@@ -122,7 +122,7 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('Disposisi/teruskan'); ?>" method="post" enctype="multipart/form-data"> 
-                                 <input  type="text" name="id_suratmasuk" id="id_suratmasuk" class="form-control"   >
+                                 <!-- <input  type="text" name="id_suratmasuk" id="id_suratmasuk" class="form-control"   > -->
                               <div class="form-group ab-0">
                               <label for="id_status"></label>
                                     Status Surat
@@ -153,8 +153,9 @@
                                  Tujuan
                                  <select name="tujuan_dispo_sm" id="tujuan_dispo_sm" class="form-control" >
                                     <option value="">Tujuan Disposisi</option>
-                                    <?php foreach($datauser as $key => $value) : ?>
-                                    <option value="<?= $value['id_user']; ?>"><?= $value['nama_pegawai']; ?></option>
+                                    <?php foreach($userjabatan as $key => $value) : ?>
+                                    <option value="<?= $value['id_user']; ?>">
+                                    <?= $value['nama_jabatan']." - ".$value['nama_pegawai']; ?></option>
                                   <?php endforeach; ?>
                                     </select>
                                </div>
