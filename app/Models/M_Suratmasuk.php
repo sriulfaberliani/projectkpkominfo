@@ -42,5 +42,10 @@ class M_Suratmasuk extends Model{
     {
         return $this->where(['id_suratmasuk' => $id])->first();
     }
+
+    public function getJumlahSuratmasuk()
+    {
+        return $this->db->table('suratmasuk')->countAll();
+    }
    
 }

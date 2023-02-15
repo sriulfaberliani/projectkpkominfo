@@ -40,7 +40,8 @@
           <td> <a href="<?= base_url('public/filesurat/'. $detail['file_surat'])?>" target="_blank"><i class="fa fa-file-pdf fa-2x label-danger"></i></a>
              </td>  
         <tr>
-
+        <?php
+                                                if (session()->get('id_role') != '5' || $get_last_disposisi['disposisi_sm.id_status'] != '2'   ) { ?>
         <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratmasuk="<?= $detail['id_suratmasuk']; ?>" id="btn-dispo">
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
@@ -49,6 +50,7 @@
                </button>
               </th>
           <td>    </td>  
+          <?php } ?>
         <tr>
 </table>
      </div>
@@ -123,7 +125,9 @@
                            <div class="modal-body">
                                <form action="<?= base_url('Disposisi/teruskan'); ?>" method="post" enctype="multipart/form-data"> 
                                  <!-- <input  type="text" name="id_suratmasuk" id="id_suratmasuk" class="form-control"   > -->
-                              <div class="form-group ab-0">
+                                 <input type="hidden" name="id_suratmasuk" id="id_suratmasuk" class="form-control"   >
+
+                                 <div class="form-group ab-0">
                               <label for="id_status"></label>
                                     Status Surat
                                  <select name="id_status" id="id_status" class="form-control" >

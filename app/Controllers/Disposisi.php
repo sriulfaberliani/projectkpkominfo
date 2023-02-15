@@ -43,6 +43,12 @@ class Disposisi extends BaseController
    
       ];
       $data['disposisi_sm'] = $this->model->get_disposisi_by_id_user(session()->get('id_user'));
+      //$data['sudahDispoByUser'] = $this->model->sudahDispoByUser(session()->get('id_user'));
+      $result = $this->model->sudahDispoByUser($id_user);
+      $data = $result['data'];
+      $status = $result['status'];
+      
+      
       echo view('templates/v_header', $data);
         echo view('templates/v_sidebar');
         echo view('templates/v_topbar');
@@ -59,14 +65,13 @@ class Disposisi extends BaseController
         'datauser' => $this->user->getAllData(),
         'datasifat' => $this->sifat->getAllData(),
         'disposisi' => $this->model->getAllData(),
-        'userjabatan' => $this->user->getUserJabatan()
-        
-        
+        'userjabatan' => $this->user->getUserJabatan(),
       ];
       $data['datastatus'] = $this->status->getAllData();
       
       $data['detail'] = $detail;
       $data['disposisi_by_id_suratmasuk'] = $this->model->get_disposisi_by_id_suratmasuk($id_suratmasuk);
+      // $data['last_disposisi'] = $this->model->getLastStatus($id_suratmasuk);
             echo view('templates/v_header', $data);
             echo view('templates/v_sidebar');
             echo view('templates/v_topbar');

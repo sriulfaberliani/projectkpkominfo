@@ -10,6 +10,7 @@
                 <div class="sidebar-brand-text mx-3" style="color:white; font-weight:bold; font-size:25px;">SISUME</div>
             </a>
 
+            
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -19,7 +20,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"  ></i>
                     <span style="color:white; font-weight:bold; font-size:16px;">Dashboard</span></a>
             </li>
-
+<?php if (session()->get('id_role') == '6' || session()->get('id_role') == '1' ) { ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -39,19 +40,27 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Data Master</h6>
+                   <?php if (session()->get('id_role') == '1' ) { ?>
                         <a class="collapse-item" href="<?= base_url('datapegawai'); ?>">Data Pegawai</a>
                         <a class="collapse-item" href="<?= base_url('datajabatan'); ?>">Data Jabatan</a>
                         <a class="collapse-item" href="DataJabatanPegawai">Data Jabatan - Pegawai</a>
                         <a class="collapse-item" href="<?= base_url('datarole'); ?>">Data Role</a>
                         <a class="collapse-item" href="<?= base_url('datauser'); ?>">Data User</a>
+                      <?php } ?>
+                      <?php if (session()->get('id_role') == '6' ) { ?>
                         <a class="collapse-item" href="<?= base_url('datajenissurat'); ?>">Data Jenis Surat</a>
                         <a class="collapse-item" href="<?= base_url('datasifat'); ?>">Data Sifat Disposisi</a>
                         <a class="collapse-item" href="<?= base_url('datastatus'); ?>">Data Status Disposisi</a>
+                   <?php } ?>
                     </div>
                 </div>
             </li>
-
+            <?php } ?>
             
+           
+
+
+            <?php if (session()->get('id_role') == '6' ) { ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -77,8 +86,9 @@
                     </div>
                 </div>
             </li>
+            <?php } ?>
             
-
+<?php if (session()->get('id_role') == '3' || session()->get('id_role') == '4' ) { ?>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesBuatSurat" aria-expanded="true"
@@ -94,8 +104,9 @@
                     </div>
                 </div>
             </li>
+            <?php } ?>
             
-
+<?php if (session()->get('id_role') != '1' ) { ?>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesDispo" aria-expanded="true"
@@ -108,10 +119,13 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Disposisi Surat</h6>
                         <a class="collapse-item" href="<?= base_url('disposisi'); ?>">Surat Masuk</a>
+                        <?php if (session()->get('id_role') != '5' ) { ?>
                         <a class="collapse-item" href="<?= base_url('DisposisiSk');?>">Surat Keluar</a>
+                    <?php } ?>
                     </div>
                 </div>
             </li>
+            <?php } ?>
           
 
     

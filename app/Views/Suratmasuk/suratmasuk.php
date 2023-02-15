@@ -8,25 +8,39 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 <div class="card-header py-3">
-        <?php if(session()->getFlashdata('message')) : ?>
+        <?php
+        $errors = session()->getFlashdata('errors');
+        if (!empty($errors)) { ?>
+            <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+              <h5 class="alert-heading">Terjadi Kesalahan</h5>    
+            <ul>
+                    <?php foreach ($errors as $key => $value) { ?>
+                        <li><?= esc($value) ?></li>
+                    <?php } ?>
+                </ul>
+            </div>
+            <?php } ?>
+
+            <?php if(session()->getFlashdata('message')) : ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
 <?php endif; ?>
-<?php
-        if (session()->get('id_role') == '6') { ?>
 </div>
+
     <div class="card-header py-3">
     <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambah">
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
                                 </span>
                                 <span class="text">Tambah Data</span>
-               </button>
+            </button>
     </div>
-    <?php } ?>
     
     <div class="card-body">
         <div class="table-responsive">
@@ -39,7 +53,7 @@
                         <th>Tanggal Masuk</th>
                         <th>Perihal</th>
                         <th>Ringkasan</th>
-                        <th>File Surat</th>
+                        
                         <th>Action</th>
                     </tr>
                 </thead> 
@@ -54,15 +68,11 @@
                                        <td><?= $row['tgl_suratmasuk']; ?></td>
                                        <td><?= $row['perihal_sm']; ?></td>
                                        <td><?= $row['agenda_suratmasuk']; ?></td>
-                                       <td>
-                                        <a href="<?= base_url('public/filesurat/'. $row['file_surat'])?>" target="_blank"><i class="fa fa-file-pdf fa-2x label-danger"></i></a>
-                                    </td>
-
-                                    
                                     <td>
                                         
                                         <?php
                                                 if (session()->get('id_role') == '6') { ?>
+                                                 <a class="btn btn-warning" href="<?= base_url('public/filesurat/'. $row['file_surat'])?>" target="_blank"><i class="fa fa-file-pdf" role="button"></i></a>
                                           <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratmasuk="<?= $row['id_suratmasuk']; ?>" id="btn-dispo">
                                
                                <i class="fas fa-share"></i>
@@ -75,6 +85,7 @@
                                        data-nama_jenis_surat="<?= $row['nama_jenis_surat']; ?>" 
                                        data-no_suratmasuk="<?= $row['no_suratmasuk']; ?>" 
                                        data-tgl_suratmasuk="<?= $row['tgl_suratmasuk']; ?>" 
+                                       data-perihal_sm="<?= $row['perihal_sm']; ?>" 
                                        data-agenda_suratmasuk="<?= $row['agenda_suratmasuk']; ?>"  
                                        data-file_surat="<?= $row['file_surat'];?>">
                                   
@@ -216,6 +227,11 @@
                                  <input readonly type="text" name="tgl_suratmasuk" id="tgl_suratmasuk" class="form-control" placeholder="Tanggal" required >
                                </div>
                                <div class="form-group ab-0">
+                                 <label for="perihal_sm"></label>
+                                 Perihal
+                                 <input type="text" name="perihal_sm" id="perihal_sm" class="form-control" placeholder="Perihal" required >
+                               </div>
+                               <div class="form-group ab-0">
                                  <label for="agenda_suratmasuk"></label>
                                  Ringkasan Surat
                                  <textarea name="agenda_suratmasuk" id="agenda_suratmasuk" rows="10" class="form-control" placeholder="Masukkan Ringkasan" required></textarea>
@@ -283,8 +299,9 @@
                                  Tujuan
                                  <select name="tujuan_dispo_sm" id="tujuan_dispo_sm" class="form-control" >
                                     <option value="">Tujuan Disposisi</option>
-                                    <?php foreach($datauser as $key => $value) : ?>
-                                    <option value="<?= $value['id_user']; ?>"><?= $value['nama_pegawai']; ?></option>
+                                    <?php foreach($userjabatan as $key => $value) : ?>
+                                    <option value="<?= $value['id_user']; ?>">
+                                    <?= $value['nama_jabatan']." - ".$value['nama_pegawai']; ?></option>
                                   <?php endforeach; ?>
                                     </select>
                                </div>

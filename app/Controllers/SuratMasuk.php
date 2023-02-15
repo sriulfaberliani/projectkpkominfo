@@ -29,7 +29,7 @@ class SuratMasuk extends BaseController
     public function index()
     {
 
-        if (session()->get('id_role') !='1') {
+        if (session()->get('id_role') =='6') {
             redirect()->to(base_url('suratmasuk'));
         } else {
             return redirect()->to(base_url('home'));
@@ -78,7 +78,46 @@ class SuratMasuk extends BaseController
 
     public function tambah()
     {
-        $file_surat = $this->request->getFile('file_surat');
+        if($this->validate([
+            'no_suratmasuk' => [
+                'label' => 'No Surat Masuk',
+                'rules' => 'required|max_length[50]|is_unique[suratmasuk.no_suratmasuk]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} Maksimal 50 karakter!!',
+                    'is_unique' => '{field} Sudah ada!!'
+                    ]
+                ],
+            'perihal_sm' => [
+                'label' => 'Perihal Surat Masuk',
+                'rules' => 'required|max_length[50]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} Maksimal 50 karakter!!'
+                    ]
+                ],
+             'agenda_suratmasuk' => [
+                'label' => 'Agenda Surat Masuk',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!'
+                    ]
+                ],
+            'file_surat' => [
+                'label' => 'File Surat',
+                'rules' => 'uploaded[file_surat]|max_size[file_surat,2048]|ext_in[file_surat,pdf]',
+                'errors' => [
+                    'uploaded' => '{field} Harus diisi!!',
+                    'max_size' => '{field} Maksimal 2 MB!!',
+                    'ext_in' => '{field} Harus berformat PDF!!'
+                    ]
+                ],
+
+                
+        ]))
+        {
+            //Jika valid
+            $file_surat = $this->request->getFile('file_surat');
         $nama_file = $file_surat->getName();
         date_default_timezone_set('Asia/Jakarta');
         $bulan = [
@@ -116,31 +155,80 @@ class SuratMasuk extends BaseController
             session()->setFlashdata('message', ' ditambahkan');
             return redirect()->to(base_url('suratmasuk'));
         }
+        } else {
+            //Jika tidak valid
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('suratmasuk'));
+        }
     }
 
     public function ubah()
     {
-        
-        $id_suratmasuk = $this->request->getPost('id_suratmasuk');
-        $file_surat = $this->request->getFile('file_surat');
-        $nama_file = $file_surat->getName();
-        $data = [
-            'id_suratmasuk' => $this->request->getPost('id_suratmasuk'),
-            'id_user' => session()->get('id_user'),
-            'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
-            'no_suratmasuk' => $this->request->getPost('no_suratmasuk'),
-            'tgl_suratmasuk' => $this->request->getPost('tgl_suratmasuk'),
-            'agenda_suratmasuk' => $this->request->getPost('agenda_suratmasuk'),
-            'file_surat' => $this->request->getPost('file_surat'),
-        ];
-        
-        //insert data
-        $file_surat->move('public/filesurat', $file_surat->getName());
-        $success = $this->model->ubah($data, $id_suratmasuk);
-        if ($success){
-            session()->setFlashdata('message', ' diubah');
+        if($this->validate([
+            'no_suratmasuk' => [
+                'label' => 'No Surat Masuk',
+                'rules' => 'required|max_length[50]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} Maksimal 50 karakter!!',
+                    'is_unique' => '{field} Sudah ada!!'
+                    ]
+                ],
+            'perihal_sm' => [
+                'label' => 'Perihal Surat Masuk',
+                'rules' => 'required|max_length[50]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} Maksimal 50 karakter!!'
+                    ]
+                ],
+             'agenda_suratmasuk' => [
+                'label' => 'Agenda Surat Masuk',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!'
+                    ]
+                ],
+            'file_surat' => [
+                'label' => 'File Surat',
+                'rules' => 'max_size[file_surat,2048]|ext_in[file_surat,pdf]',
+                'errors' => [
+                    'max_size' => '{field} Maksimal 2 MB!!',
+                    'ext_in' => '{field} Harus berformat PDF!!'
+                    ]
+                ],
+
+                
+        ]))
+        {
+            //Jika valid
+            $id_suratmasuk = $this->request->getPost('id_suratmasuk');
+            $file_surat = $this->request->getFile('file_surat');
+            $nama_file = $file_surat->getName();
+            $data = [
+                'id_suratmasuk' => $this->request->getPost('id_suratmasuk'),
+                'id_user' => session()->get('id_user'),
+                'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
+                'no_suratmasuk' => $this->request->getPost('no_suratmasuk'),
+                'perihal_sm' => $this->request->getPost('perihal_sm'),
+                'tgl_suratmasuk' => $this->request->getPost('tgl_suratmasuk'),
+                'agenda_suratmasuk' => $this->request->getPost('agenda_suratmasuk'),
+                'file_surat' => $this->request->getPost('file_surat'),
+            ];
+            
+            //insert data
+            $file_surat->move('public/filesurat', $file_surat->getName());
+            $success = $this->model->ubah($data, $id_suratmasuk);
+            if ($success){
+                session()->setFlashdata('message', ' diubah');
+                return redirect()->to(base_url('suratmasuk'));
+            }
+        } else {
+            //Jika tidak valid
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             return redirect()->to(base_url('suratmasuk'));
         }
+ 
     }
 
     public function hapus()

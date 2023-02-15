@@ -36,21 +36,64 @@ class DataPegawai extends BaseController
 
     public function tambah()
     {
-        $data = [
-            // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'nama_pegawai' => $this->request->getPost('nama_pegawai'),
-            'nip' => $this->request->getPost('nip'),
-            'alamat' => $this->request->getPost('alamat'),
-            'no_hp' => $this->request->getPost('no_hp')
-        ];
+        if($this->validate([
+            'nama_pegawai' => [
+                'label' => 'Nama Pegawai',
+                'rules' => 'required|max_length[50]|alpha_space',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} tidak boleh melebihi {param} karakter.',
+                    'alpha_space' => '{field} Tidak boleh selain huruf dan spasi!!'
+                    
+                    ]
+                ],
            
+                'nip' => [
+                    'label' => 'NIP',
+                    'rules' => 'required|max_length[18]|numeric|is_natural|is_unique[pegawai.nip]',
+                    'errors' => [
+                        'required' => '{field} Harus diisi!!',
+                        'exact_length' => '{field} tidak boleh melebihi {param} digit.',
+                        'numeric' => '{field} harus berupa angka',
+                        'is_natural' => '{field} harus berupa angka positif',
+                        'is_unique' => '{field} Sudah Ada, Input {field} Lain!!'
 
-        
+                        ]
+                    ],
+                    
+                  
 
-        //insert data
-        $success = $this->model->tambah($data);
-        if ($success){
-            session()->setFlashdata('message', ' ditambahkan');
+                'no_hp' => [
+                    'label' => 'Nomor Handphone',
+                    'rules' => 'required|max_length[13]|numeric|is_natural|is_unique[pegawai.no_hp]',
+                    'errors' => [
+                        'required' => '{field} Harus diisi!!',
+                        'exact_length' => '{field} tidak boleh melebihi {param} digit.',
+                        'numeric' => '{field} harus berupa angka',
+                        'is_natural' => '{field} harus berupa angka positif',
+                        'is_unique' => '{field} Sudah Ada, Input {field} Lain!!'
+                        ]
+                    ]
+        ]))
+        {
+            //jika valid
+            $data = [
+                // 'id_pegawai' => $this->request->getPost('id_pegawai'),
+                'nama_pegawai' => $this->request->getPost('nama_pegawai'),
+                'nip' => $this->request->getPost('nip'),
+                'alamat' => $this->request->getPost('alamat'),
+                'no_hp' => $this->request->getPost('no_hp')
+            ];
+    
+            //insert data
+            $success = $this->model->tambah($data);
+            if ($success){
+                session()->setFlashdata('message', ' ditambahkan');
+                return redirect()->to(base_url('datapegawai'));
+            }
+        } else {
+            //jika tidak valid
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             return redirect()->to(base_url('datapegawai'));
         }
 
@@ -59,6 +102,45 @@ class DataPegawai extends BaseController
 
     public function ubah()
     {
+        if($this->validate([
+
+            'nama_pegawai' => [
+                'label' => 'Nama Pegawai',
+                'rules' => 'required|max_length[50]|alpha_space',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} tidak boleh melebihi {param} karakter.',
+                    'alpha_space' => '{field} Tidak boleh selain huruf dan spasi!!'
+                    
+                    ]
+                ],
+           
+                'nip' => [
+                    'label' => 'NIP',
+                    'rules' => 'required|max_length[18]|numeric|is_natural',
+                    'errors' => [
+                        'required' => '{field} Harus diisi!!',
+                        'max_length' => '{field} tidak boleh melebihi {param} digit.',
+                        'numeric' => '{field} harus berupa angka',
+                        'is_natural' => '{field} harus berupa angka positif'
+                        ]
+                    ],
+                    
+                  
+
+                'no_hp' => [
+                    'label' => 'Nomor Handphone',
+                    'rules' => 'required|max_length[13]|numeric|is_natural',
+                    'errors' => [
+                        'required' => '{field} Harus diisi!!',
+                        'exact_length' => '{field} tidak boleh melebihi {param} digit.',
+                        'numeric' => '{field} harus berupa angka',
+                        'is_natural' => '{field} harus berupa angka positif'
+                        ]
+                    ]
+        ]))
+       {
+        //jika valid
         $id_pegawai = $this->request->getPost('id_pegawai');
         
         $data = [
@@ -75,6 +157,15 @@ class DataPegawai extends BaseController
             session()->setFlashdata('message', ' diubah');
             return redirect()->to(base_url('datapegawai'));
         }
+       } else {
+        //jika tidak valid
+        session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+        return redirect()->to(base_url('datapegawai'));
+       }
+
+
+
+       
 
 
     }

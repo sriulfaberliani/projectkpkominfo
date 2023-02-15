@@ -40,5 +40,10 @@ class M_User extends Model{
         ->join('jabatan', 'jabatan.id_jabatan = jabatan_pegawai.id_jabatan')
         ->get()->getResultArray();
     }
+
+    public function getJumlahUser()
+    {
+        return $this->db->table('user')->countAll();
+    }
    
 }

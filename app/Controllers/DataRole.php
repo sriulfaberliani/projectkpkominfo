@@ -24,7 +24,7 @@ class DataRole extends BaseController
         }
 
         $data = [
-            'title' => 'role',
+            'title' => 'Role/Level',
             'datarole' => $this->model->getAllData()
         ];
 
@@ -37,24 +37,61 @@ class DataRole extends BaseController
 
     public function tambah()
     {
-        $data = [
-            // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'level' => $this->request->getPost('level')
-        ];
-           
-        //insert data
-        $success = $this->model->tambah($data);
-        if ($success){
-            session()->setFlashdata('message', ' ditambahkan');
+        if($this->validate([
+            'level' => [
+                'label' => 'Level',
+                'rules' => 'required|max_length[50]|alpha_numeric_space|is_unique[role.level]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} tidak boleh melebihi {param} karakter.'  ,
+                    'alpha_numeric_space' => '{field} Tidak boleh selain huruf, angka dan spasi!!' ,
+                    'is_unique' => '{field} Sudah Ada, Input {field} Lain!!'     
+                    ]
+                ]
+                
+        ]))
+        {
+            //Jika Valid
+            $data = [
+                'level' => $this->request->getPost('level')
+            ];
+               
+            //insert data
+            $success = $this->model->tambah($data);
+            if ($success){
+                session()->setFlashdata('message', ' ditambahkan');
+                return redirect()->to(base_url('datarole'));
+            }
+        }
+        else
+        {
+            //Jika Tidak Valid
+            session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->to(base_url('datarole'));
         }
+
+       
 
 
     }
 
     public function ubah()
     {
-        $id_role = $this->request->getPost('id_role');
+        if($this->validate([
+            'level' => [
+                'label' => 'Level',
+                'rules' => 'required|max_length[50]|alpha_numeric_space',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} tidak boleh melebihi {param} karakter.'  ,
+                    'alpha_numeric_space' => '{field} Tidak boleh selain huruf, angka dan spasi!!'      
+                    ]
+                ]
+                
+        ]))
+        {
+            //Jika valid
+            $id_role = $this->request->getPost('id_role');
         
         $data = [
             'id_role' => $this->request->getPost('id_role'),
@@ -68,6 +105,15 @@ class DataRole extends BaseController
             session()->setFlashdata('message', ' diubah');
             return redirect()->to(base_url('datarole'));
         }
+
+        }else{
+            session()->setFlashdata('errors', \config\Services::validation()->getErrors());
+            return redirect()->to(base_url('datarole'));
+        }
+        
+
+
+        
 
 
     }

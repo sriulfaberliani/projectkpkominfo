@@ -6,8 +6,26 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-
     <div class="card-header py-3">
+    <?php
+        $errors = session()->getFlashdata('errors');
+        if (!empty($errors)) { ?>
+            <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+              <h5 class="alert-heading">Terjadi Kesalahan</h5>    
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+            <ul>
+                    <?php foreach ($errors as $key => $value) { ?>
+                        <li><?= esc($value) ?></li>
+                        
+                    <?php } ?>
+                </ul>
+            </div>
+            <?php } ?>
         <?php if(session()->getFlashdata('message')) : ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.

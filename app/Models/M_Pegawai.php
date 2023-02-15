@@ -29,4 +29,9 @@ class M_Pegawai extends Model{
     {
         return $this->db->table('pegawai')->delete(['id_pegawai' => $id_pegawai]);
     }
+
+    public function getJumlahPegawai()
+    {
+        return $this->db->table('pegawai')->countAll();
+    }
 }

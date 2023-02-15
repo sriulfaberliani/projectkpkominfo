@@ -6,75 +6,123 @@
         <h1 class="h3 text-gray-800 ">Selamat Datang di Sisume, <span class="badge badge-pill badge-primary"><?= session()->get('nama_pegawai')?></span>!</h1>
     </div>
 
-    <div class="row ">
+    <!-- Content Row -->
+    <div class="row">
     <?php
-        if (session()->get('id_role') != '1') { ?>
-    <div class="card-deck  p-3 mx-auto" center>
-    <a class="card mb-3" style="width: 360px;" href="<?= base_url('suratmasuk'); ?>">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="/assets/img/imgmail1.png" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">Surat Masuk</h5>
-        <h4 class="card-text text-primary font-weight-bold">12</h4>
-        
-      </div>
-    </div>
-  </div>
+        if (session()->get('id_role') == '6') { ?>
+ <div class="col-md-4 col-sm-12 mb-3">
+ <a class="card" style="max-width: 540px;" href="<?= base_url('suratmasuk'); ?>">
+	<div class="row no-gutters">
+		<div class="col-md-4">
+    <img src="/assets/img/imgmail1.png" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+      <h5 class="card-title font-weight-bold">Surat Masuk</h5>
+        <h5 class="card-text text-primary font-weight-bold"><?= $jumlah_suratmasuk ?></h5>
+			</div>
+		</div>
+	</div>
 </a>
-<div class="card mb-3" style="width: 360px;" href="<?= base_url('suratkeluar'); ?>">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="/assets/img/imgsurat.png" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">Surat Keluar</h5>
-        <h4 class="card-text text-primary font-weight-bold">12</h4>
-        
-      </div>
-    </div>
-  </div>
-</div>
-<?php } ?>
+ </div>
+
+ <div class="col-md-4 col-sm-6 mb-3">
+ <a class="card" style="max-width: 540px;" href="<?= base_url('suratkeluar'); ?>">
+	<div class="row no-gutters">
+		<div class="col-md-4">
+    <img src="/assets/img/imgsurat.png" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+      <h5 class="card-title font-weight-bold">Surat Keluar</h5>
+        <h5 class="card-text text-primary font-weight-bold"><?= $jumlah_suratkeluar ?></h5>
+			</div>
+		</div>
+	</div>
+</a>
+ </div>
+ <?php } ?>
+
+ <?php
+        if (session()->get('id_role') == '1') { ?>
+ <div class="col-md-4 col-sm-6 mb-3">
+ <a class="card" style="max-width: 540px;" href="<?= base_url('datapegawai'); ?>">
+	<div class="row no-gutters">
+		<div class="col-md-4">
+    <img src="/assets/img/imgworker1.png" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+      <h5 class="card-title font-weight-bold">Jumlah Pegawai</h5>
+        <h5 class="card-text text-primary font-weight-bold"><?= $jumlah_pegawai ?></h5>
+			</div>
+		</div>
+	</div>
+</a>
+ </div>
+
+ <div class="col-md-4 col-sm-6 mb-3">
+ <a class="card" style="max-width: 540px;" href="<?= base_url('datauser'); ?>">
+	<div class="row no-gutters">
+		<div class="col-md-4">
+    <img src="/assets/img/imguser.png" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+			<h5 class="card-title font-weight-bold">Jumlah Akun</h5>
+        <h5 class="card-text text-primary font-weight-bold"><?= $jumlah_user ?></h4>
+			</div>
+		</div>
+	</div>
+</a>
+ </div>
+ <?php } ?>
 
 <?php
-        if (session()->get('id_role') == '1') { ?>
-        
-        <div class="card-deck  p-3 mx-auto" center>
-    <a class="card mb-3" style="width: 360px;" href="<?= base_url('datauser'); ?>">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="/assets/img/imguser.png" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">Jumlah Akun</h5>
-        <h4 class="card-text text-primary font-weight-bold">12</h4>
-        
-      </div>
-    </div>
-  </div>
+        if (session()->get('id_role') != '1') { ?>
+ <div class="col-md-4 col-sm-6 mb-3">
+ <a class="card" style="max-width: 540px;" href="<?= base_url('disposisi'); ?>">
+	<div class="row no-gutters">
+		<div class="col-md-4">
+    <img src="/assets/img/imgsurat.png" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+			<h5 class="card-title font-weight-bold">Disposisi Surat Masuk</h5>
+        <h5 class="card-text text-primary font-weight-bold"><?= $jumlah_disposisi ?></h5>
+			</div>
+		</div>
+	</div>
 </a>
-<a class="card mb-3" style="width: 360px;" href="<?= base_url('datapegawai'); ?>">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="/assets/img/imgworker1.png" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body" >
-        <h5 class="card-title font-weight-bold"  >Jumlah Pegawai</h5>
-        <h4 class="card-text text-primary font-weight-bold">12</h4>
-        
-      </div>
-    </div>
-  </div>
+ </div>
+ <?php
+        if (session()->get('id_role') != '5') { ?>
+
+ <div class="col-md-4 col-sm-6 mb-3">
+ <a class="card" style="max-width: 540px;" href="<?= base_url('disposisisk'); ?>">
+	<div class="row no-gutters">
+		<div class="col-md-4">
+    <img src="/assets/img/imgmail1.png" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+      <h5 class="card-title font-weight-bold">Disposisi Surat Keluar</h5>
+        <h5 class="card-text text-primary font-weight-bold"><?= $jumlah_disposisi_sk ?></h5>
+			</div>
+		</div>
+	</div>
 </a>
-<?php } ?>
+ </div>
+ <?php } ?>
+  <?php } ?>
+
+ 
+
 
 </div>
+
+
+
  
 
 

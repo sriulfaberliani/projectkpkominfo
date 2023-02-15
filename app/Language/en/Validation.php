@@ -3,7 +3,6 @@
 // override core en language system validation or define your own en language validation message
 return [
 'required' => '{field} harus diisi',
-'is_unique' => '{field} sudah ada',
 'valid_date' => '{field} tidak valid',
 'min_length[]' => '{field} minimal {param} karakter',
 'trim' => '{field} tidak boleh ada spasi di depan atau belakang',

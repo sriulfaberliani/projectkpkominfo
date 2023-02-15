@@ -41,19 +41,52 @@ class DataUser extends BaseController
 
     public function tambah()
     {
-        $data = [
-            // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'id_role' => $this->request->getPost('id_role'),
-            'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password')
-        ];
+
+        if($this->validate([
+            'username' => [
+                'label' => 'Username',
+                'rules' => 'required|max_length[50]|alpha_space|is_unique[user.username]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} tidak boleh melebihi {param} karakter.'  ,
+                    'alpha_space' => '{field} Tidak boleh selain huruf dan spasi!!' ,
+                    'is_unique' => '{field} Sudah Ada, Input {field} Lain!!'     
+                    ]
+                ],
            
-        //insert data
-        $success = $this->model->tambah($data);
-        if ($success){
+                'password' => [
+                    'label' => 'Password',
+                    'rules' => 'required|exact_length[6]|numeric|is_natural',
+                    'errors' => [
+                        'required' => '{field} Harus diisi!!',
+                        'exact_length' => '{field} harus {param} digit',
+                        'numeric' => '{field} harus berupa angka',  
+                        'is_natural' => '{field} harus berupa angka positif'
+                        ]
+                    ],
+                  
+        ]))
+        {
+            //Jika Valid
+            $data = [
+                // 'id_pegawai' => $this->request->getPost('id_pegawai'),
+                'id_pegawai' => $this->request->getPost('id_pegawai'),
+                'id_role' => $this->request->getPost('id_role'),
+                'username' => $this->request->getPost('username'),
+                'password' => $this->request->getPost('password')
+            ];
+               
+            //insert data
+            $success = $this->model->tambah($data);
+            if ($success){
+                return redirect()->to(base_url('datauser'));
+            }
+        } else {
+            //Jika Tidak Valid
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             return redirect()->to(base_url('datauser'));
         }
+        
     }
 
     public function hapus()
@@ -69,6 +102,34 @@ class DataUser extends BaseController
 
     public function ubah()
     {
+        if($this->validate([
+            'username' => [
+                'label' => 'Username',
+                'rules' => 'required|max_length[50]|alpha_space|is_unique[user.username]',
+                'errors' => [
+                    'required' => '{field} Harus diisi!!',
+                    'max_length' => '{field} tidak boleh melebihi {param} karakter.'  ,
+                    'alpha_space' => '{field} Tidak boleh selain huruf dan spasi!!' ,
+                    'is_unique' => '{field} Sudah Ada, Input {field} Lain!!'     
+                    ]
+                ],
+           
+                'password' => [
+                    'label' => 'Password',
+                    'rules' => 'required|exact_length[6]|numeric|is_natural',
+                    'errors' => [
+                        'required' => '{field} Harus diisi!!',
+                        'exact_length' => '{field} harus {param} digit',
+                        'numeric' => '{field} harus berupa angka',  
+                        'is_natural' => '{field} harus berupa angka positif'
+                        ]
+                    ],
+                  
+        ]))
+
+        {
+            //Jika Valid
+            
         $id_user = $this->request->getPost('id_user');
         
         $data = [
@@ -85,6 +146,13 @@ class DataUser extends BaseController
             session()->setFlashdata('message', ' diubah');
             return redirect()->to(base_url('datauser'));
         }
+        } else {
+            //Jika Tidak Valid
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('datauser'));
+        }
+
+
     }
 
 
