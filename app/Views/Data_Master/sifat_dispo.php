@@ -8,7 +8,22 @@
 <div class="card shadow mb-4">
 
     <div class="card-header py-3">
-        <?php if(session()->getFlashdata('message')) : ?>
+    <?php 
+        $errors = session()->getFlashdata('errors');
+        if(!empty($errors)){ ?>
+        <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="alert-heading">Terjadi Kesalahan!</h5>
+            <ul>
+                <?php foreach ($errors as $key => $value) { ?>
+                <li><?= esc($value) ?></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php } 
+        if(session()->getFlashdata('message')) : ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -94,11 +109,8 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datasifat/tambah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
-                               </div> -->
                                <div class="form-group ab-0 ab-0">
+                                Sifat Disposisi
                                  <label for="nama_sifat"></label>
                                  <input type="text" name="nama_sifat" id="nama_sifat" class="form-control" placeholder="Masukkan Sifat Disposisi" >
                                </div>
@@ -128,8 +140,9 @@
                                <form action="<?= base_url('datasifat/ubah'); ?>" method="post"> 
                                
                                <div class="form-group ab-0 ab-0">
-                               
-                                 <input readonly type="hidden" name="id_sifat" id="id_sifat" class="form-control" value="<?= $row['id_sifat'] ?>" >
+                               ID Sifat
+                                 <label for="id_sifat"></label>
+                                 <input hidden type="text" name="id_sifat" id="id_sifat" class="form-control" value="<?= $row['id_sifat'] ?>" >
                                </div>
                         
                                

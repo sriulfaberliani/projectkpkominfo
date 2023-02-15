@@ -49,5 +49,9 @@ class M_Suratkeluar extends Model{
     {
         return $this->where(['id_suratkeluar' => $id])->first();
     }
-   
+
+    public function getJumlahSuratkeluar()
+    {
+        return $this->db->table('suratkeluar')->countAll();
+    }
 }

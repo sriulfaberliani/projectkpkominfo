@@ -41,18 +41,38 @@ class DataJabatanPegawai extends BaseController
 
     public function tambah()
     {
-        $data = [
-            // 'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'id_pegawai' => $this->request->getPost('id_pegawai'),
-            'id_jabatan' => $this->request->getPost('id_jabatan'),
-        ];
-           
-        //insert data
-        $success = $this->model->tambah($data);
-        if ($success){
-            session()->setFlashdata('message', ' ditambahkan');
-            return redirect()->to(base_url('datajabatanpegawai'));
+        if($this->validate([
+            'id_pegawai' => [
+                'label' => 'Pegawai',
+                'rules' => 'required|is_unique[jabatan_pegawai.id_pegawai]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ],
+            'id_jabatan' => [
+                'label' => 'Jabatan',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ],
+        ])) {
+            //jika valid
+            $data = [
+                'id_pegawai' => $this->request->getPost('id_pegawai'),
+                'id_jabatan' => $this->request->getPost('id_jabatan'),
+            ];
+            $success = $this->model->tambah($data);
+            if ($success){
+                session()->setFlashdata('message', ' ditambahkan');
+                return redirect()->to(base_url('datajabatanpegawai'));
+            }
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('DataJabatanPegawai'));
         }
+       
     }
 
     public function hapus()

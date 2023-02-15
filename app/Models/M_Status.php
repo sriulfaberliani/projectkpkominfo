@@ -11,8 +11,7 @@ class M_Status extends Model{
     }
 
     public function getAllData(){
-        return $this->db->table('status')->where('id_status !=', 0)->get()->getResultArray();
-        
+        return $this->db->table('status')->get()->getResultArray();
     }
 
     public function tambah($data)
@@ -28,6 +27,14 @@ class M_Status extends Model{
     public function hapus($id_status)
     {
         return $this->db->table('status')->delete(['id_status' => $id_status]);
+    }
+
+    public function getDatabyUser(){
+        return $this->db->table('status')
+        ->join('pegawai', 'pegawai.id_pegawai = user.id_pegawai')
+        ->join('jabatan_pegawai', 'jabatan_pegawai.id_pegawai = user.id_pegawai')
+        ->join('jabatan', 'jabatan.id_jabatan = jabatan_pegawai.id_jabatan')
+        ->get()->getResultArray();
     }
 
    

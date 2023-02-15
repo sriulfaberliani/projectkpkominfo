@@ -29,7 +29,7 @@ class SuratKeluar extends BaseController
     public function index()
     {
 
-        if (session()->get('id_role') !='1' || session()->get('id_role') !='5') {
+        if (session()->get('id_role') =='3' || session()->get('id_role') =='4') {
             redirect()->to(base_url('suratkeluar'));
         } else {
             return redirect()->to(base_url('home'));
@@ -72,43 +72,98 @@ class SuratKeluar extends BaseController
     public function tambah()
     {
         date_default_timezone_set('Asia/Jakarta');
-        $bulan = [
-            '01' => 'Januari',
-            '02' => 'Februari',
-            '03' => 'Maret',
-            '04' => 'April',
-            '05' => 'Mei',
-            '06' => 'Juni',
-            '07' => 'Juli',
-            '08' => 'Agustus',
-            '09' => 'September',
-            '10' => 'Oktober',
-            '11' => 'November',
-            '12' => 'Desember',
-        ];
-        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
-        $data = [
-            'id_suratkeluar' => $this->request->getPost('id_suratkeluar'),
-            'id_user' => session()->get('id_user'),
-            'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
-            'no_suratkeluar' => $this->request->getPost('no_suratkeluar'),
-            'tgl_pembuatansk' => $tanggal,
-            'lampiran' => $this->request->getPost('lampiran'),
-            'perihal' => $this->request->getPost('perihal'),
-            'tujuan_sk' => $this->request->getPost('tujuan_sk'),
-            'isi_sk'=> $this->request->getPost('isi_sk'),
-            'jabatan_pembuatsurat'=> $this->request->getPost('jabatan_pembuatsurat'),
-            'nama_pembuatsurat'=> $this->request->getPost('nama_pembuatsurat'),
-            'nip_pembuatsurat'=> $this->request->getPost('nip_pembuatsurat'),
-        ];
-           
-        //insert data
-        $success = $this->model->tambah($data);
-        if ($success){
-            session()->setFlashdata('message', ' ditambahkan');
+        if($this->validate([
+            'id_jenis_surat' => [
+                'label' => 'Jenis Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'no_suratkeluar' => [
+                'label' => 'Nomor Surat',
+                'rules' => 'required|regex_match[/^\d{3}\/302\/Diskominfo\/[A-Z]+\/\d{4}$/]|is_unique[suratkeluar.no_suratkeluar]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'regex_match' => 'Format nomor surat tidak sesuai (contoh: 023/304/Diskominfo/XI/2022)',
+                    'is_unique' => '{field} sudah ada',
+                ]
+            ],
+            'lampiran' => [
+                'label' => 'Lampiran',
+                'rules' => 'required|regex_match[/^[1-9\-]+$/]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'regex_match' => '{field} hanya boleh terdiri dari angka jumlah lampiran, dan jika tidak ada lampiran, maka isi dengan "-"'
+                ]
+            ],
+            'tgl_pembuatansk' => [
+                'label' => 'Tanggal Surat',
+                'rules' => 'required|regex_match[/^\d{1,2} [a-zA-Z]+ \d{4}$/]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'regex_match' => '{field} harus dalam format dd MMMM yyyy, misalnya 12 Februari 2023',
+                    ]
+            ],
+            'perihal' => [
+                'label' => 'Perihal',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'tujuan_sk' => [
+                'label' => 'Tujuan Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'isi_sk' => [
+                'label' => 'Isi Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'nama_pembuatsurat' => [
+                'label' => 'Nama Pembuat Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+        ])){
+            //jika valid
+            $data = [
+                'id_suratkeluar' => $this->request->getPost('id_suratkeluar'),
+                'id_user' => session()->get('id_user'),
+                'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
+                'no_suratkeluar' => $this->request->getPost('no_suratkeluar'),
+                'tgl_pembuatansk' => $this->request->getPost('tgl_pembuatansk'),
+                'lampiran' => $this->request->getPost('lampiran'),
+                'perihal' => $this->request->getPost('perihal'),
+                'tujuan_sk' => $this->request->getPost('tujuan_sk'),
+                'isi_sk'=> $this->request->getPost('isi_sk'),
+                'jabatan_pembuatsurat'=> $this->request->getPost('jabatan_pembuatsurat'),
+                'nama_pembuatsurat'=> $this->request->getPost('nama_pembuatsurat'),
+                'nip_pembuatsurat'=> $this->request->getPost('nip_pembuatsurat'),
+            ];
+               
+            //insert data
+            $success = $this->model->tambah($data);
+            if ($success){
+                session()->setFlashdata('message', ' ditambahkan');
+                return redirect()->to(base_url('suratkeluar'));
+            }
+        }else{
+            //jika tidak valid
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             return redirect()->to(base_url('suratkeluar'));
+
         }
     }
+
 
     public function hapus()
     {
@@ -125,28 +180,78 @@ class SuratKeluar extends BaseController
     {
         $id_suratkeluar = $this->request->getPost('id_suratkeluar');
         date_default_timezone_set('Asia/Jakarta');
-        $bulan = [
-            '01' => 'Januari',
-            '02' => 'Februari',
-            '03' => 'Maret',
-            '04' => 'April',
-            '05' => 'Mei',
-            '06' => 'Juni',
-            '07' => 'Juli',
-            '08' => 'Agustus',
-            '09' => 'September',
-            '10' => 'Oktober',
-            '11' => 'November',
-            '12' => 'Desember',
-        ];
-        $tanggal = date('d').' '.$bulan[date('m')].' '.date('Y');
-        
+
+        if ($this->validate([
+            'id_jenis_surat' => [
+                'label' => 'Jenis Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'no_suratkeluar' => [
+                'label' => 'Nomor Surat',
+                'rules' => 'required|regex_match[/^\d{3}\/302\/Diskominfo\/[A-Z]+\/\d{4}$/]|is_unique[suratkeluar.no_suratkeluar]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'regex_match' => 'Format nomor surat tidak sesuai (contoh: 023/304/Diskominfo/XI/2022)',
+                    'is_unique' => '{field} sudah ada',
+                ]
+            ],
+            'lampiran' => [
+                'label' => 'Lampiran',
+                'rules' => 'required|regex_match[/^[1-9\-]+$/]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'regex_match' => '{field} hanya boleh terdiri dari angka jumlah lampiran, dan jika tidak ada lampiran, maka isi dengan "-"'
+                ]
+            ],
+            'tgl_pembuatansk' => [
+                'label' => 'Tanggal Surat',
+                'rules' => 'required|regex_match[/^\d{1,2} [a-zA-Z]+ \d{4}$/]',
+                'valid_date[d/m/Y]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'regex_match' => '{field} harus dalam format dd MMMM yyyy, misalnya 12 Februari 2023',
+                    'valid_date' => '{field} harus merupakan tanggal yang valid'
+                    ]
+            ],
+            'perihal' => [
+                'label' => 'Perihal',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'tujuan_sk' => [
+                'label' => 'Tujuan Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'isi_sk' => [
+                'label' => 'Isi Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+            'nama_pembuatsurat' => [
+                'label' => 'Nama Pembuat Surat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                ]
+            ],
+        ])){ 
+            //jika valid
         $data = [
             'id_suratkeluar' => $this->request->getPost('id_suratkeluar'),
             'id_user' => session()->get('id_user'),
             'id_jenis_surat' => $this->request->getPost('id_jenis_surat'),
             'no_suratkeluar' => $this->request->getPost('no_suratkeluar'),
-            'tgl_pembuatansk' => $tanggal,
+            'tgl_pembuatansk' => $this->request->getPost('tgl_pembuatansk'),
             'lampiran' => $this->request->getPost('lampiran'),
             'perihal' => $this->request->getPost('perihal'),
             'tujuan_sk' => $this->request->getPost('tujuan_sk'),
@@ -162,7 +267,13 @@ class SuratKeluar extends BaseController
             session()->setFlashdata('message', ' diubah');
             return redirect()->to(base_url('suratkeluar'));
         }
+    }else{
+        //jika tidak valid
+        session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+        return redirect()->to(base_url('suratkeluar'));
+
     }
+}
 
     
 

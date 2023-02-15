@@ -10,7 +10,22 @@
 <div class="card shadow mb-4">
 
 <div class="card-header py-3">
-        <?php if(session()->getFlashdata('message')) : ?>
+<?php 
+        $errors = session()->getFlashdata('errors');
+        if(!empty($errors)){ ?>
+        <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="alert-heading">Terjadi Kesalahan!</h5>
+            <ul>
+                <?php foreach ($errors as $key => $value) { ?>
+                <li><?= esc($value) ?></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php } 
+        if(session()->getFlashdata('message')) : ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         Data <strong>berhasil</strong> <?= session()->getFlashdata('message'); ?>.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -96,17 +111,13 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajabatanpegawai/tambah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_jbpg"></label>
-                                 <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
-                               </div> -->
                                <div class="form-group ab-0 ab0">
-                               <label>NIP</label>
+                               <label>Pegawai</label>
                                  <label for="id_pegawai"></label>
                                  <select name="id_pegawai" id="id_pegawai" class="form-control" required> 
-                                    <option value="">Pilih NIP Pegawai</option>
+                                    <option value="">Pilih Pegawai</option>
                                     <?php foreach($pegawai as $key => $value) : ?>
-                                    <option value="<?= $value['id_pegawai']; ?>"><?= $value['nip']; ?></option>
+                                    <option value="<?= $value['id_pegawai']; ?>"><?= $value['nama_pegawai']." - ".$value['nip'] ; ?></option>
                                     <?php endforeach; ?>
                                     </select>
                                </div>
