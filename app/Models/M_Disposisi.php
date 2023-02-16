@@ -27,7 +27,7 @@ class M_Disposisi extends Model{
     }
 
  
-    public function get_disposisi_by_id_user($id_user)
+    public function get_disposisi_by_id_user($id_user_tujuan, $id_user_pembuat)
     {
         return $this->db->table('disposisi_sm')
         ->join('suratmasuk', 'suratmasuk.id_suratmasuk = disposisi_sm.id_suratmasuk')
@@ -35,9 +35,10 @@ class M_Disposisi extends Model{
         ->join('user', 'user.id_user = suratmasuk.id_user')
         ->join('status', 'status.id_status = disposisi_sm.id_status')
         ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sm.id_sifat')
-            ->where('tujuan_dispo_sm', $id_user)
-            ->get()->getResultArray();
-    }
+        ->where('tujuan_dispo_sm', $id_user_tujuan)
+        ->orWhere('suratmasuk.id_user', $id_user_pembuat)
+        ->get()->getResultArray();
+}
 
 //     public function getLastStatus($id_suratmasuk)
 //     {
@@ -76,9 +77,16 @@ class M_Disposisi extends Model{
             ->get()->getResultArray();
     }
 
-    public function getJumlahDisposisi()
+    public function getJumlahDisposisi($id_user)
     {
-        return $this->db->table('disposisi_sm')->countAll();
+        return $this->db->table('disposisi_sm')
+        ->join('suratmasuk', 'suratmasuk.id_suratmasuk = disposisi_sm.id_suratmasuk')
+        ->join('jenissurat', 'jenissurat.id_jenis_surat = suratmasuk.id_jenis_surat')
+        ->join('user', 'user.id_user = suratmasuk.id_user')
+        ->join('status', 'status.id_status = disposisi_sm.id_status')
+        ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sm.id_sifat')
+        ->where('tujuan_dispo_sm', $id_user)
+        ->countAll();
     }
 
     public function sudahDispoByUser($id_user){
@@ -99,9 +107,8 @@ class M_Disposisi extends Model{
     }
 
     return array('data' => $data, 'status' => $status);
-    
-      
-   
 
 }
+
+
 }

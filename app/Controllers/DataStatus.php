@@ -17,7 +17,7 @@ class DataStatus extends BaseController
     public function index()
     {
 
-        if (session()->get('id_role') == '1' || session()->get('id_role') == '4') {
+        if (session()->get('id_role') == '1' || session()->get('id_role') == '6') {
             redirect()->to(base_url('datastatus'));
         } else {
             return redirect()->to(base_url('home'));

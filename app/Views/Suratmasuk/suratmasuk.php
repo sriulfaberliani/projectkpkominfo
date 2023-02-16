@@ -239,7 +239,7 @@
                                <div class="form-group ab-0">
                                  <label for="file_surat"></label>
                                     Ganti File Surat
-                                    <a href="<?= base_url('public/filesurat/'. $row['file_surat'])?>" target="_blank">Lihat File Surat</a> 
+                                  <a href="<?= base_url('public/filesurat/'. $row['file_surat'])?>" target="_blank">Lihat File Surat</a>  -->
                                  <input type="file" name="file_surat" id="file_surat" class="form-control" placeholder="Masukkan File Surat"> required>
                                  <small class="text-danger">*File Surat Harus Berformat PDF</small>
                                </div>
@@ -274,9 +274,17 @@
                                     Status Surat
                                  <select name="id_status" id="id_status" class="form-control" >
                                     <option value="">Pilih Status</option>
-                                    <?php foreach($datastatus as $key => $value) : ?>
+                                    <?php foreach($datastatus as $key => $value) : 
+                                      if (session()->get('id_role') != '2' && $value['id_status'] == 0 ) {
+                                      ?>
                                     <option value="<?= $value['id_status']; ?>"><?= $value['status']; ?></option>
-                                  <?php endforeach; ?>
+                                      <?php
+                                      } else if (session()->get('id_role') == '2' && in_array($value['id_status'], [1,2])){
+                                        ?>
+                                        <option value="<?= $value['id_status']; ?>"><?= $value['status']; ?></option>
+                                        <?php
+                                      }
+                                  endforeach; ?>
                                     </select>
                                </div>
                               <div class="form-group ab-0">
@@ -299,10 +307,11 @@
                                  Tujuan
                                  <select name="tujuan_dispo_sm" id="tujuan_dispo_sm" class="form-control" >
                                     <option value="">Tujuan Disposisi</option>
-                                    <?php foreach($userjabatan as $key => $value) : ?>
-                                    <option value="<?= $value['id_user']; ?>">
-                                    <?= $value['nama_jabatan']." - ".$value['nama_pegawai']; ?></option>
-                                  <?php endforeach; ?>
+                                    <?php foreach($userjabatan as $key => $value) : 
+                                         if (session()->get('id_role') == 6 && $value['id_role'] == 3) {
+                                          echo '<option value="'.$value['id_user'].'">'.$value['nama_jabatan'].' - '.$value['nama_pegawai'].'</option>';
+                                         }
+                                  endforeach; ?>
                                     </select>
                                </div>
                            </div>

@@ -27,8 +27,10 @@
                         <th>Nomor Surat</th>
                         <th>Perihal</th>
                         <th>Tanggal Masuk</th>
-                        <th>Status</th>
-
+                        <?php
+                                                if (session()->get('id_role') != '5'  ) { ?>
+                        
+<?php } ?>
                         <th>Action</th>
                     </tr>
                 </thead> 
@@ -41,13 +43,7 @@
                                     <td><?= $row['no_suratmasuk']; ?></td>   
                                     <td><?= $row['perihal_sm']; ?></td>
                                     <td><?= $row['tanggal_disposisi_sm']; ?></td>
-                                    <td>
-            <?php if ($status == true) : ?>
-                <span class="badge badge-pill badge-success">Sudah Terdisposisi</span>
-                <?php else: ?>
-            <span class="badge badge-pill badge-warning">Belum Terdisposisi</span>
-            <?php endif; ?>
-        </td>
+                                    
                                       
 
                                     

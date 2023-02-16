@@ -28,17 +28,20 @@ class Home extends BaseController
         
     }
 
-    public function index()
+    public function index($id = null)
     {
 
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'disposisi' => $this->user->getAllData(),
+            'suratmasuk' => $this->suratmasuk->getAllData(),
+            'datauser' => $this->user->getAllData(),
         ];
         $data['jumlah_pegawai'] = $this->pegawai->getJumlahPegawai();
         $data['jumlah_user'] = $this->user->getJumlahuser();
         $data['jumlah_suratmasuk'] = $this->suratmasuk->getJumlahSuratMasuk();
         $data['jumlah_suratkeluar'] = $this->suratkeluar->getJumlahSuratKeluar();
-        $data['jumlah_disposisi'] = $this->disposisi->getJumlahDisposisi();
+        $data['jumlah_disposisi'] = $this->disposisi->getJumlahDisposisi(session()->get('id_user'));
         $data['jumlah_disposisi_sk'] = $this->disposisi_sk->getJumlahDisposisiSk();
 
         echo view('templates/v_header', $data);

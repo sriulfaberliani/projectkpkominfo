@@ -47,7 +47,7 @@
                         <a class="collapse-item" href="<?= base_url('datarole'); ?>">Data Role</a>
                         <a class="collapse-item" href="<?= base_url('datauser'); ?>">Data User</a>
                       <?php } ?>
-                      <?php if (session()->get('id_role') == '6' ) { ?>
+                      <?php if (session()->get('id_role') == '6' ||session()->get('id_role') == '1'  ) { ?>
                         <a class="collapse-item" href="<?= base_url('datajenissurat'); ?>">Data Jenis Surat</a>
                         <a class="collapse-item" href="<?= base_url('datasifat'); ?>">Data Sifat Disposisi</a>
                         <a class="collapse-item" href="<?= base_url('datastatus'); ?>">Data Status Disposisi</a>

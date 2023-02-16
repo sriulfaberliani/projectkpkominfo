@@ -105,12 +105,12 @@ class DataUser extends BaseController
         if($this->validate([
             'username' => [
                 'label' => 'Username',
-                'rules' => 'required|max_length[50]|alpha_space|is_unique[user.username]',
+                'rules' => 'required|max_length[50]|alpha_space',
                 'errors' => [
                     'required' => '{field} Harus diisi!!',
                     'max_length' => '{field} tidak boleh melebihi {param} karakter.'  ,
                     'alpha_space' => '{field} Tidak boleh selain huruf dan spasi!!' ,
-                    'is_unique' => '{field} Sudah Ada, Input {field} Lain!!'     
+           
                     ]
                 ],
            
