@@ -170,7 +170,7 @@
       <form action="/datasifat/hapus" method="post">
         <div class="modal-body">
           Apakah anda yakin ingin menghapus data ini?
-          <input type="text" id="id_sifat" name="id_sifat">
+          <input type="hidden" id="id_sifat" name="id_sifat">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

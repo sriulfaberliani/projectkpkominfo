@@ -45,5 +45,6 @@ class M_User extends Model{
     {
         return $this->db->table('user')->countAll();
     }
+
    
 }
