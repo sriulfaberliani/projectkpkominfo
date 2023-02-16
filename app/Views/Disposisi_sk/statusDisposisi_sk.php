@@ -34,18 +34,21 @@
         <tr>
           <th> Detail Surat</th>
           
-          <td> <a href="<?= base_url('suratkeluar/detail/'.$detail['id_suratkeluar']); ?>" target="_blank"><i class="fa fa-file-pdf fa-2x label-danger"></i></a>
+          <td> <a href="<?= base_url('suratkeluar/detail/'.$detail['id_suratkeluar']); ?>" ><i class="fa fa-file-pdf fa-2x label-danger"></i></a>
              </td>  
         <tr>
           
-
+        <?php
+         if (session()->get('id_role') != '6') { ?>
         <th> <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#modalTambahDisposisi" data-id_suratkeluar="<?= $detail['id_suratkeluar']; ?>" id="btn-dispo">
     <span class="icon text-white-50">
                                     <i class="fas fa-plus"></i>
                                 </span>
                                 <span class="text">Disposisi</span>
                </button>
+               
               </th>
+              <?php } ?>
           <td>    </td>  
         <tr>
       </table>
@@ -133,15 +136,23 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('DisposisiSk/teruskan'); ?>" method="post" enctype="multipart/form-data"> 
-                                 <input type="text" name="id_suratkeluar" id="id_suratkeluar" class="form-control"   >
-                              <div class="form-group ab-0">
+                                 <input hidden type="text" name="id_suratkeluar" id="id_suratkeluar" class="form-control"   >
+                                 <div class="form-group ab-0">
                               <label for="id_status"></label>
                                     Status Surat
                                  <select name="id_status" id="id_status" class="form-control" >
                                     <option value="">Pilih Status</option>
-                                    <?php foreach($datastatus as $key => $value) : ?>
+                                    <?php foreach($datastatus as $key => $value) : 
+                                      if (session()->get('id_role') != '2' && $value['id_status'] == 0 ) {
+                                      ?>
                                     <option value="<?= $value['id_status']; ?>"><?= $value['status']; ?></option>
-                                  <?php endforeach; ?>
+                                      <?php
+                                      } else if (session()->get('id_role') == '2' && in_array($value['id_status'], [1,2])){
+                                        ?>
+                                        <option value="<?= $value['id_status']; ?>"><?= $value['status']; ?></option>
+                                        <?php
+                                      }
+                                  endforeach; ?>
                                     </select>
                                </div>
                               <div class="form-group ab-0">
@@ -159,17 +170,30 @@
                                  Catatan Disposisi
                                  <textarea rows="3" name="catatan_sk" id="catatan_sk" class="form-control" placeholder="Masukan Catatan Disposisi"  ></textarea>
                                </div>
+                               <?php
+                                   if (session()->get('id_role') == '3') { ?>
                                <div class="form-group ab-0">
-                                 <label for="tujuan_dispo_sk"></label>
-                                 Tujuan
-                                 <select name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" >
+                                  <label for="tujuan_dispo_sk">Tujuan</label>
+                                  <select name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control">
                                     <option value="">Tujuan Disposisi</option>
-                                    <?php foreach($userjabatan as $key => $value) : ?>
-                                    <option value="<?= $value['id_user']; ?>">
-                                    <?= $value['nama_jabatan']." - ". $value['nama_pegawai']; ?></option>
-                                  <?php endforeach; ?>
-                                    </select>
-                               </div>
+                                    <?php foreach($userjabatan as $value) :
+                                        if (session()->get('id_role') == 4 && $value['id_role'] == 3) {
+                                            echo '<option value="'.$value['id_user'].'">'.$value['nama_jabatan'].' - '.$value['nama_pegawai'].'</option>';
+                                        } elseif (session()->get('id_role') == 3 && $value['id_role'] == 2) {
+                                            echo '<option value="'.$value['id_user'].'">'.$value['nama_jabatan'].' - '.$value['nama_pegawai'].'</option>';
+                                        }
+                                    endforeach; ?>
+                                  </select>
+                                </div>
+                                <?php } ?>
+                                <?php
+                                   if (session()->get('id_role') == '2') { ?>
+                                   <div class="form-group ab-0">
+                                      <label for="tujuan_dispo_sk">Tujuan</label>
+                                      <input hidden type="text" name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" value="<?php echo (session()->get('id_role') == 2 ? '6' : ''); ?>" readonly>
+                                  </div>
+                                   <?php } ?>
+
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
