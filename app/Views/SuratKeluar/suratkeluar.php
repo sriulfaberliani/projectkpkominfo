@@ -195,12 +195,6 @@
                                  Jabatan
                                  <input type="text" name="jabatan_pembuatsurat" id="jabatan_pembuatsurat" class="form-control" readonly >
                                </div>
-                               <div class="form-group ab-0">
-                                 <label for="file_lampiran"></label>
-                                    File Surat
-                                 <input type="file" name="file_lampiran[]" id="file_lampiran" class="form-control" multiple>
-                                 <small class="text-danger">*File Surat Harus Berformat PDF</small>
-                               </div>
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -359,17 +353,19 @@
                                  Catatan Disposisi
                                  <textarea rows="3" name="catatan_sk" id="catatan_sk" class="form-control" placeholder="Masukan Catatan Disposisi"  ></textarea>
                                </div>
-                              <div class="form-group ab-0">
-                                 <label for="tujuan_dispo_sk"></label>
-                                 Tujuan
-                                 <select name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" >
+                               <div class="form-group ab-0">
+                                  <label for="tujuan_dispo_sk">Tujuan</label>
+                                  <select name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control">
                                     <option value="">Tujuan Disposisi</option>
-                                    <?php foreach($userjabatan as $key => $value) : ?>
-                                    <option value="<?= $value['id_user']; ?>">
-                                    <?= $value['nama_jabatan']." - ". $value['nama_pegawai']; ?></option>
-                                  <?php endforeach; ?>
-                                    </select>
-                               </div>
+                                    <?php foreach($userjabatan as $value) :
+                                        if (session()->get('id_role') == 4 && $value['id_role'] == 3) {
+                                            echo '<option value="'.$value['id_user'].'">'.$value['nama_jabatan'].' - '.$value['nama_pegawai'].'</option>';
+                                        } elseif (session()->get('id_role') == 3 && $value['id_role'] == 2) {
+                                            echo '<option value="'.$value['id_user'].'">'.$value['nama_jabatan'].' - '.$value['nama_pegawai'].'</option>';
+                                        }
+                                    endforeach; ?>
+                                  </select>
+                                </div>
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

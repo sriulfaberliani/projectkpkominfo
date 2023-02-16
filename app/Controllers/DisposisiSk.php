@@ -43,7 +43,8 @@ class DisposisiSk extends BaseController
         'datastatus' => $this->status->getAllData(),
 
       ];
-      $data['disposisi_sk_by_user'] = $this->model->get_disposisi_by_id_user(session()->get('id_user'));
+      $id_user = session()->get('id_user');
+      $data['disposisi_sk_by_user'] = $this->model->get_disposisi_by_id_user($id_user, $id_user );
         echo view('templates/v_header', $data);
         echo view('templates/v_sidebar');
         echo view('templates/v_topbar');

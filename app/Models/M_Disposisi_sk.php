@@ -26,7 +26,7 @@ class M_Disposisi_sk extends Model{
         ->get()->getResultArray(); 
     }
     
-    public function get_disposisi_by_id_user($id_user)
+    public function get_disposisi_by_id_user($id_user_tujuan, $id_user_pembuat)
     {
         return $this->db->table('disposisi_sk')
         ->join('suratkeluar', 'suratkeluar.id_suratkeluar = disposisi_sk.id_suratkeluar')
@@ -34,7 +34,8 @@ class M_Disposisi_sk extends Model{
         ->join('user', 'user.id_user = suratkeluar.id_user')
         ->join('status', 'status.id_status = disposisi_sk.id_status')
         ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sk.id_sifat')
-            ->where('tujuan_dispo_sk', $id_user)
+            ->where('tujuan_dispo_sk', $id_user_tujuan)
+            ->orWhere('suratkeluar.id_user', $id_user_pembuat)
             ->get()->getResultArray();
     }
 
@@ -61,7 +62,7 @@ class M_Disposisi_sk extends Model{
         ->join('user', 'user.id_user = suratkeluar.id_user')
         ->join('status', 'status.id_status = disposisi_sk.id_status')
         ->join('sifat_dispo', 'sifat_dispo.id_sifat = disposisi_sk.id_sifat')
-            ->where('tujuan_dispo_sk','2' )
+            ->where('disposisi_sk.id_pegawai','2' )
             ->where('status.id_status','1' )
             ->get()->getResultArray();
     }
