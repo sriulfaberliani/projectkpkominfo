@@ -59,7 +59,7 @@
                 </thead> 
                 <tbody>
                 <?php $i=1; ?>
-                                    <?php  foreach($suratkeluar as $row) :?>
+                                    <?php  foreach($disposisi_sk_by_user as $row) :?>
                                    <tr>
                                      
                                        <td scope="row"><?= $i; ?></td>
@@ -135,6 +135,7 @@
                            <div class="modal-body">
                                <form action="<?= base_url('suratkeluar/tambah'); ?>" method="post" enctype="multipart/form-data"> 
                                <div class="form-group ab-0 ab0">
+                               <input hidden type="text" name="id_suratkeluar" id="id_suratkeluar" class="form-control"   >
                                  <label for="id_jenis_surat"></label>
                                     Jenis Surat
                                  <select name="id_jenis_surat" id="id_jenis_surat" class="form-control" required>

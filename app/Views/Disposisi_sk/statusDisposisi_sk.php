@@ -190,7 +190,7 @@
                                    if (session()->get('id_role') == '2') { ?>
                                    <div class="form-group ab-0">
                                       <label for="tujuan_dispo_sk">Tujuan</label>
-                                      <input hidden type="text" name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" value="<?php echo (session()->get('id_role') == 2 ? '6' : ''); ?>" readonly>
+                                      <input hidden type="text" name="tujuan_dispo_sk" id="tujuan_dispo_sk" class="form-control" value="<?php echo (session()->get('id_role') == 2 ? '18' : ''); ?>" readonly>
                                   </div>
                                    <?php } ?>
 
