@@ -114,10 +114,6 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datauser/tambah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_jbpg"></label>
-                                 <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
-                               </div> -->
                                <div class="form-group ab-0 ab0">
                                  <label for="id_pegawai"></label>
                                  <select name="id_pegawai" id="id_pegawai" class="form-control" required>
@@ -128,10 +124,6 @@
                                   <?php endforeach; ?>
                                     </select>
                                </div>
-                               <!-- <div class="form-group ab-0">
-                                 <label for="nama_pegawai"></label>
-                                 <input readonly required type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" >
-                               </div> -->
                                <div class="form-group ab-0">
                                  <label for="id_role"></label>
                                  <select name="id_role" id="id_role" class="form-control" required>
@@ -198,22 +190,8 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datauser/ubah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_jbpg"></label>
-                                 <input readonly type="text" name="id_jbpg" id="id_jbpg" class="form-control" value="Id Jabatan Pegawai" >
-                               </div> -->
-                               <!-- <label for="id_user"></label> -->
-                               <!-- <input type="hidden" name="id_user" id="id_user">
-                               <div class="form-group ab-0 ab-0">
-                                 <label for="id_user"></label>
-                                 <input readonly type="text" name="id_user" id="id_user" class="form-control" placeholder="Masukkan Id user" value="<?= $row ['id_user'] ?>" >
-                               </div> -->
                                <input hidden type="text" name="id_user" id="id_user" class="form-control"   >
-                        
-
                                  <input  type="hidden" name="id_pegawai" id="id_pegawai" class="form-control"  >
-                                
-                              
                                <div class="form-group ab-0">
                                <label>Nama</label>
                                  <label for="nama_pegawai"></label>

@@ -113,10 +113,6 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datarole/tambah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
-                               </div> -->
                                <div class="form-group ab-0 ab-0">
                                  <label for="level"></label>
                                  <input type="text" name="level" id="level" class="form-control" placeholder="Masukkan Level Role" >
@@ -145,22 +141,12 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datarole/ubah'); ?>" method="post"> 
-                               
-                               <!-- <div class="form-group ab-0 ab-0">
-                               ID Role
-                                 <label for="id_role"></label>
-                                 <input readonly type="text" name="id_role" id="id_role" class="form-control" value="<?= $row['id_role'] ?>" >
-                               </div> -->
-                               <input hidden type="text" name="id_role" id="id_role" class="form-control"   >
-                        
-                               
+                               <input hidden type="text" name="id_role" id="id_role" class="form-control"   >   
                                <div class="form-group ab-0 ab-0">
                                Level Role
                                  <label for="level"></label>
                                  <input type="text" name="level" id="level" class="form-control" placeholder="Masukkan Level Role Baru" value="<?= $row['level'] ?>" >
-                               </div>
-                            
-                               
+                               </div>  
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

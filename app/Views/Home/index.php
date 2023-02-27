@@ -27,7 +27,7 @@
  </div>
 
  <div class="col-md-4 col-sm-6 mb-3">
- <a class="card" style="max-width: 540px;" href="<?= base_url('suratkeluar'); ?>">
+ <a class="card" style="max-width: 540px;" href="<?= base_url('disposisisk/index_agenda'); ?>">
 	<div class="row no-gutters">
 		<div class="col-md-4">
     <img src="/assets/img/imgsurat.png" class="card-img" alt="...">
@@ -148,6 +148,8 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4" class="active"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -157,7 +159,13 @@
       <img src="\assets\img\img2.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="\assets\img\img5.jpg" class="d-block w-100" alt="...">
+      <img src="\assets\img\img6.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="\assets\img\img7.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="\assets\img\img8.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

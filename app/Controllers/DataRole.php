@@ -29,7 +29,7 @@ class DataRole extends BaseController
         ];
 
         echo view('templates/v_header', $data);
-        echo \view('templates/v_sidebar');
+        echo view('templates/v_sidebar');
         echo view('templates/v_topbar');
         echo view('Data_Master/role', $data);
         echo view('templates/v_footer');
@@ -69,10 +69,6 @@ class DataRole extends BaseController
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->to(base_url('datarole'));
         }
-
-       
-
-
     }
 
     public function ubah()
@@ -110,11 +106,6 @@ class DataRole extends BaseController
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->to(base_url('datarole'));
         }
-        
-
-
-        
-
 
     }
 

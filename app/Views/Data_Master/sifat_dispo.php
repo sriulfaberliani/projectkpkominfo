@@ -59,11 +59,8 @@
                                    <tr>
                                       <td scope="row"><?= $i; ?></td>
                                        <td><?= $row['nama_sifat']; ?></td>
-                                      
-                                      
                                        <td>
-
-                                       <button type="button"  data-toggle="modal" data-target="#modalUbah" 
+                                    <button type="button"  data-toggle="modal" data-target="#modalUbah" 
                                       id="btn-edit" class="btn btn-success"
                                        data-id_sifat="<?= $row['id_sifat']; ?>" data-nama_sifat="<?= $row['nama_sifat']; ?>" >
                                     
@@ -71,8 +68,6 @@
                                 </span>
                                
                                  </button>
-
-
                                         <button type="button" class="btn btn-danger" data-id_sifat="<?= $row['id_sifat']; ?>" data-toggle="modal" data-target="#modalHapus" id="btn-hapus"
                                         >
                                     
@@ -140,8 +135,7 @@
                                <form action="<?= base_url('datasifat/ubah'); ?>" method="post"> 
                                
                                <div class="form-group ab-0 ab-0">
-                               ID Sifat
-                                 <label for="id_sifat"></label>
+                            
                                  <input hidden type="text" name="id_sifat" id="id_sifat" class="form-control" value="<?= $row['id_sifat'] ?>" >
                                </div>
                         

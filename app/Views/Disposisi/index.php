@@ -44,9 +44,6 @@
                                     <td><?= $row['perihal_sm']; ?></td>
                                     <td><?= $row['tanggal_disposisi_sm']; ?></td>
                                     
-                                      
-
-                                    
                                     <td>
                                         <a class="btn btn-primary btn-icon-split" href= "<?= base_url('Disposisi/statusDisposisi/'.$row['id_suratmasuk']); ?>" role="button"><span class="icon text-white-50">
                                             <i class="fas fa-info-circle"></i>   </span> <span class="text">Detail</span></a>
