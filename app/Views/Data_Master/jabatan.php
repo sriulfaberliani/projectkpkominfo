@@ -114,10 +114,6 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajabatan/tambah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
-                               </div> -->
                                <div class="form-group ab-0 ab-0">
                                  <label for="nama_jabatan"></label>
                                  <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan"  required>
@@ -146,22 +142,12 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datajabatan/ubah'); ?>" method="post"> 
-                               <input hidden type="text" name="id_jabatan" id="id_jabatan" class="form-control"   >
-                               
-                               <!-- <div class="form-group ab-0 ab-0">
-                               ID Jabatan
-                                 <label for="id_jabatan"></label>
-                                 <input readonly type="text" name="id_jabatan" id="id_jabatan" class="form-control" value="<?= $row['id_jabatan'] ?>" >
-                               </div> -->
-                        
-                               
+                               <input hidden type="text" name="id_jabatan" id="id_jabatan" class="form-control">
                                <div class="form-group ab-0 ab-0">
                                Nama Jabatan
                                  <label for="nama_jabatan"></label>
                                  <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Masukkan Nama Jabatan Baru" value="<?= $row['nama_jabatan'] ?>" required >
-                               </div>
-                            
-                               
+                               </div>   
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

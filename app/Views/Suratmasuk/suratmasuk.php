@@ -128,10 +128,6 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('suratmasuk/tambah'); ?>" method="post" enctype="multipart/form-data"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
-                               </div> -->
                                <div class="form-group ab-0 ab0">
                                  <label for="id_jenis_surat"></label>
                                     Jenis Surat

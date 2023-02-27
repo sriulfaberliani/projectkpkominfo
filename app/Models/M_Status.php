@@ -36,6 +36,4 @@ class M_Status extends Model{
         ->join('jabatan', 'jabatan.id_jabatan = jabatan_pegawai.id_jabatan')
         ->get()->getResultArray();
     }
-
-   
 }

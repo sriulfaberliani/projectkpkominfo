@@ -15,6 +15,7 @@ class M_Sifat extends Model{
         
     }
 
+
     public function tambah($data)
     {
         return $this->db->table('sifat_dispo')->insert($data);

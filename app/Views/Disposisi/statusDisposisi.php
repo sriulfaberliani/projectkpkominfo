@@ -81,6 +81,7 @@
                         <th>Catatan Disposisi</th>
                         <th>Status Disposisi</th>
                         
+                        
                     </tr>
                 </thead> 
                 <tbody>
@@ -92,16 +93,10 @@
                                     <td><?= $row['tanggal_disposisi_sm']; ?></td>   
                                     <td><?= $row['nama_pegawai']; ?></td>
                                     <td><?= $row['catatan_sm']; ?></td>
-                                    <td><?= $row['status']; ?></td>
-                                      
-
-                                      
+                                    <td><?= $row['status']; ?></td>   
                                    </tr>
                                    <?php $i++; ?>
-                                   <?php  endforeach;?>
-                                    
-                                      
-                                  
+                                   <?php  endforeach;?>          
                 </tbody>
             </table>
         </div>
@@ -130,7 +125,7 @@
                                  <div class="form-group ab-0">
                               <label for="id_status"></label>
                                     Status Surat
-                                 <select name="id_status" id="id_status" class="form-control" >
+                                 <select name="id_status" id="id_status" class="form-control" required >
                                     <option value="">Pilih Status</option>
                                     <?php foreach($datastatus as $key => $value) : 
                                       if (session()->get('id_role') != '2' && $value['id_status'] == '0' ) {
@@ -148,7 +143,7 @@
                               <div class="form-group ab-0">
                                  <label for="id_sifat"></label>
                                  Sifat Surat
-                                 <select name="id_sifat" id="id_sifat" class="form-control" >
+                                 <select name="id_sifat" id="id_sifat" class="form-control" required  >
                                     <option value="">Pilih Sifat</option>
                                     <?php foreach($datasifat as $key => $value) : ?>
                                     <option value="<?= $value['id_sifat']; ?>"><?= $value['nama_sifat']; ?></option>
@@ -158,12 +153,12 @@
                               <div class="form-group ab-0">
                                  <label for="catatan_sm"></label>
                                  Catatan Disposisi
-                                 <textarea rows="3" name="catatan_sm" id="catatan_sm" class="form-control" placeholder="Masukan Catatan Disposisi"  ></textarea>
+                                 <textarea rows="3" name="catatan_sm" id="catatan_sm" class="form-control" placeholder="Masukan Catatan Disposisi" required  ></textarea>
                                </div>
                               <div class="form-group ab-0">
                                  <label for="tujuan_dispo_sm"></label>
                                  Tujuan
-                                 <select name="tujuan_dispo_sm" id="tujuan_dispo_sm" class="form-control" >
+                                 <select name="tujuan_dispo_sm" id="tujuan_dispo_sm" class="form-control" required >
                                     <option value="">Tujuan Disposisi</option>
                                     <?php foreach($userjabatan as $key => $value) : 
                                          if (session()->get('id_role') == 3 && $value['id_role'] == 2) {

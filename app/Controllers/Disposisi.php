@@ -73,7 +73,6 @@ class Disposisi extends BaseController
       
       $data['detail'] = $detail;
       $data['disposisi_by_id_suratmasuk'] = $this->model->get_disposisi_by_id_suratmasuk($id_suratmasuk);
-      // $data['get_last_disposisi'] = $this->model->getLastDisposisi($id_suratmasuk);
             echo view('templates/v_header', $data);
             echo view('templates/v_sidebar');
             echo view('templates/v_topbar');
@@ -86,6 +85,9 @@ class Disposisi extends BaseController
 
     public function teruskan()
     {
+
+
+      
         date_default_timezone_set('Asia/Jakarta');
         $bulan = [
             '01' => 'Januari',

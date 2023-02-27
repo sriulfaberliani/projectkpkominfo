@@ -113,10 +113,7 @@
                            </div>
                            <div class="modal-body">
                                <form action="<?= base_url('datapegawai/tambah'); ?>" method="post"> 
-                               <!-- <div class="form-group ab-0 ab-0">
-                                 <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" placeholder="ID Pegawai" >
-                               </div> -->
+                          
                                <div class="form-group ab-0 ab-0">
                                  <label for="nama_pegawai"></label>
                                  <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" required>
@@ -159,13 +156,6 @@
                            <div class="modal-body">
                                <form action="<?= base_url('datapegawai/ubah'); ?>" method="post"> 
                                <input hidden type="text" name="id_pegawai" id="id_pegawai" class="form-control"   >
-                               <!-- <div class="form-group ab-0 ab-0">
-                                ID PEGAWAI
-                                 <label for="id_pegawai"></label>
-                                 <input readonly type="text" name="id_pegawai" id="id_pegawai" class="form-control" value="<?= $row['id_pegawai'] ?>" required>
-                               </div> -->
-                        
-                               
                                <div class="form-group ab-0 ab-0">
                                 Nama Pegawai
                                  <label for="nama_pegawai"></label>

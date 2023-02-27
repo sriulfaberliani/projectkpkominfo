@@ -65,17 +65,6 @@ class SuratMasuk extends BaseController
               echo view('Disposisi/statusDisposisi', $data);
               echo view('templates/v_footer');
       }
-
-    // public function viewpdf($file_surat){
-    //     $file = '/public/filesurat' . $file_surat;
-
-    //     header('Content-type: application/pdf');
-    //     header('Content-Disposition: inline; filename="' . $file_surat . '"');
-    //     header('Content-Transfer-Encoding: binary');
-    //     header('Accept-Ranges: bytes');
-    //     @readfile($file);
-    // }
-
     public function tambah()
     {
         if($this->validate([
