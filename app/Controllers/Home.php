@@ -43,7 +43,7 @@ class Home extends BaseController
         $data['jumlah_user'] = $this->user->getJumlahuser();
         $data['jumlah_suratmasuk'] = $this->suratmasuk->getJumlahSuratMasuk();
         $data['jumlah_suratkeluar'] = $this->suratkeluar->getJumlahSuratKeluar();
-        $data['jumlah_disposisi'] = $this->disposisi->getJumlahDisposisiSk($id_user, $id_pegawai);
+        $data['jumlah_disposisi'] = $this->disposisi->getJumlahDisposisi($id_user, $id_pegawai);
         $data['jumlah_disposisi_sk'] = $this->disposisi_sk->getJumlahDisposisiSk($id_user, $id_pegawai);
 
         echo view('templates/v_header', $data);

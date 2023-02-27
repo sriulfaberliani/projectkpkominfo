@@ -84,10 +84,10 @@ class M_Disposisi extends Model{
     {
         return $this->db->table('disposisi_sm')
         ->where('tujuan_dispo_sm', $id_user_tujuan)
-        ->orderBy('suratmasuk.id_suratmasuk', 'DESC')
-        ->orWhere('suratmasuk.id_user', $id_user_pembuat)
-        ->groupby('suratmasuk.id_suratmasuk')
-        ->countAllResult();
+        ->orderBy('disposisi_sm.id_suratmasuk', 'DESC')
+        ->orWhere('disposisi_sm.id_pegawai', $id_user_pembuat)
+        ->groupby('disposisi_sm.id_suratmasuk')
+        ->countAllResults();
     }
 
     public function sudahDispoByUser($id_user){
