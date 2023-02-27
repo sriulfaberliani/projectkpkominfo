@@ -44,7 +44,8 @@ class DisposisiSk extends BaseController
 
       ];
       $id_user = session()->get('id_user');
-      $data['disposisi_sk_by_user'] = $this->model->get_disposisi_by_id_user($id_user, $id_user );
+      $id_pegawai = session()->get('id_pegawai');
+      $data['disposisi_sk_by_user'] = $this->model->get_disposisi_by_id_user($id_user, $id_pegawai);
         echo view('templates/v_header', $data);
         echo view('templates/v_sidebar');
         echo view('templates/v_topbar');
@@ -113,6 +114,8 @@ class DisposisiSk extends BaseController
             session()->setFlashdata('message', ' didisposisi');
             return redirect()->back()->with('foo', 'message');
         }
+
+        
     }
 
     public function index_agenda($id = null)

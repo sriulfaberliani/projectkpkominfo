@@ -14,6 +14,7 @@ class M_Suratkeluar extends Model{
         return $this->db->table('suratkeluar') 
         ->join('jenissurat', 'jenissurat.id_jenis_surat = suratkeluar.id_jenis_surat')
         ->join('user', 'user.id_user = suratkeluar.id_user')
+        ->orderBy('suratkeluar.id_suratkeluar', 'DESC')
         ->get()->getResultArray();
     }
 
@@ -52,7 +53,10 @@ class M_Suratkeluar extends Model{
 
     public function getJumlahSuratkeluar()
     {
-        return $this->db->table('suratkeluar')->countAll();
+        return $this->db->table('suratkeluar')
+        ->join('disposisi_sk', 'disposisi_sk.id_suratkeluar = suratkeluar.id_suratkeluar')
+        ->where('disposisi_sk.id_status','1' )
+        ->countAllResults();
     }
 
     public function get_disposisi_by_id_user($id_user_pembuat)
@@ -60,6 +64,7 @@ class M_Suratkeluar extends Model{
         return $this->db->table('suratkeluar') 
         ->join('jenissurat', 'jenissurat.id_jenis_surat = suratkeluar.id_jenis_surat')
         ->join('user', 'user.id_user = suratkeluar.id_user')
+        ->orderBy('suratkeluar.id_suratkeluar', 'DESC')
             ->Where('suratkeluar.id_user', $id_user_pembuat)
             ->get()->getResultArray();
     }

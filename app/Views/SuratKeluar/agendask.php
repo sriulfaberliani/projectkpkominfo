@@ -19,7 +19,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID Surat Keluar</th>
+                        <th>No</th>
                         <th>Jenis Surat</th>
                         <th>Nomor Surat</th>
                         <th>Perihal</th>
@@ -32,12 +32,12 @@
                                     <?php  foreach($suratkeluar_agenda as $row) :?>
                                    <tr>
                                      
-                                       <td><?= $row['id_suratkeluar']; ?></td>
+                                        <td><?= $i; ?></td>
                                        <td><?= $row['nama_jenis_surat']; ?></td>
                                        <td><?= $row['no_suratkeluar']; ?></td>
                                       <td><?= $row['perihal']; ?></td>
                                        <td><?= $row['tgl_pembuatansk']; ?></td>
-                                       <td> <a href="<?= base_url('suratkeluar/detail/'.$row['id_suratkeluar']); ?>" target="_blank"><i class="fa fa-file-pdf fa-2x label-danger"></i></a>
+                                       <td> <a href="<?= base_url('suratkeluar/detail/'.$row['id_suratkeluar']); ?>" ><i class="fa fa-file-pdf fa-2x label-danger"></i></a>
                                       </td>
                                       
                                    </tr>

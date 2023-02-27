@@ -193,11 +193,10 @@ class SuratKeluar extends BaseController
             ],
             'no_suratkeluar' => [
                 'label' => 'Nomor Surat',
-                'rules' => 'required|regex_match[/^\d{3}\/302\/Diskominfo\/[A-Z]+\/\d{4}$/]|is_unique[suratkeluar.no_suratkeluar]',
+                'rules' => 'required|regex_match[/^\d{3}\/302\/Diskominfo\/[A-Z]+\/\d{4}$/]',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong',
                     'regex_match' => 'Format nomor surat tidak sesuai (contoh: 023/304/Diskominfo/XI/2022)',
-                    'is_unique' => '{field} sudah ada',
                 ]
             ],
             'lampiran' => [

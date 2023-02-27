@@ -37,12 +37,14 @@ class Home extends BaseController
             'suratmasuk' => $this->suratmasuk->getAllData(),
             'datauser' => $this->user->getAllData(),
         ];
+        $id_user = session()->get('id_user');
+        $id_pegawai = session()->get('id_pegawai');
         $data['jumlah_pegawai'] = $this->pegawai->getJumlahPegawai();
         $data['jumlah_user'] = $this->user->getJumlahuser();
         $data['jumlah_suratmasuk'] = $this->suratmasuk->getJumlahSuratMasuk();
         $data['jumlah_suratkeluar'] = $this->suratkeluar->getJumlahSuratKeluar();
-        $data['jumlah_disposisi'] = $this->disposisi->getJumlahDisposisi(session()->get('id_user'));
-        $data['jumlah_disposisi_sk'] = $this->disposisi_sk->getJumlahDisposisiSk();
+        $data['jumlah_disposisi'] = $this->disposisi->getJumlahDisposisiSk($id_user, $id_pegawai);
+        $data['jumlah_disposisi_sk'] = $this->disposisi_sk->getJumlahDisposisiSk($id_user, $id_pegawai);
 
         echo view('templates/v_header', $data);
         echo \view('templates/v_sidebar');

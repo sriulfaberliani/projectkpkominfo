@@ -128,12 +128,7 @@ class Auth extends BaseController
                     session()->setTempdata('error', 'Password lama tidak sesuai', 3);
                     return redirect()->to(current_url());
                 }
-               
-
-               
-            
-                
-                
+                 
             }
             else{
                 $data['validation'] = $this->validator;

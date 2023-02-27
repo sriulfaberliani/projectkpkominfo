@@ -15,6 +15,7 @@ class M_JabatanPegawai extends Model{
         return $this->db->table('jabatan_pegawai')
         ->join('pegawai', 'pegawai.id_pegawai = jabatan_pegawai.id_pegawai')
         ->join('jabatan', 'jabatan.id_jabatan = jabatan_pegawai.id_jabatan')
+        ->orderBy('jabatan_pegawai.id_jabatan_pegawai', 'DESC')
         ->get()->getResultArray();
     }
 

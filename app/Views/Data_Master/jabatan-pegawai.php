@@ -121,10 +121,6 @@
                                     <?php endforeach; ?>
                                     </select>
                                </div>
-                               <!-- <div class="form-group ab-0">
-                                 <label for="nama_pegawai"></label>
-                                 <input readonly required type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" >
-                               </div> -->
                                <div class="form-group ab-0">
                                <label>Jabatan</label>
                                  <label for="id_jabatan"></label>
@@ -213,18 +209,4 @@
                </div>
 
 
-
-<!-- <script>
-    $('#nip').on('change', (event) =>{
-        getM_JabatanPegawai(event.target.value).then(jabatanPegawai =>{
-            $('#nama_pegawai').val(jabatanPegawai.nama_pegawai);
-        });
-    });
-
-    async function getM_JabatanPegawai(id){
-        let response = await fetch('/api/DataJabatanPegawai/' + id)
-        let data = await response.json();
-
-        return data;
-    } -->
 
